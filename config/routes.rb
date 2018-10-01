@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'welcome/home'
   get 'users/show', to: 'users#show'
   root 'welcome#home'
