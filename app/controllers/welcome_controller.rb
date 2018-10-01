@@ -1,10 +1,6 @@
 class WelcomeController < ApplicationController
-  def new
-  end
+ 
+  def home
 
-  def create
-  end
-
-  def destroy
   end
 end

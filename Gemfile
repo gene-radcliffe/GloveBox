@@ -44,6 +44,8 @@ gem 'prawn'
 
 gem 'rtesseract', '~> 2.2'
 
+gem 'devise'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
