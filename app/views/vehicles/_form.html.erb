@@ -1,0 +1,49 @@
+<%= form_for(@vehicle, local: true) do |f| %>
+  
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :year %>
+    <%= f.text_field :year %>
+  </div>
+  <div>
+    <%= f.label :make %>
+    <%= f.text_area :make %>
+  </div>
+  <div>
+    <%= f.label :model %>
+    <%= f.text_field :model %>
+  </div>
+  <div>
+    <%= f.label :vin %>
+    <%= f.text_field :vin %>
+  </div>
+  <div>
+    <%= f.label :license_plate %>
+    <%= f.text_area :license_plate %>
+  </div>
+  <div>
+    <%= f.label :tire_psi %>
+    <%= f.text_field :model %>
+  </div>
+  <div>
+    <%= f.label :registration %>
+    <%= f.text_field :registration %>
+  </div>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :inspection %>
+    <%= f.text_field :inspection %>
+  </div>
+  <div>
+    <%= f.submit class: "btn btn-primary"%>
+  </div>
+<% end %>
+
+
