@@ -49,6 +49,7 @@
     <br>
     <div class="field">
         <%= f.date_field :inspection, autocomplete: "inspection", class: 'text-input text-input--underbar', placeholder: 'Date of Last Inspection' %>
+        <%# <p>Date of last inspection</p> %>
     </div>
     <br>
     <div class="field">
@@ -59,7 +60,7 @@
         <%= f.text_field :registration, autocomplete: "registration", class: 'text-input text-input--underbar', placeholder: 'Registration' %>
     </div>
     <div class="actions" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
-        <%= f.submit "Sign up", class: "button" %>
+        <%= f.submit "Add Vehicle", class: "button" %>
     </div>
 
     <div class="bottom-bar">
