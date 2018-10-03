@@ -19,30 +19,28 @@
 
 <h1>Here are all my vehicles!</h1>
 
- <div style="height: 200px; padding: 1px 0 0 0;">
+    <% @vehicles.each do |vehicle| %>
+        <tr>
+          <td><%= vehicle.name  %></td> 
+          <td><%= vehicle.license_plate %></td>
+          <td><%= vehicle.color %></td> 
+        </tr>
+     <% end %>
+
+ <div style="height: 100px; padding: 1px 0 0 0;">
   <div class="card">
     <div class="card__content">my car.</div>
     <img class="list-item__thumbnail" src="https://cdn.pixabay.com/photo/2012/05/29/00/43/car-49278_1280.jpg">
   </div>
 </div>
 
-<div style="height: 200px; padding: 1px 0 0 0;">
-  <div class="card">
-    <div class="card__content">my other car.</div>
-    <img class="list-item__thumbnail" src="https://cdn.pixabay.com/photo/2016/04/01/12/16/car-1300629__480.png">
-  </div>
-</div>
 
-<div style="height: 200px; padding: 1px 0 0 0;">
-  <div class="card">
-    <div class="card__content">another car.</div>
-    <img class="list-item__thumbnail" src="https://cdn.pixabay.com/photo/2017/03/05/15/29/aston-2118857_1280.jpg">
-  </div>
+<div>
+<%= link_to  "new vehicle",new_vehicle_path, class: 'zmdi zmdi-plus button' %>
+<%= link_to  "sign out", destroy_user_session_path, :method => :delete, class: 'button' %>
 </div>
 
 </ons-page>
 
 
-<%= link_to  "sign out", destroy_user_session_path, :method => :delete %>
-<%= link_to  "new vehicle",new_vehicle_path %>
 
