@@ -1,3 +1,72 @@
-<h1>New Vehicle</h1>
 
-<%= render 'form' %>
+<ons-page>
+
+<!-- Prerequisite=This example use ionicons(http://ionicons.com) to display icons. -->
+<div class="toolbar">
+  <div class="toolbar__left">
+    <span class="toolbar-button toolbar-button--outline">
+      <i class="ion-navicon" style="font-size:32px; vertical-align:-6px;"></i>
+    </span>
+  </div>
+
+  <div class="toolbar__center">
+    User's GloveBox
+  </div>
+
+  <div class="toolbar__right">
+    <span class="toolbar-button toolbar-button--outline">Button</span>
+  </div>
+</div>
+
+
+<h1>Add a New Vehicle</h1>
+
+<%= form_for(@vehicle, local: true) do |f| %>
+
+    <div class="field">
+        <%= f.text_field :name, autocomplete: "name", class: 'text-input text-input--underbar', placeholder: 'Name' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :make, autocomplete: "make", class: 'text-input text-input--underbar', placeholder: 'Make/Model' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :year, autocomplete: "year", class: 'text-input text-input--underbar', placeholder: 'Year' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :color, autocomplete: "color", class: 'text-input text-input--underbar', placeholder: 'Color' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :vin, autocomplete: "vin", class: 'text-input text-input--underbar', placeholder: 'VIN' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :license_plate, autocomplete: "license_plate", class: 'text-input text-input--underbar', placeholder: 'License Plate' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.date_field :inspection, autocomplete: "inspection", class: 'text-input text-input--underbar', placeholder: 'Date of Last Inspection' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :title, autocomplete: "title", class: 'text-input text-input--underbar', placeholder: 'Title' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :registration, autocomplete: "registration", class: 'text-input text-input--underbar', placeholder: 'Registration' %>
+    </div>
+    <div class="actions" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+        <%= f.submit "Sign up", class: "button" %>
+    </div>
+
+    <div class="bottom-bar">
+        <div class="bottom-bar__line-height" style="text-align:center">Bottom Toolbar</div>
+    </div>
+
+
+</ons-page>
+
+<% end %>
