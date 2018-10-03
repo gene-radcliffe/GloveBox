@@ -14,7 +14,7 @@ class VehiclesController < ApplicationController
   
   
   def index
-    @vehicles = Vehicle.all 
+    @vehicles = current_user.vehicles 
   end
 
   def show
@@ -27,9 +27,10 @@ class VehiclesController < ApplicationController
 
   def create
     @vehicle = Vehicle.new(vehicle_params)
+    @vehicle.user_id = current_user.id
    
     if @vehicle.save
-       redirect_to @vehicle
+       redirect_to vehicles_path
     else
         render 'new'
     end
@@ -48,7 +49,7 @@ class VehiclesController < ApplicationController
 
     def vehicle_params
        params.require(:vehicle).permit(:name, :year, :make, :model, :insurance, :vin, :license_plate,
-                                       :tire_psi, :registration, :title, :inspection)
+                                       :tire_psi, :registration, :title, :inspection, :color, :user_id)
     end
 
 end
