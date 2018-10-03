@@ -1,6 +1,6 @@
 class MaintenanceLog < ApplicationRecord
   
-  has_many :maintenance_actions, dependent: :destroy
-  belongs_to :vehicle
+  has_many :maintenance_actions
+  belongs_to :vehicle, dependent: :destroy
 
 end
