@@ -1,11 +1,23 @@
 class VehiclesController < ApplicationController
   before_action :authenticate_user!
+  
+  require "prawn"
+
+  def publish_pdf
+    @current_user = current_user.id
+    @vehicles.each do |vehicle|
+
+      Prawn::Document.generate("car.pdf")
+
+    end
+  end
+  
+  
   def index
     @vehicles = Vehicle.all 
   end
 
   def show
-    
     @vehicle = vehicle.find(params[:id])
   end
  
