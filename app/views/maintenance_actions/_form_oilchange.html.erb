@@ -1,0 +1,11 @@
+<%= form_with model: @oilchange, url: maintenance_actions_path do |f| %>
+  
+
+  <div>
+    <%= f.label :oil_type %>
+    <%= f.text_field :oiltype %>
+  </div>
+  <div>
+    <%= f.submit class: "btn btn-primary"%>
+  </div>
+<% end %>

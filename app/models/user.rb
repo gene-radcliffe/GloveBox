@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :confirmable, :trackable, :validatable
 
   has_many :vehicles
-
+ 
 end

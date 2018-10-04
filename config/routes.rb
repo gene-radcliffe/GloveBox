@@ -13,6 +13,18 @@ Rails.application.routes.draw do
   
   resources :users, only: :show
   resources :vehicles
+  resources :maintenance_actions do
+    get "oilchange" , to: 'maintenance_actions#oilchange'
+  end
+
+  resources :vehicles do
+    resources :maintenance_logs do
+      
+    end
+      
+  end
+     
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   

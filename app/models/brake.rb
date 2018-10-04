@@ -1,0 +1,4 @@
+class Brake < MaintenanceAction
+
+end
+  
