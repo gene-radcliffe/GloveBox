@@ -7,11 +7,18 @@ class VehiclesController < ApplicationController
 
   def show
     
-    @vehicle = vehicle.find(params[:id])
+    @vehicle = Vehicle.find(params[:id])
   end
  
   def new
       @vehicle = Vehicle.new
+  end
+
+  def edit
+    @vehicle = Vehicle.find(params[:id])
+    unless current_user.id == @vehicle.user_id
+      redirect_to vehicles_path 
+    end
   end
 
   def create
