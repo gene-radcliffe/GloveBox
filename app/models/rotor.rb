@@ -1,0 +1,3 @@
+class Rotor < MaintenanceAction
+end
+  
