@@ -2,7 +2,7 @@
 
 <div>
 <%if !current_user.avatar.attached?%>
-        <%= image_tag("assets/images/avatar_default.png", height:"64", width:"64")%>
+        <%= image_tag(asset_path("avatar_default.png"), height:"64", width:"64")%>
     <%else%>
         <%= image_tag(rails_blob_path(current_user.avatar, disposition:"attachment"))%>
 <%end%>
