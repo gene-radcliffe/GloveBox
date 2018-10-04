@@ -1,5 +1,46 @@
+<ons-page>
+  <%# <ons-toolbar> %>
+    <div class="toolbar">
+      <div class="toolbar__left">
+        <span class="toolbar-button toolbar-button--outline">
+          <i class="ion-navicon" style="font-size:32px; vertical-align:-6px;"></i>
+        </span>
+      </div>
 
-<h1> I am Vehicle</h1>
-<%= link_to  "sign out", destroy_user_session_path, :method => :delete %>
-<%= link_to  "new vehicle",new_vehicle_path %>
+    <div class="toolbar__center">
+        User's GloveBox
+    </div>
+
+    <div class="toolbar__right">
+      <span class="toolbar-button toolbar-button--outline">Button</span>
+  </div>
+</div>
+  <%# </ons-toolbar> %>
+
+<h1>Here are all my vehicles!</h1>
+
+    <% @vehicles.each do |vehicle| %>
+        <tr>
+          <td><%= vehicle.name  %></td> 
+          <td><%= vehicle.license_plate %></td>
+          <td><%= vehicle.color %></td> 
+        </tr>
+     <% end %>
+
+ <div style="height: 100px; padding: 1px 0 0 0;">
+  <div class="card">
+    <div class="card__content">my car.</div>
+    <img class="list-item__thumbnail" src="https://cdn.pixabay.com/photo/2012/05/29/00/43/car-49278_1280.jpg">
+  </div>
+</div>
+
+
+<div>
+<%= link_to  "new vehicle",new_vehicle_path, class: 'zmdi zmdi-plus button' %>
+<%= link_to  "sign out", destroy_user_session_path, :method => :delete, class: 'button' %>
+</div>
+
+</ons-page>
+
+
 
