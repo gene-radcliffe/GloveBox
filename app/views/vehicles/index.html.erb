@@ -8,31 +8,53 @@
       </div>
 
     <div class="toolbar__center">
-        User's GloveBox
+        <%= "#{current_user.first_name}'s GloveBox" %>
     </div>
 
     <div class="toolbar__right">
-      <span class="toolbar-button toolbar-button--outline">Button</span>
+      <span class="toolbar-button toolbar-button--outline">My Account</span>
   </div>
 </div>
   <%# </ons-toolbar> %>
 
 <h1>Here are all my vehicles!</h1>
 
-    <% @vehicles.each do |vehicle| %>
-        <tr>
-          <td><%=link_to vehicle.name, vehicle_path(vehicle.id)  %></td> 
-          <td><%= vehicle.license_plate %></td>
-          <td><%= vehicle.color %></td> 
-        </tr>
-     <% end %>
+<% @vehicles.each do |vehicle| %>
 
- <div style="height: 100px; padding: 1px 0 0 0;">
-  <div class="card">
-    <div class="card__content">my car.</div>
-    <img class="list-item__thumbnail" src="https://cdn.pixabay.com/photo/2012/05/29/00/43/car-49278_1280.jpg">
-  </div>
-</div>
+  <ons-card>
+    <img src="https://cdn.pixabay.com/photo/2012/05/29/00/43/car-49278_1280.jpg" alt="car pic" style="width: 100%">
+    <div class="title">
+      <%= vehicle.name %>
+    </div>
+    <div class="content">
+      <div>
+        <ons-button><i class="fas fa-car"></i></ons-button>
+        <ons-button><i class="far fa-file-alt"></i></ons-button>
+      </div>
+      <ons-list>
+        <ons-list-header>Bindings</ons-list-header>
+        <ons-list-item><%= vehicle.license_plate %></ons-list-item>
+        <ons-list-item><%= vehicle.color %></ons-list-item>
+        <ons-list-item>React</ons-list-item>
+      </ons-list>
+    </div>
+  </ons-card>
+  <% end %>
+</ons-page>
+
+
+
+
+   
+
+ <%# <div style="height: 100px; padding: 1px 0 0 0;"> %>
+  <%# <div class="card"> %>
+    <%# <div class="card__content"><%= vehicle.name %></div> %>
+    <%# <img class="list-item__thumbnail" src="https://cdn.pixabay.com/photo/2012/05/29/00/43/car-49278_1280.jpg"> %>
+  <%# </div> %>
+    <%# <div class="card_content"><%= vehicle.license_plate %></div> %>
+    <%# <div class="card_content"><%= vehicle.color %></div> %>
+  <%# </div> %>
 
 
 <div>

@@ -1,16 +1,22 @@
 <h2>Resend confirmation instructions</h2>
+<ons-page>
+  <ons-toolbar>
+    <div class="center">GloveBox</div>
+  </ons-toolbar>
+  <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Welcome to GloveBox</h2>
+    <div style="text-align: center; margin-top: 80px;">
+      <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+        <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+        <div class="field">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: 'text-input text-input--underbar', placeholder: 'Email',style:"text-align: center; font-size: 1.5rem; margin-bottom: 15px;" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+        <div class="actions">
+          <%= f.submit "Resend", class: "button" %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</ons-page>
