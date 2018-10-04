@@ -1,0 +1,3 @@
+class Miscellaneous < MaintenanceAction
+
+end  

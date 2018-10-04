@@ -1,0 +1,3 @@
+class BrakeFluid < MaintenanceAction
+ 
+end  

@@ -1,6 +1,6 @@
 class Vehicle < ApplicationRecord
 
-  belongs_to :user
-  has_many :maintenance_logs, dependent: :destroy
+  belongs_to :user, dependent: :destroy
+  has_many :maintenance_logs
 
 end
