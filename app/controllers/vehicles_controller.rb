@@ -56,4 +56,8 @@ class VehiclesController < ApplicationController
                                        :tire_psi, :registration, :title, :inspection, :color, :user_id)
     end
 
+    def set_vehicle
+      @vehicles = current_user.vehicles
+    end
+
 end
