@@ -1,7 +1,8 @@
 class MaintenanceLogsController < ApplicationController
 
   def new
-
+    @maintenance_log = MaintenanceLog.new
+    
   end  
 
   def create 
