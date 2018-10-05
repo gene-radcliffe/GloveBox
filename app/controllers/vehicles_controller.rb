@@ -4,7 +4,7 @@ class VehiclesController < ApplicationController
   require "prawn"
 
   def publish_pdf
-    @current_user = current_user.id
+    @vehicle.user_id = current_user.id
     @vehicles.each do |vehicle|
 
       Prawn::Document.generate("car.pdf")
