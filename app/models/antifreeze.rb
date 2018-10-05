@@ -1,0 +1,4 @@
+class Antifreeze < MaintenanceAction
+
+end  
+  

@@ -1,0 +1,4 @@
+class PowerSteeringFluid < MaintenanceAction
+
+end  
+  
