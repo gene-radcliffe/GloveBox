@@ -1,7 +1,7 @@
 <ons-navigator id="appNavigator" swipeable swipe-target-width="80px">
   <ons-page>
     <ons-splitter id="appSplitter">
-      <ons-splitter-side id="sidemenu" page="sidemenu_html" swipeable side="right" collapse="" width="260px"></ons-splitter-side>
+      <%# <ons-splitter-side id="sidemenu" page="sidemenu_html" swipeable side="right" collapse="" width="260px"></ons-splitter-side> %>
       <ons-splitter-content page="tabbar.html"></ons-splitter-content>
     </ons-splitter>
   </ons-page>
@@ -19,8 +19,8 @@
     </ons-toolbar>
     <ons-tabbar swipeable id="appTabbar" position="auto">
       <ons-tab label="Home" icon="ion-home" page="home.html" active></ons-tab>
-      <ons-tab label="Add Maintenance" icon="ion-edit" page="forms.html"></ons-tab>
-      <ons-tab label="View Log" icon="ion-film-marker" page="animations.html"></ons-tab>
+      <ons-tab label="Add Maintenance" icon="ion-edit" page="home.html"></ons-tab>
+      <ons-tab label="View Log" icon="ion-film-marker" page="home.html"></ons-tab>
     </ons-tabbar>
 
     <script>
@@ -41,11 +41,11 @@
 
     <% @vehicles.each do |vehicle| %>
 
-    <ons-card onclick="fn.pushPage({'id': 'vehicle', 'title': 'vehicle.name'})">
+    <ons-card onclick="fn.load({'id': 'vehicle', 'title': 'vehicle.name'})">
       <div class="title"><%= vehicle.name %></div>
-      <img src="https://cdn.pixabay.com/photo/2012/05/29/00/43/car-49278_1280.jpg" alt="car pic" style="max-width:100%;height:auto;">
+      <%# <%= image_tag(rails_blob_path(vehicle.avatar, disposition:"attachment"))%> 
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HQgq7ybZabhiIzqfDstcmrWC5xIaQHZ0bhpNz6Vh2LgZgSsq" alt="car pic" style="max-width:100%;height:auto;">
       <div><%= vehicle.year %>   <%= vehicle.make %> <%= vehicle.model %>   |   <%= "License Plate:"  %>  <%= vehicle.license_plate %></div> 
-      
     </ons-card>
 
     <style>
@@ -69,51 +69,4 @@
   <% end %>
 </template>
 
-<template id="forms.html">
-  <ons-page id="forms-page">
-    <ons-list>
-
-<%# <% @vehicles.each do |vehicle| %> 
-
-  <%# <ons-card>
-    <img src="https://cdn.pixabay.com/photo/2012/05/29/00/43/car-49278_1280.jpg" alt="car pic" style="max-width:100%;height:auto;">
-    <div class="title">
-      <%= vehicle.name %>
-    <%# </div> %>
-    <%# <div class="content">
-      <div>
-        <ons-button><i class="fas fa-car"></i></ons-button>
-        <ons-button><i class="far fa-file-alt"></i></ons-button>
-      </div>
-      <ons-list>
-        <ons-list-header>Bindings</ons-list-header>
-        <ons-list-item><%= vehicle.license_plate %></ons-list-item>
-        <%# <ons-list-item><%= vehicle.color %></ons-list-item>
-        <%# <ons-list-item>React</ons-list-item>
-      </ons-list>
-    </div> %>
-  </ons-card> 
-  <%# <% end %> 
-</ons-page>
-
-
-
-
-   
-
- <%# <div style="height: 100px; padding: 1px 0 0 0;"> %>
-  <%# <div class="card"> %>
-    <%# <div class="card__content"><%= vehicle.name %></div> %>
-    <%# <img class="list-item__thumbnail" src="https://cdn.pixabay.com/photo/2012/05/29/00/43/car-49278_1280.jpg"> %>
-  <%# </div> %>
-    <%# <div class="card_content"><%= vehicle.license_plate %></div> %>
-    <%# <div class="card_content"><%= vehicle.color %></div> %>
-  <%# </div> %>
-
-
-<div>
-<%= link_to  "new vehicle",new_vehicle_path, class: 'zmdi zmdi-plus button' %>
-<%= link_to  "sign out", destroy_user_session_path, :method => :delete, class: 'button' %>
-</div>
-
-</ons-page>
+<%# </ons-page> %>
