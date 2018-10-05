@@ -19,11 +19,11 @@
     </div>
 </div>  
 <div class="action-form" id="maintenance_actions">
-    <%=form_for  @mlog, url: vehicle_maintenance_logs_path, :html=>{:id=>"ml_form"} do |ml_form| %>
-   <% @mlog.maintenance_actions.each do |activity| %>
+<%=form_for  @mlog, url: vehicle_maintenance_logs_path, :html=>{:class=>"ml_form"} do |ml_form| %>
+    <% @mlog.maintenance_actions.each do |activity| %>
         <%case activity.type%>
             <% when "OilChange"%>
-                <div class="card action_form-item" id="OilChange">
+                <div class="action_form-item" id="OilChange">
                     <h2>Oil Change</h2>
                     <%= ml_form.fields_for :oilchange, activity do |activity_field| %>
                         <div>
@@ -49,7 +49,7 @@
                     <%end%>
                 </div>
             <% when "Brake"%>
-                <div class="card action_form-item" id="Brake">
+                <div class="action_form-item" id="Brake">
                     <h2>Brakes</h2>
                     <%= ml_form.fields_for :brake, activity do |activity_field| %>
                         <div>
@@ -75,7 +75,7 @@
                     <%end%>
                 </div>
             <% when "Rotor"%>
-                <div class="card action_form-item" id="Rotor">
+                <div class="action_form-item" id="Rotor">
                     <h2>Rotors</h2>
                     <%= ml_form.fields_for :rotor, activity do |activity_field| %>
                         <div>
@@ -101,7 +101,7 @@
                     <%end%>
                 </div>
             <% when "TireReplacement"%>
-                <div class="card action_form-item" id="TireReplacement">
+                <div class="action_form-item" id="TireReplacement">
                     <h2>Tire Replacement</h2>
                     <%= ml_form.fields_for :tire_replacement, activity do |activity_field| %>
                         <div>
@@ -127,7 +127,7 @@
                     <%end%>
                 </div>
             <% when "TireRotation"%>
-                <div class="card action_form-item" id="TireRotation">
+                <div class="action_form-item" id="TireRotation">
                     <h2>Tire Rotations</h2>
                     <%= ml_form.fields_for :tire_rotation, activity do |activity_field| %>
                         <div>
@@ -149,7 +149,7 @@
                     <%end%>
                 </div>
             <% when "Alignment"%>
-               <div class="card action_form-item" id="Alignment">
+               <div class="action_form-item" id="Alignment">
                     <h2>Alignments</h2>
                     <%= ml_form.fields_for :Alignment, activity do |activity_field| %>
                         <div>
@@ -171,7 +171,7 @@
                     <%end%>
                 </div>
             <% when "Antifreeze"%>
-                <div class="card action_form-item" id="AntiFreeze">
+                <div class="action_form-item" id="AntiFreeze">
                     <h2>Anti Freeze</h2>
                     <%= ml_form.fields_for :antifreeze, activity do |activity_field| %>
                         <div>
@@ -193,7 +193,7 @@
                     <%end%>
                 </div>
             <% when "BrakeFluid"%>
-                <div class="card action_form-item" id="BrakeFluid">
+                <div class="action_form-item" id="BrakeFluid">
                     <h2>Brake Fluids</h2>
                     <%= ml_form.fields_for :brakefluid, activity do |activity_field| %>
                         <div>
@@ -215,7 +215,7 @@
                     <%end%> <!-- end do -->
                 </div>
             <% when "PowerSteeringFluid"%>
-                <div class="card action_form-item" id="PowerSteeringFluid">
+                <div class="action_form-item" id="PowerSteeringFluid">
                     <h2>Power Steering Fluid</h2>
                     <%= ml_form.fields_for :powersteeringfluid, activity do |activity_field| %>
                         <div>
@@ -237,7 +237,7 @@
                     <%end%> <!-- end do -->
                 </div>
             <% when "TransmissionFluid"%>
-                <div class="card action_form-item" id="TransmissionFluid">
+                <div class="action_form-item" id="TransmissionFluid">
                     <h2>Transmission Fluid</h2>
                     <%= ml_form.fields_for :transmissionfluid, activity do |activity_field| %>
                         <div>
@@ -259,7 +259,7 @@
                     <%end%> <!-- end do -->
                 </div>
             <% when "Miscellaneous"%>
-                <div class="card action_form-item" id="Miscellaneous">
+                <div class="action_form-item" id="Miscellaneous">
                     <h2>Miscellaneous</h2>
                     <%= ml_form.fields_for :miscellaneous, activity do |activity_field| %>
                         <div>
@@ -291,9 +291,15 @@
 </div>
 <style>
 .action-form{
-
-   display: none;
-}
+    display: none;
+ }
+ 
+ .ml_form{
+     display: none;
+ }
+ .action_form-item{
+     display: none;
+ }
 </style>
 <script>
 program();
@@ -314,7 +320,7 @@ function program(){
         if(selected_inputs.length>0){
             console.log("go " + selected_inputs.length)
             // we wanna hide form
-            start_data_entry()
+            start_data_entry(selected_inputs)
         }else{
            alert("Please make a selection")
            return;
@@ -328,12 +334,17 @@ function start_data_entry(input_array){
 
     var selection_form = document.getElementById("selection_form")
     selection_form.style.display= "none";        
-    var action_form = document.getElementById("maintenance_actions")
-    action_form.style.display= "block";
-
-    for(var i =0; i<input_array.length; i++){
-        
+    
+    console.log("input array" + input_array.length)
+    for(var i =0; i < input_array.length; i++){
+        console.log("showing inputs" + input_array[i].value)
+        var showinput = document.getElementById(input_array[i].value).style.display = "block"
     }
+     var action_form = document.getElementById("maintenance_actions")
+   action_form.style.display= "block";
+    var ml_form = document.querySelector(".ml_form")
+   ml_form.style.display= "block";
+   
 }
 
 </script>
