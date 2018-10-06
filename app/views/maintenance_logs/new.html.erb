@@ -1,0 +1,350 @@
+<div class="select-form" id="selection_form" >
+    <h1>Select Type of Maintenance</h1>
+
+    <div>
+            <input class="action" type="checkbox" value="OilChange" >Oil Change<br>    
+            <input class="action" type="checkbox" value="Brake" >Brake Change<br>  
+            <input class="action" type="checkbox" value="Rotor" >Rotor<br>    
+            <input class="action" type="checkbox" value="TireReplacement" >Tire Replacement<br>  
+            <input class="action" type="checkbox" value="TireRotation" >Tire Rotation<br>     
+            <input class="action" type="checkbox" value="Alignment" >Alignment<br>     
+            <input class="action" type="checkbox" value="BrakeFluid" >Brake Fluid<br>   
+            <input class="action" type="checkbox" value="TransmissionFluid" >Transmission Fluid<br>    
+            <input class="action" type="checkbox" value="PowerSteering" >Power Steering Fluid<br>  
+            <input class="action" type="checkbox" value="AntiFreeze" >Anti-Freeze<br>   
+            <input class="action" type="checkbox" value="Miscellaneous" >Miscellaneous<br>     
+    </div>
+    <div>
+            <input type="button" id="go-button" value="Go" class="button">
+    </div>
+</div>  
+<div class="action-form" id="maintenance_actions">
+<%=form_for  @mlog, url: vehicle_maintenance_logs_path, :html=>{:class=>"ml_form"} do |ml_form| %>
+    <% @mlog.maintenance_actions.each do |activity| %>
+        <%case activity.type%>
+            <% when "OilChange"%>
+                <div class="action_form-item" id="OilChange">
+                    <h2>Oil Change</h2>
+                    <%= ml_form.fields_for :oilchange, activity do |activity_field| %>
+                        <div>
+                            <%= activity_field.label :service_date  %>
+                            <%= activity_field.date_field :service_date %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :mileage  %>
+                            <%= activity_field.text_field :mileage %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :oil_type  %>
+                            <%= activity_field.select :oil_type, options_for_select([ "Regular", "Synthetic" ], "Regular") %>
+                        </div>
+                         <div>
+                            <%= activity_field.label :cost  %>
+                            <%= activity_field.text_field :cost %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :oilchange_notes  %>
+                            <%= activity_field.text_area :notes%>
+                        </div>
+                    <%end%>
+                </div>
+            <% when "Brake"%>
+                <div class="action_form-item" id="Brake">
+                    <h2>Brakes</h2>
+                    <%= ml_form.fields_for :brake, activity do |activity_field| %>
+                        <div>
+                            <%= activity_field.label :service_date  %>
+                            <%= activity_field.date_field :service_date %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :mileage  %>
+                            <%= activity_field.text_field :mileage %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :brake_location  %>
+                            <%= activity_field.select :brake_location, options_for_select([ "Front", "Rear", "All" ], "All") %>
+                        </div>
+                         <div>
+                            <%= activity_field.label :cost  %>
+                            <%= activity_field.text_field :cost %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :brake_notes  %>
+                            <%= activity_field.text_area :notes%>
+                        </div>
+                    <%end%>
+                </div>
+            <% when "Rotor"%>
+                <div class="action_form-item" id="Rotor">
+                    <h2>Rotors</h2>
+                    <%= ml_form.fields_for :rotor, activity do |activity_field| %>
+                        <div>
+                            <%= activity_field.label :service_date  %>
+                            <%= activity_field.date_field :service_date %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :mileage  %>
+                            <%= activity_field.text_field :mileage %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :rotor_location  %>
+                            <%= activity_field.select :rotor_location, options_for_select([ "Front", "Rear", "All" ], "All") %>
+                        </div>
+                         <div>
+                            <%= activity_field.label :cost  %>
+                            <%= activity_field.text_field :cost %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :rotor_notes  %>
+                            <%= activity_field.text_area :notes%>
+                        </div>
+                    <%end%>
+                </div>
+            <% when "TireReplacement"%>
+                <div class="action_form-item" id="TireReplacement">
+                    <h2>Tire Replacement</h2>
+                    <%= ml_form.fields_for :tire_replacement, activity do |activity_field| %>
+                        <div>
+                            <%= activity_field.label :service_date  %>
+                            <%= activity_field.date_field :service_date %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :mileage  %>
+                            <%= activity_field.text_field :mileage %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :tire_location  %>
+                            <%= activity_field.select :tire_location, options_for_select([ "Front-Left", "Front-Right", "Back-Left", "Back-Right","Front-2", "Back-2", "All" ], "All") %>
+                        </div>
+                         <div>
+                            <%= activity_field.label :cost  %>
+                            <%= activity_field.text_field :cost %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :tire_notes  %>
+                            <%= activity_field.text_area :notes%>
+                        </div>
+                    <%end%>
+                </div>
+            <% when "TireRotation"%>
+                <div class="action_form-item" id="TireRotation">
+                    <h2>Tire Rotations</h2>
+                    <%= ml_form.fields_for :tire_rotation, activity do |activity_field| %>
+                        <div>
+                            <%= activity_field.label :service_date  %>
+                            <%= activity_field.date_field :service_date %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :mileage  %>
+                            <%= activity_field.text_field :mileage %>
+                        </div>
+                         <div>
+                            <%= activity_field.label :cost  %>
+                            <%= activity_field.text_field :cost %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :tire_rotation_notes  %>
+                            <%= activity_field.text_area :notes%>
+                        </div>
+                    <%end%>
+                </div>
+            <% when "Alignment"%>
+               <div class="action_form-item" id="Alignment">
+                    <h2>Alignments</h2>
+                    <%= ml_form.fields_for :Alignment, activity do |activity_field| %>
+                        <div>
+                            <%= activity_field.label :service_date  %>
+                            <%= activity_field.date_field :service_date %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :mileage  %>
+                            <%= activity_field.text_field :mileage %>
+                        </div>
+                         <div>
+                            <%= activity_field.label :cost  %>
+                            <%= activity_field.text_field :cost %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :alignment_notes  %>
+                            <%= activity_field.text_area :notes%>
+                        </div>
+                    <%end%>
+                </div>
+            <% when "Antifreeze"%>
+                <div class="action_form-item" id="AntiFreeze">
+                    <h2>Anti Freeze</h2>
+                    <%= ml_form.fields_for :antifreeze, activity do |activity_field| %>
+                        <div>
+                            <%= activity_field.label :service_date  %>
+                            <%= activity_field.date_field :service_date %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :mileage  %>
+                            <%= activity_field.text_field :mileage %>
+                        </div>
+                         <div>
+                            <%= activity_field.label :cost  %>
+                            <%= activity_field.text_field :cost %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :antifreeze_notes  %>
+                            <%= activity_field.text_area :notes%>
+                        </div>
+                    <%end%>
+                </div>
+            <% when "BrakeFluid"%>
+                <div class="action_form-item" id="BrakeFluid">
+                    <h2>Brake Fluids</h2>
+                    <%= ml_form.fields_for :brakefluid, activity do |activity_field| %>
+                        <div>
+                            <%= activity_field.label :service_date  %>
+                            <%= activity_field.date_field :service_date %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :mileage  %>
+                            <%= activity_field.text_field :mileage %>
+                        </div>
+                         <div>
+                            <%= activity_field.label :cost  %>
+                            <%= activity_field.text_field :cost %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :brake_fluid_notes  %>
+                            <%= activity_field.text_area :notes%>
+                        </div>
+                    <%end%> <!-- end do -->
+                </div>
+            <% when "PowerSteeringFluid"%>
+                <div class="action_form-item" id="PowerSteeringFluid">
+                    <h2>Power Steering Fluid</h2>
+                    <%= ml_form.fields_for :powersteeringfluid, activity do |activity_field| %>
+                        <div>
+                            <%= activity_field.label :service_date  %>
+                            <%= activity_field.date_field :service_date %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :mileage  %>
+                            <%= activity_field.text_field :mileage %>
+                        </div>
+                         <div>
+                            <%= activity_field.label :cost  %>
+                            <%= activity_field.text_field :cost %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :powersteering_fluid_notes  %>
+                            <%= activity_field.text_area :notes%>
+                        </div>
+                    <%end%> <!-- end do -->
+                </div>
+            <% when "TransmissionFluid"%>
+                <div class="action_form-item" id="TransmissionFluid">
+                    <h2>Transmission Fluid</h2>
+                    <%= ml_form.fields_for :transmissionfluid, activity do |activity_field| %>
+                        <div>
+                            <%= activity_field.label :service_date  %>
+                            <%= activity_field.date_field :service_date %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :mileage  %>
+                            <%= activity_field.text_field :mileage %>
+                        </div>
+                         <div>
+                            <%= activity_field.label :cost  %>
+                            <%= activity_field.text_field :cost %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :transmission_fluid_notes  %>
+                            <%= activity_field.text_area :notes%>
+                        </div>
+                    <%end%> <!-- end do -->
+                </div>
+            <% when "Miscellaneous"%>
+                <div class="action_form-item" id="Miscellaneous">
+                    <h2>Miscellaneous</h2>
+                    <%= ml_form.fields_for :miscellaneous, activity do |activity_field| %>
+                        <div>
+                            <%= activity_field.label :service_date  %>
+                            <%= activity_field.date_field :service_date %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :mileage  %>
+                            <%= activity_field.text_field :mileage %>
+                        </div>
+                         <div>
+                            <%= activity_field.label :cost  %>
+                            <%= activity_field.text_field :cost %>
+                        </div>
+                        <div>
+                            <%= activity_field.label :miscellaneous_notes  %>
+                            <%= activity_field.text_area :notes%>
+                        </div>
+                    <%end%> <!-- end do -->
+                </div>      
+            <%end%> <!--end case -->
+      <%end%>
+        <div class="card" action_form-item" id="Submit">
+            <%= ml_form.file_field :picture%>
+            <%= ml_form.submit %>
+        </div>
+<% end %>
+
+</div>
+<style>
+.action-form{
+    display: none;
+ }
+ 
+ .ml_form{
+     display: none;
+ }
+ .action_form-item{
+     display: none;
+ }
+</style>
+<script>
+program();
+
+function program(){
+    
+    var gobutton = document.getElementById('go-button')
+    gobutton.addEventListener('click',function(e){
+        var input_selection = document.getElementsByClassName('action')
+        var selected_inputs=[];
+        for(var i=0; i<input_selection.length; i++){
+            if(input_selection[i].checked){
+                selected_inputs.push(input_selection[i])
+            }
+           
+        }
+
+        if(selected_inputs.length>0){
+            console.log("go " + selected_inputs.length)
+            // we wanna hide form
+            start_data_entry(selected_inputs)
+        }else{
+           alert("Please make a selection")
+           return;
+        }
+    
+
+    })
+}
+
+function start_data_entry(input_array){
+
+    var selection_form = document.getElementById("selection_form")
+    selection_form.style.display= "none";        
+    
+    console.log("input array" + input_array.length)
+    for(var i =0; i < input_array.length; i++){
+        console.log("showing inputs" + input_array[i].value)
+        var showinput = document.getElementById(input_array[i].value).style.display = "block"
+    }
+     var action_form = document.getElementById("maintenance_actions")
+   action_form.style.display= "block";
+    var ml_form = document.querySelector(".ml_form")
+   ml_form.style.display= "block";
+   
+}
+
+</script>
