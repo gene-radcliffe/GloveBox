@@ -10,7 +10,7 @@
             <input class="action" type="checkbox" value="Alignment" >Alignment<br>     
             <input class="action" type="checkbox" value="BrakeFluid" >Brake Fluid<br>   
             <input class="action" type="checkbox" value="TransmissionFluid" >Transmission Fluid<br>    
-            <input class="action" type="checkbox" value="PowerSteering" >Power Steering Fluid<br>  
+            <input class="action" type="checkbox" value="PowerSteeringFluid" >Power Steering Fluid<br>  
             <input class="action" type="checkbox" value="AntiFreeze" >Anti-Freeze<br>   
             <input class="action" type="checkbox" value="Miscellaneous" >Miscellaneous<br>     
     </div>
@@ -282,45 +282,66 @@
                 </div>      
             <%end%> <!--end case -->
       <%end%>
-        <div class="card" action_form-item" id="Submit">
+        <div class = "action_form-item" id="Submit">
             <%= ml_form.file_field :picture%>
             <%= ml_form.submit %>
         </div>
 <% end %>
-
+    <div class = "control_buttons"> 
+        <input type="button" id="prev_button" value="Previous" class="button">
+        <input type="button" id="next_button" value="Next" class="button">
+    </div>
 </div>
 <style>
-.action-form{
+/* .action-form{
     display: none;
- }
+ } */
  
  .ml_form{
      display: none;
  }
  .action_form-item{
      display: none;
+     background-color: #fffdd0;
+    border: 1px solid black; 
  }
+ 
+ #Submit{
+     display: none; 
+ }
+
+ .control_buttons{
+     display: none; 
+ }
+
+
 </style>
 <script>
 program();
 
 function program(){
+    var selected_inputs=[];
+    var current_tab = 0;
     
     var gobutton = document.getElementById('go-button')
-    gobutton.addEventListener('click',function(e){
-        var input_selection = document.getElementsByClassName('action')
-        var selected_inputs=[];
-        for(var i=0; i<input_selection.length; i++){
-            if(input_selection[i].checked){
-                selected_inputs.push(input_selection[i])
-            }
+        gobutton.addEventListener('click',function(e){
+            var input_selection = document.getElementsByClassName('action')
+            
+            for(var i=0; i<input_selection.length; i++){
+                if(input_selection[i].checked){
+                    selected_inputs.push(input_selection[i])
+                }
            
         }
+
+    
 
         if(selected_inputs.length>0){
             console.log("go " + selected_inputs.length)
             // we wanna hide form
-            start_data_entry(selected_inputs)
+            show_forms(selected_inputs)
+            showtab(selected_inputs[0].value)
+            hideprev()
         }else{
            alert("Please make a selection")
            return;
@@ -328,23 +349,75 @@ function program(){
     
 
     })
+    var next_button = document.getElementById('next_button')
+        next_button.addEventListener('click', function(e){
+            if(current_tab >= selected_inputs.length - 1){
+                hidenext()
+                show_submit()
+            }else{
+                showprev()
+                hidetab(selected_inputs[current_tab].value)
+                current_tab = current_tab + 1 
+                showtab(selected_inputs[current_tab].value)
+                
+            }
+        })
+
+    var prev_button = document.getElementById('prev_button')
+        prev_button.addEventListener('click', function(e){
+            hidetab(selected_inputs[current_tab].value)
+            current_tab = current_tab - 1 
+            if (current_tab == 0){
+            hideprev()}
+            showtab(selected_inputs[current_tab].value)
+
+        })
 }
 
-function start_data_entry(input_array){
+function show_forms(input_array){
 
     var selection_form = document.getElementById("selection_form")
     selection_form.style.display= "none";        
     
-    console.log("input array" + input_array.length)
-    for(var i =0; i < input_array.length; i++){
-        console.log("showing inputs" + input_array[i].value)
-        var showinput = document.getElementById(input_array[i].value).style.display = "block"
-    }
-     var action_form = document.getElementById("maintenance_actions")
-   action_form.style.display= "block";
+    // var action_form = document.getElementById("maintenance_actions")
+    //     action_form.style.display= "block";
     var ml_form = document.querySelector(".ml_form")
-   ml_form.style.display= "block";
+        ml_form.style.display= "block";
+
+     var control_buttons = document.querySelector(".control_buttons")
+         control_buttons.style.display= "block";
+    
+    console.log("input array" + input_array.length)
+    // for(var i =0; i < input_array.length; i++){
+    //     console.log("showing inputs" + input_array[i].value)
+    //     var showinput = document.getElementById(input_array[i].value).style.display = "block"
+    // }
+    
    
+}
+
+function hideprev(){
+   var prev_button = document.getElementById("prev_button").style.display = "none"
+}
+
+function showprev(){
+   var prev_button = document.getElementById("prev_button").style.display = "block"
+}
+
+function hidenext(){
+    var next_button = document.getElementById("next_button").style.display = "none"
+}
+
+function showtab(tab){
+    var tab = document.getElementById(tab).style.display = "block"
+}
+
+function hidetab(tab){
+    var tab = document.getElementById(tab).style.display = "none"
+}
+
+function show_submit(){
+    var submit = document.getElementById("Submit").style.display = "block"
 }
 
 </script>
