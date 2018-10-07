@@ -1,4 +1,7 @@
-<ons-page id="new-page">
+<%# <ons-navigator animation="none"></ons-navigator> %>
+
+<%# <template id="new-page"> %>
+<ons-page>
   <ons-toolbar class="toolbar">
     <div class="left toolbar_left" style="color: red; padding-left:5px">Icon</div>
     <div class="center">GloveBox</div>
@@ -9,18 +12,34 @@
     </div>
   </ons-toolbar>
 
-  <h1>Add a New Vehicle</h1>
+  <h3 style="padding-left: 50px;">Add a New Vehicle</h3>
 
   <%= form_for(@vehicle, local: true) do |f| %>   
 
-  <ons-list modifier="inset" style="margin:5px">
-    <%# <ons-list-header>Inset list</ons-list-header> %>
-    <ons-list-item modifier="longdivider"><%= f.text_field :name, autocomplete: "name", class: 'text-input text-input--underbar', 
-        placeholder: 'Name' %></ons-list-item>
-    <ons-list-item modifier="longdivider">Item B</ons-list-item>
+  <ons-list modifier="inset">
+    <ons-list-item modifier="longdivider">Name</ons-list-item>
+    <ons-list-item modifier="longdivider">Color</ons-list-item>
+  </ons-list>
+  <br>
+  <ons-list modifier="inset">
+    <ons-list-item modifier="longdivider">Make</ons-list-item>
+    <ons-list-item modifier="longdivider">Model</ons-list-item>
+    <ons-list-item modifier="longdivider">Year</ons-list-item>
+  </ons-list>
+  <br>
+  <ons-list modifier="inset">
+    <ons-list-item modifier="longdivider">License Plate number</ons-list-item>
+    <ons-list-item modifier="longdivider">VIN</ons-list-item>
+    <ons-list-item modifier="longdivider">Date of Last Inspection</ons-list-item>
+  </ons-list>
+  <br>
+  <ons-list modifier="inset">
+    <ons-list-item modifier="longdivider">Title</ons-list-item>
+    <ons-list-item modifier="longdivider">Registration</ons-list-item>
   </ons-list>
 
 
+  </ons-page>
   <script>
     ons.getScriptPage().onInit = function() {};
 
@@ -33,7 +52,12 @@
         console.log('$$$$$$$$$$$$$$$')
       }
     });    
+
+    var myNavigator = document.getElementById('myNavigator');
+    myNavigator.pushPage('#new-page');
+
+   
   </script>
-</ons-page>
+
 
 <% end %>
