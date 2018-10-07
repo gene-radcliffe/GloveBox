@@ -1,21 +1,36 @@
+<ons-page>
+    <div class="toolbar">
+        <div class="toolbar__left">
+            <span class="toolbar-button toolbar-button--outline">
+                <i class="ion-navicon" style="font-size:32px; vertical-align:-6px;"></i>
+            </span>
+        </div>
+
+        <div class="toolbar__center">
+            <%= "#{@vehicle.name}" %>
+        </div>
+
+        <div class="toolbar__right">
+            <span class="toolbar-button toolbar-button--outline">Button</span>
+         </div>
+    </div>  
 <div class="select-form" id="selection_form" >
-    <h1>Select Type of Maintenance</h1>
+    <h1 style= "text-align: center; ">Select Maintenance Done</h1>
 
     <div>
-            <input class="action" type="checkbox" value="OilChange" >Oil Change<br>    
-            <input class="action" type="checkbox" value="Brake" >Brake Change<br>  
-            <input class="action" type="checkbox" value="Rotor" >Rotor<br>    
-            <input class="action" type="checkbox" value="TireReplacement" >Tire Replacement<br>  
-            <input class="action" type="checkbox" value="TireRotation" >Tire Rotation<br>     
-            <input class="action" type="checkbox" value="Alignment" >Alignment<br>     
-            <input class="action" type="checkbox" value="BrakeFluid" >Brake Fluid<br>   
-            <input class="action" type="checkbox" value="TransmissionFluid" >Transmission Fluid<br>    
-            <input class="action" type="checkbox" value="PowerSteeringFluid" >Power Steering Fluid<br>  
-            <input class="action" type="checkbox" value="AntiFreeze" >Anti-Freeze<br>   
-            <input class="action" type="checkbox" value="Miscellaneous" >Miscellaneous<br>     
+            <input class="action radio-button radio-button--material" type="checkbox" value="OilChange" >Oil Change<br>    
+            <input class="action checkbox" type="checkbox" value="Brake" >Brake Change<br>  
+            <input class="action checkbox" type="checkbox" value="Rotor" >Rotor<br>    
+            <input class="action checkbox" type="checkbox" value="TireReplacement" >Tire Replacement<br> <input class="action checkbox" type="checkbox" value="TireRotation" >Tire Rotation<br>     
+            <input class="action checkbox" type="checkbox" value="Alignment" >Alignment<br>     
+            <input class="action checkbox" type="checkbox" value="BrakeFluid" >Brake Fluid<br>   
+            <input class="action checkbox" type="checkbox" value="TransmissionFluid" >Transmission Fluid<br>    
+            <input class="action checkbox" type="checkbox" value="PowerSteeringFluid" >Power Steering Fluid<br>  
+            <input class="action checkbox" type="checkbox" value="AntiFreeze" >Anti-Freeze<br>   
+            <input class="action checkbox" type="checkbox" value="Miscellaneous" >Miscellaneous<br>     
     </div>
     <div>
-            <input type="button" id="go-button" value="Go" class="button">
+            <input type="button" id="go-button" value="Go" class="button" style="margin-left: 20px; margin-top: 10px; padding-right: 20px; padding-left: 20px;">
     </div>
 </div>  
 <div class="action-form" id="maintenance_actions">
@@ -24,53 +39,53 @@
         <%case activity.type%>
             <% when "OilChange"%>
                 <div class="action_form-item" id="OilChange">
-                    <h2>Oil Change</h2>
+                    <h2 style = "text-align: center;">Oil Change</h2>
                     <%= ml_form.fields_for :oilchange, activity do |activity_field| %>
                         <div>
-                            <%= activity_field.label :service_date  %>
-                            <%= activity_field.date_field :service_date %>
+                            <%= activity_field.label :service_date , style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
+                            <%= activity_field.date_field :service_date , style: "margin-left: 10px; margin-bottom: 10px; margin-top: 10px;" %>
                         </div>
                         <div>
-                            <%= activity_field.label :mileage  %>
-                            <%= activity_field.text_field :mileage %>
+                            <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
+                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
-                            <%= activity_field.label :oil_type  %>
-                            <%= activity_field.select :oil_type, options_for_select([ "Regular", "Synthetic" ], "Regular") %>
-                        </div>
+                            <%= activity_field.label :oil_type, style: "margin-left: 10px;"   %>
+                            <%= activity_field.select :oil_type, options_for_select([ "Regular", "Synthetic" ], "Regular"), style: "padding-left: 25px;" %>
+                        </div><br>
                          <div>
-                            <%= activity_field.label :cost  %>
-                            <%= activity_field.text_field :cost %>
+                            <%= activity_field.label :cost, style: "margin-left: 10px; margin-top: 10px;"   %><br>
+                            <%= activity_field.text_field :cost, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
-                            <%= activity_field.label :oilchange_notes  %>
-                            <%= activity_field.text_area :notes%>
+                            <%= activity_field.label :oilchange_notes, style: "margin-left: 10px;"  %><br>
+                            <%= activity_field.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
                         </div>
                     <%end%>
                 </div>
             <% when "Brake"%>
                 <div class="action_form-item" id="Brake">
-                    <h2>Brakes</h2>
+                    <h2 style = "text-align: center;">Brakes</h2>
                     <%= ml_form.fields_for :brake, activity do |activity_field| %>
                         <div>
-                            <%= activity_field.label :service_date  %>
-                            <%= activity_field.date_field :service_date %>
+                            <%= activity_field.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
+                            <%= activity_field.date_field :service_date, style: "margin-left: 10px; margin-bottom: 10px; margin-top: 10px;" %>
                         </div>
                         <div>
-                            <%= activity_field.label :mileage  %>
-                            <%= activity_field.text_field :mileage %>
+                            <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
+                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
-                            <%= activity_field.label :brake_location  %>
-                            <%= activity_field.select :brake_location, options_for_select([ "Front", "Rear", "All" ], "All") %>
-                        </div>
+                            <%= activity_field.label :brake_location, style: "margin-left: 10px;"  %>
+                            <%= activity_field.select :brake_location, options_for_select([ "Front", "Rear", "All" ], "All"), class:"select-input select-input--material" %>
+                        </div><br>
                          <div>
-                            <%= activity_field.label :cost  %>
-                            <%= activity_field.text_field :cost %>
+                            <%= activity_field.label :cost, style: "margin-left: 10px;"   %><br>
+                            <%= activity_field.text_field :cost, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
-                            <%= activity_field.label :brake_notes  %>
-                            <%= activity_field.text_area :notes%>
+                            <%= activity_field.label :brake_notes, style: "margin-left: 10px;"  %><br>
+                            <%= activity_field.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
                         </div>
                     <%end%>
                 </div>
@@ -88,7 +103,7 @@
                         </div>
                         <div>
                             <%= activity_field.label :rotor_location  %>
-                            <%= activity_field.select :rotor_location, options_for_select([ "Front", "Rear", "All" ], "All") %>
+                            <%= activity_field.select :rotor_location, options_for_select([ "Front", "Rear", "All" ], "All") %><br>
                         </div>
                          <div>
                             <%= activity_field.label :cost  %>
@@ -289,9 +304,10 @@
 <% end %>
     <div class = "control_buttons"> 
         <input type="button" id="prev_button" value="Previous" class="button">
-        <input type="button" id="next_button" value="Next" class="button">
+        <input type="button" id="next_button" value="Next" class="button" style = "margin-left: 15px; margin-top: 15px;">
     </div>
 </div>
+</ons-page>
 <style>
 /* .action-form{
     display: none;
@@ -302,8 +318,8 @@
  }
  .action_form-item{
      display: none;
-     background-color: #fffdd0;
-    border: 1px solid black; 
+     
+      
  }
  
  #Submit{
@@ -314,6 +330,10 @@
      display: none; 
  }
 
+ .action{
+     margin-bottom: 15px;
+     margin-left: 15px;
+ }
 
 </style>
 <script>
