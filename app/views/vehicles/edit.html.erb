@@ -1,63 +1,79 @@
-<%# <ons-navigator animation="none"></ons-navigator> %>
-
-<%# <template id="new-page"> %>
 <ons-page>
-  <ons-toolbar class="toolbar">
-    <div class="left toolbar_left" style="color: red; padding-left:5px">Icon</div>
-    <div class="center">GloveBox</div>
-    <div class="right">
-      <ons-toolbar-button>
-        <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
-      </ons-toolbar-button>
+
+<!-- Prerequisite=This example use ionicons(http://ionicons.com) to display icons. -->
+<div class="toolbar">
+  <div class="toolbar__left">
+    <span class="toolbar-button toolbar-button--outline">
+      <i class="ion-navicon" style="font-size:32px; vertical-align:-6px;"></i>
+    </span>
+  </div>
+
+  <div class="toolbar__center">
+    Edit Joey's GloveBox
+  </div>
+
+  <div class="toolbar__right">
+    <span class="toolbar-button toolbar-button--outline">Button</span>
+  </div>
+</div>
+
+<%= form_for(@vehicle, local: true) do |f| %>
+
+    <div>
+        <img src="https://cdn.pixabay.com/photo/2012/05/29/00/43/car-49278_1280.jpg" style="width:186px;height:116px;">
     </div>
-  </ons-toolbar>
 
-  <h3 style="padding-left: 50px;">Add a New Vehicle</h3>
+    <div class="field">
+        <%= f.text_field :name, autocomplete: "name", class: 'text-input text-input--underbar', placeholder: 'Name' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :make, autocomplete: "make", class: 'text-input text-input--underbar', placeholder: 'Make' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :make, autocomplete: "model", class: 'text-input text-input--underbar', placeholder: 'Model' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :year, autocomplete: "year", class: 'text-input text-input--underbar', placeholder: 'Year' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :color, autocomplete: "color", class: 'text-input text-input--underbar', placeholder: 'Color' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :vin, autocomplete: "vin", class: 'text-input text-input--underbar', placeholder: 'VIN' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :license_plate, autocomplete: "license_plate", class: 'text-input text-input--underbar', placeholder: 'License Plate' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.date_field :inspection, autocomplete: "inspection", class: 'text-input text-input--underbar', placeholder: 'Date of Last Inspection' %>
+        <%# <p>Date of last inspection</p> %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :title, autocomplete: "title", class: 'text-input text-input--underbar', placeholder: 'Title' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :registration, autocomplete: "registration", class: 'text-input text-input--underbar', placeholder: 'Registration' %>
+    </div>
 
-  <%= form_for(@vehicle, local: true) do |f| %>   
-
-  <ons-list modifier="inset">
-    <ons-list-item modifier="longdivider">Name</ons-list-item>
-    <ons-list-item modifier="longdivider">Color</ons-list-item>
-  </ons-list>
-  <br>
-  <ons-list modifier="inset">
-    <ons-list-item modifier="longdivider">Make</ons-list-item>
-    <ons-list-item modifier="longdivider">Model</ons-list-item>
-    <ons-list-item modifier="longdivider">Year</ons-list-item>
-  </ons-list>
-  <br>
-  <ons-list modifier="inset">
-    <ons-list-item modifier="longdivider">License Plate number</ons-list-item>
-    <ons-list-item modifier="longdivider">VIN</ons-list-item>
-    <ons-list-item modifier="longdivider">Date of Last Inspection</ons-list-item>
-  </ons-list>
-  <br>
-  <ons-list modifier="inset">
-    <ons-list-item modifier="longdivider">Title</ons-list-item>
-    <ons-list-item modifier="longdivider">Registration</ons-list-item>
-  </ons-list>
-
-
-  </ons-page>
-  <script>
-    ons.getScriptPage().onInit = function() {};
-
-    document.addEventListener('init', function(event) {
-        console.log('********************')
-      var page = event.target;
-      if (page.matches('#new-page')) {
-        page.querySelector('ons-toolbar .center').innerHTML = 'GloveBox';
-        page.querySelector('ons-toolbar-button').onclick = function() {};
-        console.log('$$$$$$$$$$$$$$$')
-      }
-    });    
-
-    var myNavigator = document.getElementById('myNavigator');
-    myNavigator.pushPage('#new-page');
-
-   
-  </script>
-
+    <ons-fab position="bottom right">
+    <div class="actions">
+        <%= f.submit "UPDATE"%>
+    </div>
+    </ons-fab>
 
 <% end %>
+
+<%# <ons-fab position="bottom right">
+  ...
+</ons-fab> %>
+
+</ons-page> 
