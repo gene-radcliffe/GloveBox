@@ -38,7 +38,7 @@
 <div class="action-form" id="maintenance_actions">
 <%=form_for  @mlog, url: vehicle_maintenance_logs_path, :html=>{:class=>"ml_form"} do |ml_form| %>
     <% @mlog.maintenance_actions.each do |activity| %>
-     <%=hidden_field_tag :select, value: false %>
+     <%=hidden_field_tag :select, "hidden"%>
         <%case activity.type%>
             <% when "OilChange"%>
                 <div class="action_form-item" id="OilChange">
@@ -375,6 +375,7 @@ program();
 
 function program(){
     var selected_inputs=[];
+    var ret_selected_inputs =[]
     var current_tab = 0;
     
     var gobutton = document.getElementById('go-button')
@@ -384,10 +385,11 @@ function program(){
             for(var i=0; i<input_selection.length; i++){
                 if(input_selection[i].checked){
                     selected_inputs.push(input_selection[i])
+                    ret_selected_inputs.push(input_selection[i].value)
                 }
            
             }   
-             addSelection(input_selection.toString())
+             addSelection(ret_selected_inputs.toString())
             selected_inputs.push(input_selection[input_selection.length-1]) // push submit into array
     
 
