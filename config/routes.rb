@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     root to: "devise/sessions#new"
   end
   
+  
+  
+  resources :users, only: :show
+  resources :vehicles
   resources :maintenance_actions do
    
   end
