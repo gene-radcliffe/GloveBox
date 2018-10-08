@@ -1,0 +1,2 @@
+class TireReplacement < MaintenanceAction
+end  

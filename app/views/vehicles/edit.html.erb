@@ -1,0 +1,79 @@
+<ons-page>
+
+<!-- Prerequisite=This example use ionicons(http://ionicons.com) to display icons. -->
+<div class="toolbar">
+  <div class="toolbar__left">
+    <span class="toolbar-button toolbar-button--outline">
+      <i class="ion-navicon" style="font-size:32px; vertical-align:-6px;"></i>
+    </span>
+  </div>
+
+  <div class="toolbar__center">
+    Edit Joey's GloveBox
+  </div>
+
+  <div class="toolbar__right">
+    <span class="toolbar-button toolbar-button--outline">Button</span>
+  </div>
+</div>
+
+<%= form_for(@vehicle, local: true) do |f| %>
+
+    <div>
+        <img src="https://cdn.pixabay.com/photo/2012/05/29/00/43/car-49278_1280.jpg" style="width:186px;height:116px;">
+    </div>
+
+    <div class="field">
+        <%= f.text_field :name, autocomplete: "name", class: 'text-input text-input--underbar', placeholder: 'Name' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :make, autocomplete: "make", class: 'text-input text-input--underbar', placeholder: 'Make' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :make, autocomplete: "model", class: 'text-input text-input--underbar', placeholder: 'Model' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :year, autocomplete: "year", class: 'text-input text-input--underbar', placeholder: 'Year' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :color, autocomplete: "color", class: 'text-input text-input--underbar', placeholder: 'Color' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :vin, autocomplete: "vin", class: 'text-input text-input--underbar', placeholder: 'VIN' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :license_plate, autocomplete: "license_plate", class: 'text-input text-input--underbar', placeholder: 'License Plate' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.date_field :inspection, autocomplete: "inspection", class: 'text-input text-input--underbar', placeholder: 'Date of Last Inspection' %>
+        <%# <p>Date of last inspection</p> %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :title, autocomplete: "title", class: 'text-input text-input--underbar', placeholder: 'Title' %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.text_field :registration, autocomplete: "registration", class: 'text-input text-input--underbar', placeholder: 'Registration' %>
+    </div>
+
+    <ons-fab position="bottom right">
+    <div class="actions">
+        <%= f.submit "UPDATE"%>
+    </div>
+    </ons-fab>
+
+<% end %>
+
+<%# <ons-fab position="bottom right">
+  ...
+</ons-fab> %>
+
+</ons-page> 
