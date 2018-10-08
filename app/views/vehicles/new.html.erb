@@ -1,79 +1,139 @@
-
-<ons-page>
-
-<!-- Prerequisite=This example use ionicons(http://ionicons.com) to display icons. -->
-<div class="toolbar">
-  <div class="toolbar__left">
-    <span class="toolbar-button toolbar-button--outline">
-      <i class="ion-navicon" style="font-size:32px; vertical-align:-6px;"></i>
-    </span>
-  </div>
-
-  <div class="toolbar__center">
-    User's GloveBox
-  </div>
-
-  <div class="toolbar__right">
-    <span class="toolbar-button toolbar-button--outline">Button</span>
-  </div>
-</div>
-
-
-<h1>Add a New Vehicle</h1>
-
-<%= form_for(@vehicle, local: true) do |f| %>
-
-    <div class="field">
-        <%= f.text_field :name, autocomplete: "name", class: 'text-input text-input--underbar', placeholder: 'Name' %>
+<ons-navigator id="myNavigator">
+  <ons-page>
+  <ons-toolbar>
+    <div class="left">
+        <ons-icon icon="fa-car" style="padding: 5px"></ons-icon>
     </div>
+    <div class="toolbar__center">
+        <%= "#{current_user.first_name}'s GloveBox" %>
+    </div>
+    <div class="right">
+      <ons-toolbar-button>
+        <ons-icon icon="md-menu"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+  </ons-toolbar>
+
+    <ons-tabbar position="auto">
+      <ons-tab page="index.html" active icon="ion-home" label="Home"></ons-tab>
+      <ons-tab icon="md-plus" label="Add Vehicle" page="new.html"></ons-tab>
+      <ons-tab icon="ion-ios-cog" label="Maintenance" page="/maintenance_logs/new.html"></ons-tab>
+    </ons-tabbar>
+  </ons-page>
+</ons-navigator>
+
+<template id="index.html">
+  <ons-page>
+    <p class="intro" style="text-align: center">
+      Welcome to GloveBox!<br>
+    </p>
+    <p class="intro" style="text-align: center">
+      <em>The place where you can maintain your maintenance. </em><br><br>
+    </p>
+
+    <ons-card>
+    <img src="https://monaca.io/img/logos/download_image_onsenui_01.png" alt="Onsen UI" style="width: 100%">
+    <div class="title">
+      <%= @vehicle.name %>
+    </div>
+    <div class="content">
+      <ons-list>
+        <ons-list-header></ons-list-header>
+        <ons-list-item><%= @vehicle.make %></ons-list-item>
+        <ons-list-item><%= @vehicle.model %></ons-list-item>
+        <ons-list-item><%= @vehicle.year %></ons-list-item>
+        <ons-list-item><%= @vehicle.license_plate %></ons-list-item>
+        <ons-list-item><%= @vehicle.color %></ons-list-item>    
+      </ons-list>
+    </div>
+  </ons-card>
+    
+    <div style="text-align: center">
+      <br>
+      <ons-button class="button button--material" onclick="myNavigator.pushPage('new.html')">
+        Add a Vehcile
+      </ons-button>
+    </div>
+  </ons-page>
+</template>
+
+
+
+<template id="new.html">
+  <ons-page>
+  <br>
+  <%= form_for(@vehicle, local: true) do |f| %>
+    <ons-list modifier="inset">
+      <ons-list-header>Vehcile Information</ons-list-header>
+      <ons-list-item modifier="longdivider"><%= f.text_field :name, autocomplete: "name", class: 'text-input', placeholder: 'Vehicle Nickname' %></ons-list-item>
+      <ons-list-item modifier="longdivider"><%= f.text_field :color, autocomplete: "color", class: 'text-input', placeholder: 'Color' %></ons-list-item>
+    </ons-list>
     <br>
-    <div class="field">
-        <%= f.text_field :make, autocomplete: "make", class: 'text-input text-input--underbar', placeholder: 'Make' %>
-    </div>
+    <ons-list modifier="inset">
+      <ons-list-item modifier="longdivider"><%= f.text_field :make, autocomplete: "make", class: 'text-input', placeholder: 'Make' %></ons-list-item>
+      <ons-list-item modifier="longdivider"><%= f.text_field :model, autocomplete: "model", class: 'text-input', placeholder: 'Model' %></ons-list-item>
+      <ons-list-item modifier="longdivider"><%= f.text_field :year, autocomplete: "year", class: 'text-input', placeholder: 'Year' %></ons-list-item>
+    </ons-list>
     <br>
-    <div class="field">
-        <%= f.text_field :make, autocomplete: "model", class: 'text-input text-input--underbar', placeholder: 'Model' %>
+    <ons-list modifier="inset">
+      <ons-list-item modifier="longdivider"><%= f.text_field :vin, autocomplete: "vin", class: 'text-input', placeholder: 'VIN' %></ons-list-item>
+      <ons-list-item modifier="longdivider"><%= f.text_field :license_plate, autocomplete: "license_plate", class: 'text-input', placeholder: 'License Plate #' %></ons-list-item>
+      <ons-list-item modifier="longdivider"><%= f.text_field :inspection, autocomplete: "inspection", class: 'text-input', placeholder: 'Date of last Inspection' %></ons-list-item>
+    </ons-list>
+    <% end %>
+
+    <div style="text-align: center">
+      <br>
+      <ons-button class="button button--material" onclick="myNavigator.pushPage('show.html')">
+        Preview
+      </ons-button>
     </div>
-    <br>
-    <div class="field">
-        <%= f.text_field :year, autocomplete: "year", class: 'text-input text-input--underbar', placeholder: 'Year' %>
+  </ons-page>
+</template>
+
+<template id="show.html">
+  <ons-page id="show">
+    <ons-toolbar>
+      <div class="left">
+        <ons-back-button>Back</ons-back-button>
+      </div>
+    </ons-toolbar>
+
+    <ons-card>
+    <img src="https://monaca.io/img/logos/download_image_onsenui_01.png" alt="Onsen UI" style="width: 100%">
+    <div class="title">
+      <%= @vehicle.name %>
     </div>
-    <br>
-    <div class="field">
-        <%= f.text_field :color, autocomplete: "color", class: 'text-input text-input--underbar', placeholder: 'Color' %>
+    <div class="content">
+      <ons-list>
+        <ons-list-header></ons-list-header>
+        <ons-list-item><%= @vehicle.make %></ons-list-item>
+        <ons-list-item><%= @vehicle.model %></ons-list-item>
+        <ons-list-item><%= @vehicle.year %></ons-list-item>
+        <ons-list-item><%= @vehicle.license_plate %></ons-list-item>
+        <ons-list-item><%= @vehicle.color %></ons-list-item>    
+      </ons-list>
     </div>
-    <br>
-    <div class="field">
-        <%= f.text_field :vin, autocomplete: "vin", class: 'text-input text-input--underbar', placeholder: 'VIN' %>
-    </div>
-    <br>
-    <div class="field">
-        <%= f.text_field :license_plate, autocomplete: "license_plate", class: 'text-input text-input--underbar', placeholder: 'License Plate' %>
-    </div>
-    <br>
-    <div class="field">
-        <%= f.date_field :inspection, autocomplete: "inspection", class: 'text-input text-input--underbar', placeholder: 'Date of Last Inspection' %>
-        <%# <p>Date of last inspection</p> %>
-    </div>
-    <br>
-    <div class="field">
-        <%= f.text_field :title, autocomplete: "title", class: 'text-input text-input--underbar', placeholder: 'Title' %>
-    </div>
-    <br>
-    <div class="field">
-        <%= f.text_field :registration, autocomplete: "registration", class: 'text-input text-input--underbar', placeholder: 'Registration' %>
-    </div>
-    <div class="actions" style="text-align: center; margin-top: 30px; margin-bottom: 30px; padding-bottom: 30px;">
-        <%= f.submit "Add Vehicle", class: "button" %>
+  </ons-card>
+
+    <div style="text-align: center">
+      <br>
+      <ons-button class="button button--material" onclick="myNavigator.pushPage('show.html')">
+        SUBMIT
+      </ons-button>
     </div>
 
-    <%# <div class="bottom-bar">
-        <div class="bottom-bar__line-height" style="text-align:center">Bottom Toolbar</div>
-    </div> %>
+  </ons-page>
+</template>
 
-    <%# <%= render "devise/shared/links" %> 
+<template id="/maintenance_logs/new.html">
+  <ons-page>
+    <h2>this page should link to maintenance_logs</h2>
+  </ons-page>
+</template>
+
+<script>
 
 
-</ons-page>
 
-<% end %>
+</script>
