@@ -94,12 +94,12 @@
                     <h2>Rotors</h2>
                     <%= ml_form.fields_for :rotor, activity do |activity_field| %>
                         <div>
-                            <%= activity_field.label :service_date  %>
-                            <%= activity_field.date_field :service_date %>
+                            <%= activity_field.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %>
+                            <%= activity_field.date_field :service_date, style: "margin-left: 10px; margin-bottom: 10px; margin-top: 10px;" %>
                         </div>
                         <div>
-                            <%= activity_field.label :mileage  %>
-                            <%= activity_field.text_field :mileage %>
+                            <%= activity_field.label :mileage, style: "margin-left: 10px;"  %>
+                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :rotor_location  %>
