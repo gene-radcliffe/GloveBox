@@ -51,7 +51,7 @@
 
 </div>
 <section>
-<%= form_for :user , remote: true, id:"upload-form" do |f| %>
+<%= form_for @user , remote: true, id:"upload-form" do |f| %>
         <%= f.file_field :avatar,multiple: false,
                   direct_upload: true,
                   options: { class:"file-field" }%>
