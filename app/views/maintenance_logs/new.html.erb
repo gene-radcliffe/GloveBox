@@ -283,8 +283,9 @@
             <%end%> <!--end case -->
       <%end%>
         <div class = "action_form-item" id="Submit">
+            <h2>Please Attach your receipt</h2>
             <%= ml_form.file_field :picture%>
-            <%= ml_form.submit %>
+            <%= ml_form.submit class:"action button" %>
         </div>
 <% end %>
     <div class = "control_buttons"> 
@@ -332,8 +333,8 @@ function program(){
                     selected_inputs.push(input_selection[i])
                 }
            
-        }
-
+            }   
+            selected_inputs.push(input_selection[input_selection.length-1]) // push submit into array
     
 
         if(selected_inputs.length>0){
@@ -353,7 +354,8 @@ function program(){
         next_button.addEventListener('click', function(e){
             if(current_tab >= selected_inputs.length - 1){
                 hidenext()
-                show_submit()
+                //hidetab(selected_inputs[current_tab].value)
+                showtab(selected_inputs[current_tab].value)
             }else{
                 showprev()
                 hidetab(selected_inputs[current_tab].value)
@@ -361,15 +363,20 @@ function program(){
                 showtab(selected_inputs[current_tab].value)
                 
             }
+            console.log ("current tab is" + current_tab)
         })
 
     var prev_button = document.getElementById('prev_button')
         prev_button.addEventListener('click', function(e){
-            hidetab(selected_inputs[current_tab].value)
-            current_tab = current_tab - 1 
+            
+         
             if (current_tab == 0){
-            hideprev()}
-            showtab(selected_inputs[current_tab].value)
+                hideprev()
+            } 
+                hidetab(selected_inputs[current_tab].value)
+                showtab(selected_inputs[current_tab].value)
+                console.log (" current tab is" + current_tab)
+                current_tab = current_tab - 1 
 
         })
 }
@@ -409,15 +416,36 @@ function hidenext(){
 }
 
 function showtab(tab){
+    if(tab == "Create Maintenance log"){
+        show_submit()
+    }
+    else{
     var tab = document.getElementById(tab).style.display = "block"
+    }
 }
 
 function hidetab(tab){
-    var tab = document.getElementById(tab).style.display = "none"
+    
+    if(tab == "Create Maintenance log"){
+        hide_submit()
+        return;
+    }
+    if(tab != "Create Maintenance log"){
+        var tab = document.getElementById(tab).style.display = "none"
+        return;
+    }
 }
 
 function show_submit(){
     var submit = document.getElementById("Submit").style.display = "block"
+}
+
+function hide_submit(){
+    var submit = document.getElementById("Submit")
+    if (submit.style.display == "block"){
+        submit.style.display = "none" 
+    }
+
 }
 
 </script>
