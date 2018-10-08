@@ -352,31 +352,41 @@ function program(){
     })
     var next_button = document.getElementById('next_button')
         next_button.addEventListener('click', function(e){
-            if(current_tab >= selected_inputs.length - 1){
+
+            if(current_tab >= selected_inputs.length -1){
+               
+                return;
+            }
+            showprev()
+            hidetab(selected_inputs[current_tab].value)
+            current_tab = current_tab +1
+            showtab(selected_inputs[current_tab].value)
+            
+            if(current_tab == selected_inputs.length -1){
                 hidenext()
-                //hidetab(selected_inputs[current_tab].value)
-                showtab(selected_inputs[current_tab].value)
-            }else{
-                showprev()
-                hidetab(selected_inputs[current_tab].value)
-                current_tab = current_tab + 1 
-                showtab(selected_inputs[current_tab].value)
-                
             }
             console.log ("current tab is" + current_tab)
         })
 
     var prev_button = document.getElementById('prev_button')
         prev_button.addEventListener('click', function(e){
-            
-         
-            if (current_tab == 0){
-                hideprev()
-            } 
+            var next_button = document.getElementById("next_button")
+            if( next_button.style.display == "none"){
+                next_button.style.display = "block"
+            }
+           if (current_tab == 0){
+                
+                return
+            }else{
                 hidetab(selected_inputs[current_tab].value)
-                showtab(selected_inputs[current_tab].value)
                 console.log (" current tab is" + current_tab)
                 current_tab = current_tab - 1 
+                showtab(selected_inputs[current_tab].value)
+                if(current_tab == 0){
+                    hideprev()
+                }
+            }
+             
 
         })
 }
