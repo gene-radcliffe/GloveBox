@@ -1,0 +1,78 @@
+<style>
+    #upload-form{
+        display: block;
+    }
+    #save-avatar{
+        font-size: 0.5rem;
+        color: blue;
+        
+    }
+   
+
+</style>
+<ons-page>
+    <div class="toolbar">
+      <div class="toolbar__left">
+        <span class="toolbar-button toolbar-button--outline">
+          <i class="ion-navicon" style="font-size:32px; vertical-align:-6px;"></i>
+        </span>
+      </div>
+
+    <div class="toolbar__center">
+        User's GloveBox
+    </div>
+
+    <div class="toolbar__right">
+      <span class="toolbar-button toolbar-button--outline">Button</span>
+  </div>
+</div>
+<div class="card">
+    <section>
+        <%if !current_user.avatar.attached?%>
+            <%= image_tag(asset_path("avatar_default.png"), height:"64", width:"64", id:"avatar-img")%>
+        <%else%>
+            <%= image_tag(rails_blob_path(current_user.avatar, disposition:"attachment"),id:"avatar-img")%>
+        <%end%>
+       <p id="save-avatar">Change Avatar</p>
+    </section>
+    <section>
+        <h3><%=current_user.first_name.titleize%></h3>
+    </section>
+</div>
+<div class="card">
+<p> Member since:  <%=current_user.created_at.to_date%></p>
+<p> Number of Vehicles: <%= @vehicles.count%></p>
+</div>
+
+
+<div class="card">
+<p> Change Registration and Password</p>
+<p><%= link_to  "Edit Information",edit_user_registration_path, class:"button" %></p>
+
+</div>
+<section>
+<%= form_for @user , remote: true, id:"upload-form" do |f| %>
+        <%= f.file_field :avatar,multiple: false,
+                  direct_upload: true,
+                  options: { class:"file-field" }%>
+        <%= f.submit id:"submit" %>
+    <% end %>
+</section>
+</ons-page>
+
+<script>
+    var avatar_input = document.getElementById("user_avatar")
+    var avatar_img= document.getElementById("avatar-img")
+    avatar_img.addEventListener("click", function(e){
+        if(window.confirm("Do you want to change your avatar?")){
+            avatar_input.click();
+            
+        }
+    
+    });
+    var save_avatar = document.getElementById("save-avatar")
+    var submit_avatar = document.getElementById("submit");
+    save_avatar.addEventListener("click", function(e){
+       submit_avatar.click();
+    })
+</script>

@@ -1,0 +1,72 @@
+<ons-navigator id="appNavigator" swipeable swipe-target-width="80px">
+  <ons-page>
+    <ons-splitter id="appSplitter">
+      <%# <ons-splitter-side id="sidemenu" page="sidemenu_html" swipeable side="right" collapse="" width="260px"></ons-splitter-side> %>
+      <ons-splitter-content page="tabbar.html"></ons-splitter-content>
+    </ons-splitter>
+  </ons-page>
+</ons-navigator>
+
+<template id="tabbar.html">
+  <ons-page id="tabbar-page">
+    <ons-toolbar>
+      <div class="center"><%= "#{current_user.first_name}'s GloveBox" %></div>
+      <div class="right">
+        <ons-toolbar-button onclick="fn.toggleMenu()">
+          <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+    </ons-toolbar>
+    <ons-tabbar swipeable id="appTabbar" position="auto">
+      <ons-tab label="Home" icon="ion-home" page="home.html" active></ons-tab>
+      <ons-tab label="Add Maintenance" icon="ion-edit" page="home.html"></ons-tab>
+      <ons-tab label="View Log" icon="ion-film-marker" page="home.html"></ons-tab>
+    </ons-tabbar>
+
+    <script>
+      ons.getScriptPage().addEventListener('prechange', function(event) {
+        if (event.target.matches('#appTabbar')) {
+          event.currentTarget.querySelector('ons-toolbar .center').innerHTML = event.tabItem.getAttribute('label');
+        }
+      });
+    </script>
+  </ons-page>
+</template>
+
+<template id="home.html">
+  <ons-page>
+    <p class="intro">
+      Welcome to GloveBox! The place where you can maintain your maintenance. <br><br>
+    </p>
+
+    <% @vehicles.each do |vehicle| %>
+
+    <ons-card onclick="fn.load({'id': 'vehicle', 'title': 'vehicle.name'})">
+      <div class="title"><%= vehicle.name %></div>
+      <%# <%= image_tag(rails_blob_path(vehicle.avatar, disposition:"attachment"))%> 
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HQgq7ybZabhiIzqfDstcmrWC5xIaQHZ0bhpNz6Vh2LgZgSsq" alt="car pic" style="max-width:100%;height:auto;">
+      <div><%= vehicle.year %>   <%= vehicle.make %> <%= vehicle.model %>   |   <%= "License Plate:"  %>  <%= vehicle.license_plate %></div> 
+    </ons-card>
+
+    <style>
+      .intro {
+        text-align: center;
+        padding: 0 20px;
+        margin-top: 40px;
+      }
+
+      ons-card {
+        cursor: pointer;
+        color: #333;
+      }
+
+      .card__title,
+      .card--material__title {
+        font-size: 20px;
+      }
+    </style>
+  </ons-page>
+  <% end %>
+</template>
+
+<%# </ons-page> %>
