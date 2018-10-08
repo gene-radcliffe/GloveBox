@@ -1,2 +1,0 @@
-class Tire < MaintenanceAction
-end  

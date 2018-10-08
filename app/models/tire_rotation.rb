@@ -1,0 +1,3 @@
+class TireRotation < MaintenanceAction
+
+end
