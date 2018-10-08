@@ -1,3 +1,4 @@
+
 <ons-page>
     <div class="toolbar">
         <div class="toolbar__left">
@@ -31,6 +32,7 @@
     </div>
     <div>
             <input type="button" id="go-button" value="Go" class="button" style="margin-left: 20px; margin-top: 10px; padding-right: 20px; padding-left: 20px;">
+
     </div>
 </div>  
 <div class="action-form" id="maintenance_actions">
@@ -40,6 +42,7 @@
         <%case activity.type%>
             <% when "OilChange"%>
                 <div class="action_form-item" id="OilChange">
+
                     <h2 style = "text-align: center;">Oil Change</h2>
                     <%= ml_form.fields_for :oilchange, activity do |activity_field| %>
                        
@@ -62,11 +65,13 @@
                         <div>
                             <%= activity_field.label :oilchange_notes, style: "margin-left: 10px;"  %><br>
                             <%= activity_field.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+
                         </div>
                     <%end%>
                 </div>
             <% when "Brake"%>
                 <div class="action_form-item" id="Brake">
+
                     <h2 style = "text-align: center;">Brakes</h2>
                     <%= ml_form.fields_for :brake, activity do |activity_field| %>
                     <%activity_field.hidden_field :selected, value: false %>
@@ -89,11 +94,13 @@
                         <div>
                             <%= activity_field.label :brake_notes, style: "margin-left: 10px;"  %><br>
                             <%= activity_field.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+
                         </div>
                     <%end%>
                 </div>
             <% when "Rotor"%>
                 <div class="action_form-item" id="Rotor">
+
                     <h2 style = "text-align: center;">Rotors</h2>
                     <%= ml_form.fields_for :rotor, activity do |activity_field| %>
                         <div>
@@ -115,11 +122,13 @@
                         <div>
                             <%= activity_field.label :rotor_notes, style: "margin-left: 10px;"  %><br>
                             <%= activity_field.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+
                         </div>
                     <%end%>
                 </div>
             <% when "TireReplacement"%>
                 <div class="action_form-item" id="TireReplacement">
+
                     <h2 style = "text-align: center;">Tire Replacement</h2>
                     <%= ml_form.fields_for :tire_replacement, activity do |activity_field| %>
                         <div>
@@ -141,11 +150,13 @@
                         <div>
                             <%= activity_field.label :tire_notes, style: "margin-left: 10px;"  %><br>
                             <%= activity_field.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+
                         </div>
                     <%end%>
                 </div>
             <% when "TireRotation"%>
                 <div class="action_form-item" id="TireRotation">
+
                     <h2 style = "text-align: center;">Tire Rotations</h2>
                     <%= ml_form.fields_for :tire_rotation, activity do |activity_field| %>
                         <div>
@@ -163,11 +174,13 @@
                         <div>
                             <%= activity_field.label :tire_rotation_notes, style: "margin-left: 10px;"  %><br>
                             <%= activity_field.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+
                         </div>
                     <%end%>
                 </div>
             <% when "Alignment"%>
                <div class="action_form-item" id="Alignment">
+
                     <h2 style = "text-align: center;">Alignments</h2>
                     <%= ml_form.fields_for :Alignment, activity do |activity_field| %>
                         <div>
@@ -185,11 +198,13 @@
                         <div>
                             <%= activity_field.label :alignment_notes, style: "margin-left: 10px;"  %><br>
                             <%= activity_field.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+
                         </div>
                     <%end%>
                 </div>
             <% when "Antifreeze"%>
                 <div class="action_form-item" id="AntiFreeze">
+
                     <h2 style = "text-align: center;">Anti Freeze</h2>
                     <%= ml_form.fields_for :antifreeze, activity do |activity_field| %>
                         <div>
@@ -207,11 +222,13 @@
                         <div>
                             <%= activity_field.label :antifreeze_notes, style: "margin-left: 10px;"  %><br>
                             <%= activity_field.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+
                         </div>
                     <%end%>
                 </div>
             <% when "BrakeFluid"%>
                 <div class="action_form-item" id="BrakeFluid">
+
                     <h2 style = "text-align: center;">Brake Fluids</h2>
                     <%= ml_form.fields_for :brakefluid, activity do |activity_field| %>
                         <div>
@@ -229,11 +246,13 @@
                         <div>
                             <%= activity_field.label :brake_fluid_notes, style: "margin-left: 10px;"  %><br>
                             <%= activity_field.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+
                         </div>
                     <%end%> <!-- end do -->
                 </div>
             <% when "PowerSteeringFluid"%>
                 <div class="action_form-item" id="PowerSteeringFluid">
+
                     <h2 style = "text-align: center;">Power Steering Fluid</h2>
                     <%= ml_form.fields_for :powersteeringfluid, activity do |activity_field| %>
                         <div>
@@ -251,11 +270,13 @@
                         <div>
                             <%= activity_field.label :powersteering_fluid_notes, style: "margin-left: 10px;"  %><br>
                             <%= activity_field.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+
                         </div>
                     <%end%> <!-- end do -->
                 </div>
             <% when "TransmissionFluid"%>
                 <div class="action_form-item" id="TransmissionFluid">
+
                     <h2 style = "text-align: center;">Transmission Fluid</h2>
                     <%= ml_form.fields_for :transmissionfluid, activity do |activity_field| %>
                         <div>
@@ -273,11 +294,13 @@
                         <div>
                             <%= activity_field.label :transmission_fluid_notes, style: "margin-left: 10px;"  %><br>
                             <%= activity_field.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+
                         </div>
                     <%end%> <!-- end do -->
                 </div>
             <% when "Miscellaneous"%>
                 <div class="action_form-item" id="Miscellaneous">
+
                     <h2 style = "text-align: center;">Miscellaneous</h2>
                     <%= ml_form.fields_for :miscellaneous, activity do |activity_field| %>
                         <div>
@@ -295,6 +318,7 @@
                         <div>
                             <%= activity_field.label :miscellaneous_notes, style: "margin-left: 10px;"  %><br>
                             <%= activity_field.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+
                         </div>
                     <%end%> <!-- end do -->
                 </div>      
@@ -308,11 +332,13 @@
         </div>
 <% end %>
     <div class = "control_buttons"> 
+
         <input type="button" id="prev_button" value="Previous" class="button"style = "margin-left: 15px; margin-top: 15px;">
         <input type="button" id="next_button" value="Next" class="button" style = "margin-left: 15px; margin-top: 15px;">
     </div>
 </div>
 </ons-page>
+
 <style>
 /* .action-form{
     display: none;
@@ -323,8 +349,10 @@
  }
  .action_form-item{
      display: none;
+
      
       
+
  }
  
  #Submit{
@@ -339,6 +367,7 @@
      margin-bottom: 15px;
      margin-left: 15px;
  }
+
 
 </style>
 <script>
@@ -378,6 +407,7 @@ function program(){
     var next_button = document.getElementById('next_button')
         next_button.addEventListener('click', function(e){
 
+
             if(current_tab >= selected_inputs.length -1){
                
                 return;
@@ -389,12 +419,14 @@ function program(){
             
             if(current_tab == selected_inputs.length -1){
                 hidenext()
+
             }
             console.log ("current tab is" + current_tab)
         })
 
     var prev_button = document.getElementById('prev_button')
         prev_button.addEventListener('click', function(e){
+
             var next_button = document.getElementById("next_button")
             if( next_button.style.display == "none"){
                 next_button.style.display = "block"
@@ -412,6 +444,7 @@ function program(){
                 }
             }
              
+
 
         })
 }
