@@ -21,7 +21,7 @@ class MaintenanceActionsController < ApplicationController
   
   private 
   def maintenance_action_params
-    params.require(:maintenance_action).permit(:maintenance_log_id, :type, :mileage, :oil_type, :service_date, :cost, :tire_location, :brake_location, :rotor_location, :notes)
+    params.require(:maintenance_action).permit(:maintenance_log_id, :type, :mileage, :oil_type, :service_date, :cost, :tire_location, :brake_location, :rotor_location, :notes, :selected)
  end
 
   
