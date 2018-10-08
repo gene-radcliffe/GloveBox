@@ -23,6 +23,10 @@
         <img src="https://cdn.pixabay.com/photo/2012/05/29/00/43/car-49278_1280.jpg" style="width:186px;height:116px;">
     </div>
 
+    <p>
+        <%= link_to "Printable Report (PDF)", vehicle_path(@vehicle, format: 'pdf') %>
+    </p>
+
     <div class="field">
         <%= f.text_field :name, autocomplete: "name", class: 'text-input text-input--underbar', placeholder: 'Name' %>
     </div>
@@ -75,6 +79,10 @@
 <%# <ons-fab position="bottom right">
   ...
 </ons-fab> %>
+
+<p>
+  <%= link_to "Printable Report (PDF)", vehicle_path(@vehicle, format: 'pdf') %>
+</p>
 
 </ons-page> 
 
