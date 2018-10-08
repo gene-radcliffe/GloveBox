@@ -118,7 +118,7 @@
 
     <div style="text-align: center">
       <br>
-      <ons-button class="button button--material" onclick="myNavigator.pushPage('show.html')">
+      <ons-button class="button button--material" id='submit_button' onclick="myNavigator.pushPage('index.html')">
         SUBMIT
       </ons-button>
     </div>
@@ -134,6 +134,56 @@
 
 <script>
 
+document.addEventListener('init', function(event) {
+  var page = event.target;
+
+  if (page.id === 'page1') {
+    page.querySelector('#push-button').onclick = function() {
+      document.querySelector('#myNavigator').pushPage('page2.html', {data: {title: 'Page 2'}});
+    };
+  } else if (page.id === 'page2') {
+    page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
+  }
+});
+
+var submit = function() {
+  var username = document.getElementById('username').value;
+  var password = document.getElementById('password').value;
+
+  if (username === 'bob' && password === 'secret') {
+    ons.notification.alert('Congratulations!');
+  } else {
+    ons.notification.alert('Incorrect username or password.');
+  }
+};
+
+function submit(){
+    var sql = "INSERT INTO vehicles (name, year, make, model, vin, license_plate, tire_psi, inspection, user_id, color)";
+}
+    
+function hideprev(){
+   var prev_button = document.getElementById("prev_button").style.display = "none"
+}
+
+function showprev(){
+   var prev_button = document.getElementById("prev_button").style.display = "block"
+}
+
+function hidenext(){
+    var next_button = document.getElementById("next_button").style.display = "none"
+}
+
+function showtab(tab){
+    var tab = document.getElementById(tab).style.display = "block"
+}
+
+function hidetab(tab){
+    var tab = document.getElementById(tab).style.display = "none"
+}
+
+function show_submit(){
+    var submit = document.getElementById("Submit").style.display = "block"
+}
 
 
 </script>
