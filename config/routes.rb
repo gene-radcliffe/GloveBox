@@ -14,12 +14,13 @@ Rails.application.routes.draw do
   resources :users, only: :show
   resources :vehicles
   resources :maintenance_actions do
-    get "oilchange" , to: 'maintenance_actions#oilchange'
+   
   end
 
   resources :vehicles do
     resources :maintenance_logs do
-      
+      get "oilchange" , to: 'maintenance_logs#oilchange'
+      get "brakechange", to: 'maintenance_logs#breakchange'
     end
       
   end
