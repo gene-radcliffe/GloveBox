@@ -15,8 +15,8 @@
   <div class="toolbar__right">
     <span class="toolbar-button toolbar-button--outline">Button</span>
   </div>
-</div>
-
+</div>                          
+<%= link_to  "new maintenance", new_vehicle_maintenance_log_path(@vehicle.id), class:"button" %>
 <%= form_for(@vehicle, local: true) do |f| %>
 
     <div>
