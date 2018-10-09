@@ -1,7 +1,7 @@
 class VehiclesController < ApplicationController
   before_action :authenticate_user!
   
-  def new
+  def index
     @vehicles = current_user.vehicles 
   end
 
@@ -9,7 +9,7 @@ class VehiclesController < ApplicationController
     @vehicle = Vehicle.find(params[:id])
   end
  
-  def index
+  def new
     @vehicles = current_user.vehicles
     @vehicle = Vehicle.new
   end
