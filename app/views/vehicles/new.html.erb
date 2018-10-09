@@ -50,7 +50,7 @@
 <%end%>
     <div style="text-align: center">
       <br>
-      <ons-button class="button button--material" onclick="addVehicle()">
+      <ons-button class="button button--material" onclick="myNavigator.pushPage('new.html')">
         Add a Vehcile
       </ons-button>
     </div>
@@ -60,9 +60,9 @@
 
 
 <template id="new.html">
-  <ons-page>
+  <ons-page id="new">
   <br>
-  <%= form_for @vehicle,local: true, url: vehicles_path,:html => { :onsubmit => "submit_vehicle(this)" }  do |f| %>
+  <%= form_for @vehicle, local: true, url: vehicles_path do |f| %>
     <ons-list modifier="inset">
       <ons-list-header>Vehcile Information</ons-list-header>
       <ons-list-item modifier="longdivider"><%= f.text_field :name, autocomplete: "name", class: 'text-input', placeholder: 'Vehicle Nickname' %></ons-list-item>
@@ -80,12 +80,12 @@
       <ons-list-item modifier="longdivider"><%= f.text_field :license_plate, autocomplete: "license_plate", class: 'text-input', placeholder: 'License Plate #' %></ons-list-item>
       <ons-list-item modifier="longdivider"><%= f.text_field :inspection, autocomplete: "inspection", class: 'text-input', placeholder: 'Date of last Inspection' %></ons-list-item>
     </ons-list>
-        <%=f.submit id:"form-submit" %>
+        <%= f.submit%>
     <% end %>
 
     <div style="text-align: center">
       <br>
-      <ons-button class="button button--material" onclick="preview()">
+      <ons-button class="button button--material" onclick="myNavigator.pushPage('show.html')">
         Preview
       </ons-button>
     </div>
@@ -119,7 +119,7 @@
 
     <div style="text-align: center">
       <br>
-      <ons-button class="button button--material" id='submit_button' >
+      <ons-button class="button button--material" id='submit_button' onclick="myNavigator.pushPage('index.html')" >
         SUBMIT
       </ons-button>
     </div>
@@ -138,42 +138,78 @@
  }
 </style>
 <script>
-var vehicle_form 
+window.fn ={}
+window.fn.data = null
+window.fn.action = null
+window.fn.method = null
+window.fn.token = null
+window.fn.addVehicle = function(){
 
-function addVehicle(){
-  myNavigator.pushPage('new.html').then(function(){
-      vehicle_form = document.getElementById("new_vehicle")
-      submit_vehicle(vehicle_form)
-  })
-  
-  
+preview()
 }
 
-function submit_vehicle(form_element){
+window.fn.send = function(){
   var xhr = new XMLHttpRequest();
-  console.log(form_element);
+ 
+  xhr.open (fn.method, fn.action, true);
+  xhr.setRequestHeader('x-csrf-token', fn.token);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.send (fn.data);
+ 
   
-    // xhr.onload = function(){ alert ("success"); } // success case
-    // xhr.onerror = function(){ alert ("Oh Uh"); } // failure case
-    xhr.open (form_element.method, form_element.action, true);
-    xhr.send (new FormData (form_element));
-    return false;
 }
-function preview(){
-  myNavigator.pushPage('show.html').then(function(){
-    var submit_button  = document.getElementById("submit_button")
-    submit_button.addEventListener('click', function(e){
-      alert("Hi")
-      vehicle_form.submit();
-    })
-  })
-}
+myNavigator.addEventListener("prepush", function(e){
+  
+    if(e.navigator.pages.length==2){
+      fn.send()
+    }
+   
+})
+  myNavigator.addEventListener("postpush", function(e){
+   console.log("post" +e.navigator.pages.length)
+  if(e.navigator.pages.length == 2){
+    var vehicle = document.getElementById("new_vehicle")
+    var name = vehicle.vehicle_name.value
+    var color  =  vehicle.vehicle_color.value 
+    var make = vehicle.vehicle_make.value
+    var model = vehicle.vehicle_model.value
+    var year  =  vehicle.vehicle_year.value
+    var vin  =  vehicle.vehicle_vin.value
+    var license_plate  =  vehicle.vehicle_license_plate.value
+    var inspection  =  vehicle.vehicle_inspection.value
+    var token = vehicle.authenticity_token.value
+    
+    var jsonData = {
+        "vehicle":{
+            "name": name,
+            "color": color, 
+            "make":  make,
+            "model":  model,
+            "year": year,
+            "vin": vin,
+            "license_plate": license_plate,
+            "inspection": inspection
+        }
+    }
+  window.fn.data = JSON.stringify(jsonData);
+  window.fn.method = vehicle.method
+  window.fn.action = vehicle.action
+  window.fn.token = token
+  }
+   
+})
+myNavigator.addEventListener("show", function(e){
+   
+ 
+   console.log("nav" + event.target.id)
+   if(event.target.id == "new"){
+          alert("New")
+        }
+})
 
-function submit(){
-    var frmsubmit = document.getElementById("form-submit")
-    myNavigator.popPage(["slide"])
-    frmsubmit.click();
-}
+
+
+
 // document.addEventListener('init', function(event) {
 //   var page = event.target;
 
@@ -185,6 +221,16 @@ function submit(){
 //     page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
 //   }
 // });
+// ons.ready(function(){
+//     document.addEventListener("show", function(event){
+//         console.log("ons-ready" + event.target.id)
+//         if(event.target.id == "new"){
+//           alert("New")
+//         }
+//     })
+//   })
+//{"name"=>"", "color"=>"", "make"=>"", "model"=>"", "year"=>"", "vin"=>"", "license_plate"=>"", "inspection"=>""}, "controller"=>"vehicles", "action"=>"create"} permitted: false>
+
 function validateFields(){
   
 
