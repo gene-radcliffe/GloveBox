@@ -165,7 +165,6 @@ window.fn.addVehicle = function(){
 
 preview()
 }
-<<<<<<< HEAD
 
 window.fn.send = function(){
   var xhr = new XMLHttpRequest();
@@ -176,22 +175,6 @@ window.fn.send = function(){
   xhr.send (fn.data);
  
   
-=======
-document.addEventListener('init', function(event) {
-  var page = event.target;
-
-  if (page.id === 'page1') {
-    page.querySelector('#push-button').onclick = function() {
-      document.querySelector('#myNavigator').pushPage('page2.html', {data: {title: 'Page 2'}});
-    };
-  } else if (page.id === 'page2') {
-    page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
-  }
-});
-
-function submit(){
-    var sql = "INSERT INTO vehicles (name, year, make, model, vin, license_plate, tire_psi, inspection, user_id, color)";
->>>>>>> 1328af6b7a741a94117492753d7f956a859b7f87
 }
 myNavigator.addEventListener("prepush", function(e){
   

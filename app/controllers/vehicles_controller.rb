@@ -23,10 +23,6 @@ class VehiclesController < ApplicationController
   end
 
   def create
-<<<<<<< HEAD
-
-=======
->>>>>>> 1328af6b7a741a94117492753d7f956a859b7f87
     @vehicle = Vehicle.new(vehicle_params)
     @vehicle.user_id = current_user.id
    
