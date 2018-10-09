@@ -30,7 +30,7 @@
     <p class="intro" style="text-align: center">
       <em>The place where you can maintain your maintenance. </em><br><br>
     </p>
-<%@vehicles.each do |vehicle| %>
+<% @vehicles.each do |vehicle| %>
     <ons-card>
     <img src="https://monaca.io/img/logos/download_image_onsenui_01.png" alt="Onsen UI" style="width: 100%">
     <div class="title">
@@ -64,6 +64,7 @@
   <br>
   <%= form_for(@vehicle, remote: true) do |f| %>
     <ons-list modifier="inset">
+
       <ons-list-header>Vehcile Information</ons-list-header>
       <ons-list-item modifier="longdivider"><%= f.text_field :name, autocomplete: "name", class: 'text-input', placeholder: 'Vehicle Nickname' %></ons-list-item>
       <ons-list-item modifier="longdivider"><%= f.text_field :color, autocomplete: "color", class: 'text-input', placeholder: 'Color' %></ons-list-item>
@@ -82,13 +83,17 @@
     </ons-list>
              <%=f.submit id:"form-submit" %>
     <% end %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
-    <div style="text-align: center">
-      <br>
-      <ons-button class="button button--material" onclick="myNavigator.pushPage('show.html')">
-        Preview
-      </ons-button>
-    </div>
+    <%= button_to "SUBMIT", { :action => "create" }, :method => :post %>
+
+
+    # <div style="text-align: center">
+    #   <br>
+    #   <ons-button class="button button--material" onclick="myNavigator.pushPage('show.html')">
+    #     Preview
+    #   </ons-button>
+    # </div>
   </ons-page>
 </template>
 
@@ -137,61 +142,3 @@
      display: none;
  }
 </style>
-<script>
-function clicksub(){
-var sub = document.getElementById("form-submit")
-sub.click();
-}
-document.addEventListener('init', function(event) {
-  var page = event.target;
-
-  if (page.id === 'page1') {
-    page.querySelector('#push-button').onclick = function() {
-      document.querySelector('#myNavigator').pushPage('page2.html', {data: {title: 'Page 2'}});
-    };
-  } else if (page.id === 'page2') {
-    page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
-  }
-});
-
-var submit = function() {
-  var username = document.getElementById('username').value;
-  var password = document.getElementById('password').value;
-
-  if (username === 'bob' && password === 'secret') {
-    ons.notification.alert('Congratulations!');
-  } else {
-    ons.notification.alert('Incorrect username or password.');
-  }
-};
-
-function submit(){
-    var sql = "INSERT INTO vehicles (name, year, make, model, vin, license_plate, tire_psi, inspection, user_id, color)";
-}
-    
-function hideprev(){
-   var prev_button = document.getElementById("prev_button").style.display = "none"
-}
-
-function showprev(){
-   var prev_button = document.getElementById("prev_button").style.display = "block"
-}
-
-function hidenext(){
-    var next_button = document.getElementById("next_button").style.display = "none"
-}
-
-function showtab(tab){
-    var tab = document.getElementById(tab).style.display = "block"
-}
-
-function hidetab(tab){
-    var tab = document.getElementById(tab).style.display = "none"
-}
-
-function show_submit(){
-    var submit = document.getElementById("Submit").style.display = "block"
-}
-
-
-</script>

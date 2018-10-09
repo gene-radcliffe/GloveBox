@@ -36,12 +36,11 @@ class VehiclesController < ApplicationController
   end
 
   def create
-    byebug
     @vehicle = Vehicle.new(vehicle_params)
     @vehicle.user_id = current_user.id
    
     if @vehicle.save
-      redirect_to new_vehicles_path
+      redirect_to new_vehicle_path
     else
       render 'new'
     end
@@ -69,7 +68,8 @@ class VehiclesController < ApplicationController
 
     def vehicle_params
        params.require(:vehicle).permit(:name, :year, :make, :model, :insurance, :vin, :license_plate,
-                                       :tire_psi, :registration, :title, :inspection, :color, :user_id)
+                                       :tire_psi, :registration, :title, :inspection, :color, :user_id, 
+                                       :authenticity_token)
     end
 
     def set_vehicle
