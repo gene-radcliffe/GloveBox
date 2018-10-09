@@ -1,7 +1,7 @@
 class VehiclesController < ApplicationController
   before_action :authenticate_user!
   
-  def index
+  def new
     @vehicles = current_user.vehicles 
   end
 
@@ -9,7 +9,7 @@ class VehiclesController < ApplicationController
     @vehicle = Vehicle.find(params[:id])
   end
  
-  def new
+  def index
     @vehicles = current_user.vehicles
     @vehicle = Vehicle.new
   end
@@ -22,12 +22,12 @@ class VehiclesController < ApplicationController
   end
 
   def create
-    byebug
+   byebug
     @vehicle = Vehicle.new(vehicle_params)
     @vehicle.user_id = current_user.id
    
     if @vehicle.save
-      redirect_to new_vehicles_path
+      redirect_to vehicles_path
     else
       render 'new'
     end
