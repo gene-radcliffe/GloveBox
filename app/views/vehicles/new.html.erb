@@ -146,11 +146,15 @@
     <h2>this page should link to maintenance_logs</h2>
   </ons-page>
 </template>
+
+
 <style>
  #form-submit{
      display: none;
  }
 </style>
+
+
 <script>
 function clicksub(){
 var sub = document.getElementById("form-submit")
@@ -167,17 +171,6 @@ document.addEventListener('init', function(event) {
     page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
   }
 });
-
-var submit = function() {
-  var username = document.getElementById('username').value;
-  var password = document.getElementById('password').value;
-
-  if (username === 'bob' && password === 'secret') {
-    ons.notification.alert('Congratulations!');
-  } else {
-    ons.notification.alert('Incorrect username or password.');
-  }
-};
 
 function submit(){
     var sql = "INSERT INTO vehicles (name, year, make, model, vin, license_plate, tire_psi, inspection, user_id, color)";
