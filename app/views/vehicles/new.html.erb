@@ -2,14 +2,15 @@
   <ons-page>
   <ons-toolbar>
     <div class="left">
-        <ons-icon icon="fa-car" style="padding: 5px"></ons-icon>
+      <%# <a href="ons." class="button">Home</a> %>
+      <ons-toolbar-button icon="fa-car" style="padding: 5px" onclick="myTabBar.setActiveTab(0)"></ons-toolbar-button>
     </div>
     <div class="toolbar__center">
         <%= "#{current_user.first_name}'s GloveBox" %>
     </div>
     <div class="right">
       <ons-toolbar-button>
-        <i icon="ion-navicon, material:md-menu" ></i>
+        <ons-icon icon="ion-navicon, material:md-menu" ></ons-icon>
       </ons-toolbar-button>
     </div>
   </ons-toolbar>
@@ -59,12 +60,6 @@
     </div>
   </ons-card>
 <%end%>
-    <div style="text-align: center">
-      <br>
-      <ons-button class="button button--material" onclick="myNavigator.pushPage('new.html')">
-        Add a Vehcile
-      </ons-button>
-    </div>
   </ons-page>
 </template>
 
@@ -187,7 +182,7 @@ window.fn.showPreview = function(){
         
         vehicle_prev[ptag].innerText = vehicle[vehicle_prev[ptag].id]
       }
-      picture_preview.src = fn.picture
+      // picture_preview.src = fn.picture
 }
 
 window.fn.addVehicle = function(){
@@ -236,7 +231,7 @@ myNavigator.addEventListener("postpush", function(e){
     var license_plate  =  vehicle.vehicle_license_plate.value
     var inspection  =  vehicle.vehicle_inspection.value
     var token = vehicle.authenticity_token.value
-    fn.picture = document.getElementById("camera-input").files[0].name; 
+    // fn.picture = document.getElementById("camera-input").files[0].name; 
     var jsonData = {
         "vehicle":{
             "name": name,
