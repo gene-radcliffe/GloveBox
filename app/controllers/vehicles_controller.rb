@@ -6,6 +6,7 @@ class VehiclesController < ApplicationController
   
   def index
     @vehicles = current_user.vehicles 
+    redirect_to new_vehicle_path
   end
 
   def show
@@ -40,10 +41,12 @@ class VehiclesController < ApplicationController
     @vehicle.user_id = current_user.id
    
     if @vehicle.save
+      
       redirect_to new_vehicle_path
     else
       render 'new'
     end
+    
   end  
   
   def update
