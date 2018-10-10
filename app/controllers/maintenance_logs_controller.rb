@@ -19,7 +19,7 @@ class MaintenanceLogsController < ApplicationController
   end  
 
   def create 
-      byebug
+      
 
   end  
 

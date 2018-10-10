@@ -13,7 +13,7 @@ class VehiclesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = GeneratePdf.new(@vehicle)
+        pdf = GenerateVehiclePdf.new(@vehicle)
         send_data pdf.render, 
                   filename: "vehicle_#{@vehicle.name}",
                   type: 'application/pdf',
