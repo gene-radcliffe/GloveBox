@@ -14,7 +14,7 @@
     </div>
   </ons-toolbar>
 
-    <ons-tabbar position="auto">
+    <ons-tabbar id="myTabBar" position="auto">
       <ons-tab page="index.html" active icon="ion-home" label="Home"></ons-tab>
       <ons-tab icon="md-plus" label="Add Vehicle" page="new.html"></ons-tab>
       <ons-tab icon="ion-ios-cog" label="Maintenance" page="/maintenance_logs/new.html"></ons-tab>
@@ -91,9 +91,13 @@
       <ons-list-item modifier="longdivider"><%= f.text_field :license_plate, autocomplete: "license_plate", class: 'text-input', placeholder: 'License Plate #' %></ons-list-item>
       <ons-list-item modifier="longdivider"><%= f.text_field :inspection, autocomplete: "inspection", class: 'text-input', placeholder: 'Date of last Inspection' %></ons-list-item>
     </ons-list>
-        <%= f.submit%>
+        
     <% end %>
- 
+    <div style="text-align: center">
+    <input  type="file" id="camera-input" accept="image/*" capture>
+    
+    <i id="camera-button" class="fa fa-camera-retro button" style="font-size: 1.5rem;"></i>
+    </div>
 
     <div style="text-align: center">
       <br>
@@ -113,27 +117,26 @@
     </ons-toolbar>
 
     <ons-card>
-    <img src="https://monaca.io/img/logos/download_image_onsenui_01.png" alt="Onsen UI" style="width: 100%">
+    <img id="picture_preview" src="https://monaca.io/img/logos/download_image_onsenui_01.png" alt="Onsen UI" style="width: 100%">
     <div class="title">
-      <%= @vehicle.name %>
+      <p class="vehicle_prev" id="name" >
     </div>
     <div class="content">
       <ons-list>
         <ons-list-header></ons-list-header>
-        <ons-list-item><%= @vehicle.name %></ons-list-item>
-        <ons-list-item><%= @vehicle.make %></ons-list-item>
-        <ons-list-item><%= @vehicle.model %></ons-list-item>
-        <ons-list-item><%= @vehicle.year %></ons-list-item>
-        <ons-list-item><%= @vehicle.color %></ons-list-item>
-        <ons-list-item><%= @vehicle.license_plate %></ons-list-item>
-        <ons-list-item><%= @vehicle.vin %></ons-list-item>    
+        <ons-list-item><p class="vehicle_prev" id="make"> </p> </ons-list-item>
+        <ons-list-item><p class="vehicle_prev" id="model"> </p> </ons-list-item>
+        <ons-list-item><p class="vehicle_prev" id="year"></p> </ons-list-item>
+        <ons-list-item><p class="vehicle_prev" id="color"> </p> </ons-list-item>
+        <ons-list-item><p class="vehicle_prev" id="license_plate"> </p> </ons-list-item>
+        <ons-list-item><p class="vehicle_prev" id="vin"> </p> </ons-list-item>    
       </ons-list>
     </div>
   </ons-card>
 
     <div style="text-align: center">
       <br>
-      <ons-button class="button button--material" id='submit_button' onclick="myNavigator.pushPage('index.html')" >
+      <ons-button class="button button--material" id='submit_button' onclick="myNavigator.resetToPage('index.html')" >
         SUBMIT
       </ons-button>
     </div>
@@ -149,8 +152,8 @@
 
 
 <style>
- #form-submit{
-   
+ #camera-input{
+   display:none;
  }
 </style>
 
@@ -161,6 +164,29 @@ window.fn.data = null
 window.fn.action = null
 window.fn.method = null
 window.fn.token = null
+window.fn.picture =null
+
+window.fn.setPictureListener = function(){
+    var button_camera = document.getElementById("camera-button")
+    var input_picture =document.getElementById("camera-input")
+    button_camera.addEventListener("click", function(e){
+        input_picture.click();
+    })
+}
+window.fn.showPreview = function(){
+      
+      var vehicle_prev = document.getElementsByClassName("vehicle_prev") 
+      var parsed_data = JSON.parse(fn.data)
+      var vehicle = parsed_data["vehicle"]
+      var picture_preview = document.getElementById("picture_preview")
+
+      for(var ptag in vehicle_prev){
+        
+        vehicle_prev[ptag].innerText = vehicle[vehicle_prev[ptag].id]
+      }
+      picture_preview.src = fn.picture
+}
+
 window.fn.addVehicle = function(){
 
 preview()
@@ -176,16 +202,27 @@ window.fn.send = function(){
  
   
 }
-myNavigator.addEventListener("prepush", function(e){
-  
-    if(e.navigator.pages.length==2){
-      fn.send()
-    }
-   
+var myTabBar = document.getElementById("myTabBar")
+myTabBar.addEventListener("postchange", function(e){
+    fn.setPictureListener();
 })
-  myNavigator.addEventListener("postpush", function(e){
-   console.log("post" +e.navigator.pages.length)
-  if(e.navigator.pages.length == 2){
+myNavigator.addEventListener("postpush", function(e){
+    console.log("post_push"+e.navigator.pages.length)
+   if(e.navigator.pages.length==2){
+     fn.showPreview();
+    
+   }
+  
+})
+  myNavigator.addEventListener("prepush", function(e){
+  console.log("pre_push"+e.navigator.pages.length)
+
+   if(e.navigator.pages.length==2){
+      fn.send()
+      window.location.href = fn.action
+
+    }
+  if(e.navigator.pages.length == 1){
     var vehicle = document.getElementById("new_vehicle")
     var name = vehicle.vehicle_name.value
     var color  =  vehicle.vehicle_color.value 
@@ -196,7 +233,7 @@ myNavigator.addEventListener("prepush", function(e){
     var license_plate  =  vehicle.vehicle_license_plate.value
     var inspection  =  vehicle.vehicle_inspection.value
     var token = vehicle.authenticity_token.value
-    
+    fn.picture = document.getElementById("camera-input").files[0].name; 
     var jsonData = {
         "vehicle":{
             "name": name,
@@ -214,16 +251,9 @@ myNavigator.addEventListener("prepush", function(e){
   window.fn.action = vehicle.action
   window.fn.token = token
   }
-   
+  
 })
-myNavigator.addEventListener("show", function(e){
-   
- 
-   console.log("nav" + event.target.id)
-   if(event.target.id == "new"){
-          alert("New")
-        }
-})
+
 
 
 
