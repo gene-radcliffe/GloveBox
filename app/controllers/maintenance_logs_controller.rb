@@ -23,10 +23,13 @@ class MaintenanceLogsController < ApplicationController
     @mlog = @vehicle.maintenance_logs.new
     actions = params[:selected_actions].split(",")
     actions.map do |t|
-      @mlog.maintenance_actions.build(type: t)
       byebug
+      a =t 
       whitelisted_params = self.send("#{t.downcase}_params") 
+      action = @mlog.maintenance_actions,build(type: a, (whitelisted_params))
+      byebug
     end  
+    @mlog.save
       
 
   end  
