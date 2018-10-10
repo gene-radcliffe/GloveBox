@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2018_10_04_175100) do
     t.integer "maintenance_log_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "selected"
   end
 
   create_table "maintenance_logs", force: :cascade do |t|
