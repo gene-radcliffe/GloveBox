@@ -326,8 +326,9 @@
       <%end%>
         <div class = "action_form-item" id="Submit">
             <h2 style = "text-align: center;">Please Attach your receipt</h2>
+            <input type="button" class="fa fa-camera ">
             <%= ml_form.file_field :image,multiple: false,
-                  direct_upload: true, style:"margin:10px; font-size: 1.2rem;"%><br>
+                  direct_upload: true, accept:"image/*", capture:"camera", style:"margin:10px; font-size: 1.2rem;"%><br>
             <%= ml_form.submit class:"action button", style:"margin:10px;" %>
         </div>
 <% end %>
@@ -335,6 +336,7 @@
 
         <input type="button" id="prev_button" value="Previous" class="button"style = "margin-left: 15px; margin-top: 15px;">
         <input type="button" id="next_button" value="Next" class="button" style = "margin-left: 15px; margin-top: 15px;">
+        <input type="button" id="start_button" value="Start Over" class="button" style = "margin-left: 15px; margin-top: 15px;" onclick="start_over()">
     </div>
 </div>
 </ons-page>
@@ -368,7 +370,9 @@
      margin-left: 15px;
  }
 
-
+#maintenance_log_image{
+    display: none;
+}
 </style>
 <script>
 program();
@@ -379,6 +383,7 @@ function program(){
     var current_tab = 0;
     var s_actions = [];
     
+
     var gobutton = document.getElementById('go-button')
         gobutton.addEventListener('click',function(e){
             var input_selection = document.getElementsByClassName('action')
@@ -476,7 +481,10 @@ function show_forms(input_array){
     
    
 }
-
+function start_over(){
+    var href = window.location.href
+    window.location.href = href
+}
 function hideprev(){
    var prev_button = document.getElementById("prev_button").style.display = "none"
 }
