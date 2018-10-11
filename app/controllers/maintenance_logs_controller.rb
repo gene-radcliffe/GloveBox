@@ -27,7 +27,6 @@ class MaintenanceLogsController < ApplicationController
       a =t 
       whitelisted_params = self.send("#{t.downcase}_params") 
       action = @mlog.maintenance_actions,build(type: a, (whitelisted_params))
-      byebug
     end  
     @mlog.save
       

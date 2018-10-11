@@ -185,7 +185,7 @@ window.fn.showPreview = function(){
         
         vehicle_prev[ptag].innerText = vehicle[vehicle_prev[ptag].id]
       }
-      picture_preview.src = fn.picture
+      
 }
 
 window.fn.addVehicle = function(){
@@ -234,7 +234,6 @@ myNavigator.addEventListener("postpush", function(e){
     var license_plate  =  vehicle.vehicle_license_plate.value
     var inspection  =  vehicle.vehicle_inspection.value
     var token = vehicle.authenticity_token.value
-    fn.picture = document.getElementById("camera-input").files[0].name; 
     var jsonData = {
         "vehicle":{
             "name": name,
