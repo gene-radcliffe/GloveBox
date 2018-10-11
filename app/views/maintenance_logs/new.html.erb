@@ -36,6 +36,7 @@
 </div>  
 <div class="action-form" id="maintenance_actions">
 <%=form_for  @mlog, url: vehicle_maintenance_logs_path, :html=>{:class=>"ml_form"} do |ml_form| %>
+    <%=hidden_field_tag :selected_actions, "hidden"%>
     <% @mlog.maintenance_actions.each do |activity| %>
         <%case activity.type%>
             <% when "OilChange"%>
@@ -43,6 +44,7 @@
 
                     <h2 style = "text-align: center;">Oil Change</h2>
                     <%= ml_form.fields_for :oilchange, activity do |activity_field| %>
+                       
                         <div>
                             <%= activity_field.label :service_date , style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
                             <%= activity_field.date_field :service_date , style: "margin-left: 10px; margin-bottom: 10px; margin-top: 10px;" %>
@@ -71,6 +73,7 @@
 
                     <h2 style = "text-align: center;">Brakes</h2>
                     <%= ml_form.fields_for :brake, activity do |activity_field| %>
+                    <%activity_field.hidden_field :selected, value: false %>
                         <div>
                             <%= activity_field.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
                             <%= activity_field.date_field :service_date, style: "margin-left: 10px; margin-bottom: 10px; margin-top: 10px;" %>
@@ -321,9 +324,10 @@
             <%end%> <!--end case -->
       <%end%>
         <div class = "action_form-item" id="Submit">
-            <h2>Please Attach your receipt</h2>
-            <%= ml_form.file_field :picture%>
-            <%= ml_form.submit class:"action button" %>
+            <h2 style = "text-align: center;">Please Attach your receipt</h2>
+            <%= ml_form.file_field :image,multiple: false,
+                  direct_upload: true, style:"margin:10px; font-size: 1.2rem;"%><br>
+            <%= ml_form.submit class:"action button", style:"margin:10px;" %>
         </div>
 <% end %>
     <div class = "control_buttons"> 
@@ -371,11 +375,14 @@ program();
 
 function program(){
     var selected_inputs=[];
+    var ret_selected_inputs =[]
     var current_tab = 0;
+    var s_actions = [];
     
     var gobutton = document.getElementById('go-button')
         gobutton.addEventListener('click',function(e){
             var input_selection = document.getElementsByClassName('action')
+            var selected_actions = document.getElementById("selected_actions")
             
             for(var i=0; i<input_selection.length; i++){
                 if(input_selection[i].checked){
@@ -383,20 +390,24 @@ function program(){
                 }
            
             }   
-            selected_inputs.push(input_selection[input_selection.length-1]) // push submit into array
+            
     
 
         if(selected_inputs.length>0){
             console.log("go " + selected_inputs.length)
-            // we wanna hide form
+            // we wanna hide formsd
             show_forms(selected_inputs)
             showtab(selected_inputs[0].value)
             hideprev()
+            for(var i=0; i<selected_inputs.length; i++){
+                s_actions.push(selected_inputs[i].value)
+            }
+            selected_inputs.push(input_selection[input_selection.length-1]) // push submit into array
         }else{
            alert("Please make a selection")
            return;
         }
-    
+        selected_actions.value = s_actions 
 
     })
     var next_button = document.getElementById('next_button')
@@ -509,6 +520,10 @@ function hide_submit(){
         submit.style.display = "none" 
     }
 
+}
+function addSelection(field){
+    var hidden_tag = document.getElementById("select")
+    hidden_tag.value = field
 }
 
 </script>
