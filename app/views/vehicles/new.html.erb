@@ -62,7 +62,7 @@
 <template id="new.html">
   <ons-page>
   <br>
-  <%= form_for(@vehicle, remote: true) do |f| %>
+  <%=form_for @vehicle, remote: true  do |f| %>
     <ons-list modifier="inset">
       <ons-list-header>Vehcile Information</ons-list-header>
       <ons-list-item modifier="longdivider"><%= f.text_field :name, autocomplete: "name", class: 'text-input', placeholder: 'Vehicle Nickname' %></ons-list-item>
@@ -119,9 +119,8 @@
 
     <div style="text-align: center">
       <br>
-      <ons-button class="button button--material" id='submit_button' onclick="clicksub()">
-        SUBMIT
-      </ons-button>
+      <button type="button" class="button button--material" id="creepy-button">save</button>
+     
     </div>
 
   </ons-page>
@@ -134,14 +133,12 @@
 </template>
 <style>
  #form-submit{
-     display: none;
- }
+    }
 </style>
 <script>
-function clicksub(){
-var sub = document.getElementById("form-submit")
-sub.click();
-}
+
+
+
 document.addEventListener('init', function(event) {
   var page = event.target;
 
@@ -153,45 +150,5 @@ document.addEventListener('init', function(event) {
     page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
   }
 });
-
-var submit = function() {
-  var username = document.getElementById('username').value;
-  var password = document.getElementById('password').value;
-
-  if (username === 'bob' && password === 'secret') {
-    ons.notification.alert('Congratulations!');
-  } else {
-    ons.notification.alert('Incorrect username or password.');
-  }
-};
-
-function submit(){
-    var sql = "INSERT INTO vehicles (name, year, make, model, vin, license_plate, tire_psi, inspection, user_id, color)";
-}
-    
-function hideprev(){
-   var prev_button = document.getElementById("prev_button").style.display = "none"
-}
-
-function showprev(){
-   var prev_button = document.getElementById("prev_button").style.display = "block"
-}
-
-function hidenext(){
-    var next_button = document.getElementById("next_button").style.display = "none"
-}
-
-function showtab(tab){
-    var tab = document.getElementById(tab).style.display = "block"
-}
-
-function hidetab(tab){
-    var tab = document.getElementById(tab).style.display = "none"
-}
-
-function show_submit(){
-    var submit = document.getElementById("Submit").style.display = "block"
-}
-
 
 </script>

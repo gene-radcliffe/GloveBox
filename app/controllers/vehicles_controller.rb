@@ -1,5 +1,5 @@
 class VehiclesController < ApplicationController
-  before_action :authenticate_user!
+  
   
   def index
     @vehicles = current_user.vehicles 
@@ -25,7 +25,9 @@ class VehiclesController < ApplicationController
     byebug
     @vehicle = Vehicle.new(vehicle_params)
     @vehicle.user_id = current_user.id
-   
+  
+  
+    
     if @vehicle.save
       redirect_to new_vehicles_path
     else
@@ -58,8 +60,8 @@ class VehiclesController < ApplicationController
                                        :tire_psi, :registration, :title, :inspection, :color, :user_id)
     end
 
-    def set_vehicle
-      @vehicles = current_user.vehicles
-    end
+    # def set_vehicle
+    #   @vehicles = current_user.vehicles
+    # end
 
 end
