@@ -18,3 +18,4 @@ class MaintenanceAction < ApplicationRecord
 
 
 end
+
