@@ -6,7 +6,7 @@ class VehiclesController < ApplicationController
   
   def index
     @vehicles = current_user.vehicles 
-    redirect_to new_vehicle_path
+    # redirect_to new_vehicle_path
   end
 
   def show
