@@ -12,16 +12,13 @@
       <th>Color</th>
       <th>VIN</th>
       <th>License Plate</th>
-      <th>Date of last Inspection</th>
-      <th>Title</th>
-      <th>Registration</th>
     </tr>
   </thead>
 
   <tbody>
     <% @vehicles.each do |vehicle| %>
       <tr>
-        <td><%= image_tag vehicle.image_url, class: "thumbnail img-thumbnail" %></td>
+        <%# <td><%= image_tag vehicle.image_url, class: "thumbnail img-thumbnail" %></td>
         <td><%= vehicle.name %></td>
         <td><%= vehicle.make %></td>
         <td><%= vehicle.model %></td>
@@ -29,9 +26,6 @@
         <td><%= vehicle.color %></td>
         <td><%= vehicle.vin %></td>
         <td><%= vehicle.license_plate %></td>
-        <td><%= vehicle.inspection %></td>
-        <td><%= vehicle.title %></td>
-        <td><%= vehicle.registration %></td>
         <td><%= link_to 'Edit', edit_vehicle_path(vehicle), class: "btn btn-secondary btn-sm" %></td>
         <td><%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %></td>
       </tr>
