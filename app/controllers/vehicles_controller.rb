@@ -3,6 +3,7 @@ class VehiclesController < ApplicationController
   
   def index
     @vehicles = current_user.vehicles 
+    # redirect_to new_vehicle_path
   end
 
   def show
@@ -22,17 +23,18 @@ class VehiclesController < ApplicationController
   end
 
   def create
-    byebug
     @vehicle = Vehicle.new(vehicle_params)
     @vehicle.user_id = current_user.id
   
   
     
     if @vehicle.save
-      redirect_to new_vehicles_path
+      
+      redirect_to new_vehicle_path
     else
       render 'new'
     end
+    
   end  
   
   def update

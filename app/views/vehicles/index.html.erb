@@ -1,4 +1,44 @@
+<% if notice %>
+<p class="alert alert-primary"><%= notice %></p>
+<% end %>
+<h1>My Vehicles</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Vehicles Nickname</th>
+      <th>Make</th>
+      <th>Model</th>
+      <th>Year</th>
+      <th>Color</th>
+      <th>VIN</th>
+      <th>License Plate</th>
+    </tr>
+  </thead>
 
+  <tbody>
+    <% @vehicles.each do |vehicle| %>
+      <tr>
+        <%# <td><%= image_tag vehicle.image_url, class: "thumbnail img-thumbnail" %></td>
+        <td><%= vehicle.name %></td>
+        <td><%= vehicle.make %></td>
+        <td><%= vehicle.model %></td>
+        <td><%= vehicle.year %></td>
+        <td><%= vehicle.color %></td>
+        <td><%= vehicle.vin %></td>
+        <td><%= vehicle.license_plate %></td>
+        <td><%= link_to 'Edit', edit_vehicle_path(vehicle), class: "btn btn-secondary btn-sm" %></td>
+        <td><%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
+<br>
 
+<%= link_to 'New vehicle', new_vehicle_path, class: "btn btn-primary btn-small" %>
 
+<div id="form--new"></div>
+
+<div id="vehicle-created"></div>
+
+<%= link_to('Logout', destroy_user_session_path, method: :delete) %>
