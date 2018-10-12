@@ -1,5 +1,12 @@
-<div class="back-link"><%= link_to '<< Back to All Vehicles', vehicles_path %></div>
+<ons-page>
+  <ons-toolbar>
+    <div class="left">
+      <ons-toolbar-button><%= link_to 'Back', vehicles_path %></ons-toolbar-button>
+    </div>
+    <div class="center">GloveBox</div>
+  </ons-toolbar>
+ 
+<h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif;">Edit Vehicle</h2>
 
-<h1>Edit Vehicle</h1>
 
 <%= render 'form' %>
