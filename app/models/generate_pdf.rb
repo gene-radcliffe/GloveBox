@@ -1,8 +1,8 @@
-class GenerateVehiclePdf < Prawn::Document
+class GeneratePdf < Prawn::Document
 
   def initialize(vehicle)
     super(top_margin: 20)
-    @vehicles = Vehicle.order("id")
+    @maintenance_actions = MaintenanceAction.order("id")
     line_items
     # text "Details for this Vehicle", size: 30, style: :bold
     
@@ -21,8 +21,9 @@ class GenerateVehiclePdf < Prawn::Document
   end
 
   def line_item_rows
-    [["Color", "Make", "Model", "Year", "VIN"]] +
-    @vehicles.map do |vehicle|
+  
+    [["Maintnenace Type", "Service Date", "Mileage", "Cost" ]] +
+    @maintenance_actions.map do |maintenance_action|
       [vehicle.color, vehicle.make, vehicle.model, vehicle.year, vehicle.vin]
     end
   end

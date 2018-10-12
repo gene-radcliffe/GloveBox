@@ -1,5 +1,7 @@
 <h2>Maintenance History</h2>
 <% @maintenance_log.maintenance_actions.each do |maintenance_action| %>
+
+    <%= link_to "Printable Report (PDF)", maintenance_action_path(@maintenance_action, format: 'pdf') %>
   
   <%case maintenance_action.type%>
   <% when "OilChange"%>
