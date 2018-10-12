@@ -1,6 +1,6 @@
 class MaintenanceLogsController < ApplicationController
 
-  def index  
+  def index
     @vehicle = current_user.vehicles.find(params['vehicle_id'])
     @maintenance_logs = @vehicle.maintenance_logs.all
     
