@@ -1,6 +1,9 @@
 class VehiclesController < ApplicationController
   
   
+  require "prawn"
+    
+  
   def index
     @vehicles = current_user.vehicles 
     # redirect_to new_vehicle_path
@@ -8,8 +11,19 @@ class VehiclesController < ApplicationController
 
   def show
     @vehicle = Vehicle.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = GenerateVehiclePdf.new(@vehicle)
+        send_data pdf.render, 
+                  filename: "vehicle_#{@vehicle.name}",
+                  type: 'application/pdf',
+                  disposition: 'inline'
+       end
+     end
   end
  
+
   def new
     @vehicles = current_user.vehicles
     @vehicle = Vehicle.new
@@ -59,7 +73,8 @@ class VehiclesController < ApplicationController
 
     def vehicle_params
        params.require(:vehicle).permit(:name, :year, :make, :model, :insurance, :vin, :license_plate,
-                                       :tire_psi, :registration, :title, :inspection, :color, :user_id)
+                                       :tire_psi, :registration, :title, :inspection, :color, :user_id, 
+                                       :authenticity_token)
     end
 
     # def set_vehicle

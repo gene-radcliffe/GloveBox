@@ -42,6 +42,10 @@ gem 'figaro'
 
 gem 'prawn'
 
+gem 'prawn-table'
+
+gem 'responders'
+
 gem 'rtesseract', '~> 2.2'
 
 gem 'devise'

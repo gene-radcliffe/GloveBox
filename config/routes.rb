@@ -19,8 +19,7 @@ Rails.application.routes.draw do
 
   resources :vehicles do
     resources :maintenance_logs do
-      get "oilchange" , to: 'maintenance_logs#oilchange'
-      get "brakechange", to: 'maintenance_logs#breakchange'
+     resources :maintenance_actions 
     end
       
   end

@@ -1,0 +1,123 @@
+<h2>Maintenance History</h2>
+
+
+
+  <%case @maintenance_action.type%>
+  <% when "OilChange"%>
+  
+  <ul>
+      <li> Maintenance Type - <%= @maintenance_action.type %></li>
+      <li> Service Date - <%= @maintenance_action.service_date %></td></li>
+      <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
+      <li> Cost - <%= @maintenance_action.cost %></li>
+      <li> Oil Type - <%= @maintenance_action.oil_type %></li>
+      <li> Notes - <%= @maintenance_action.notes %></li>
+  </ul>
+
+  <% when "Brake"%>
+  
+  <ul>
+      <li> Maintenance Type - <%= @maintenance_action.type %></li>
+      <li> Service Date - <%= @maintenance_action.service_date %></td></li>
+      <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
+      <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
+      <li> Brake Location - <%= @maintenance_action.brake_location %></li>
+      <li> Notes - <%= @maintenance_action.notes %></li>
+  </ul>
+
+  <% when "Rotor"%>
+  
+  <ul>
+      <li> Maintenance Type - <%= @maintenance_action.type %></li>
+      <li> Service Date - <%= @maintenance_action.service_date %></td></li>
+      <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
+      <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
+      <li> Rotor Location - <%= @maintenance_action.rotor_location %></li>
+      <li> Notes - <%= @maintenance_action.notes %></li>
+  </ul>
+
+  <% when "TireReplacement"%>
+  
+  <ul>
+      <li> Maintenance Type - <%= @maintenance_action.type %></li>
+      <li> Service Date - <%= @maintenance_action.service_date %></td></li>
+      <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
+      <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
+      <li> Tire Location - <%= @maintenance_action.tire_location %></li>
+      <li> Notes - <%= @maintenance_action.notes %></li>
+  </ul>
+
+  <% when "TireRotation"%>
+  
+  <ul>
+      <li> Maintenance Type - <%= @maintenance_action.type %></li>
+      <li> Service Date - <%= @maintenance_action.service_date %></td></li>
+      <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
+      <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
+      <li> Notes - <%= @maintenance_action.notes %></li>
+  </ul>
+
+  <% when "Alignment"%>
+  
+  <ul>
+      <li> Maintenance Type - <%= @maintenance_action.type %></li>
+      <li> Service Date - <%= @maintenance_action.service_date %></td></li>
+      <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
+      <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
+      <li> Notes - <%= @maintenance_action.notes %></li>
+  </ul>
+
+  <% when "BrakeFluid"%>
+  
+  <ul>
+      <li> Maintenance Type - <%= @maintenance_action.type %></li>
+      <li> Service Date - <%= @maintenance_action.service_date %></td></li>
+      <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
+      <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
+      <li> Notes - <%= @maintenance_action.notes %></li>
+  </ul>
+
+  <% when "TransmissionFluid"%>
+  
+  <ul>
+      <li> Maintenance Type - <%= @maintenance_action.type %></li>
+      <li> Service Date - <%= @maintenance_action.service_date %></td></li>
+      <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
+      <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
+      <li> Notes - <%= @maintenance_action.notes %></li>
+  </ul>
+
+  <% when "PowerSteeringFluid"%>
+  
+  <ul>
+      <li> Maintenance Type - <%= @maintenance_action.type %></li>
+      <li> Service Date - <%= @maintenance_action.service_date %></td></li>
+      <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
+      <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
+      <li> Notes - <%= @maintenance_action.notes %></li>
+  </ul>
+  
+  <% when "Antifreeze"%>
+  
+  <ul>
+      <li> Maintenance Type - <%= @maintenance_action.type %></li>
+      <li> Service Date - <%= @maintenance_action.service_date %></td></li>
+      <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
+      <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
+      <li> Notes - <%= @maintenance_action.notes %></li>
+  </ul>
+  
+  <% when "Miscellaneous"%>
+  
+  <ul>
+      <li> Maintenance Type - <%= @maintenance_action.type %></li>
+      <li> Service Date - <%= @maintenance_action.service_date %></td></li>
+      <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
+      <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
+      <li> Notes - <%= @maintenance_action.notes %></li>
+  </ul>
+  
+
+
+    
+  <%end%>
