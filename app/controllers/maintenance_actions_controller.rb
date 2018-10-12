@@ -1,7 +1,7 @@
 class MaintenanceActionsController < ApplicationController
   def show
-    # @vehicle = current_user.vehicles.find(params['vehicle_id'])
-    # @maintenance_logs = @vehicle.maintenance_logs.all
+     @vehicle = @maintenance_logs.vehicle_id
+     @maintenance_logs = @vehicle.maintenance_logs.all
     @maintenance_action = MaintenanceAction.find(params[:id])
     
   end  

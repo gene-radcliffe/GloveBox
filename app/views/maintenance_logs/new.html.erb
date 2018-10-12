@@ -8,7 +8,7 @@
         <%="#{@vehicle.name.capitalize}" %>
     </div>
     <div class="toolbar__right" style="width: 33%;">
-      <ons-toolbar-button style="font-size: 8px;"><%= link_to 'My Account', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
+      <ons-toolbar-button ><%= link_to 'My Account', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
     </div>
    
   </ons-toolbar>
@@ -134,7 +134,7 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "textarea",this)", style: "margin-bottom: 5px; margin-left: 10px;"  %>
+                            <%= activity_field.text_field :mileage, class: "textarea", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;"  %>
                         </div>
                         <div>
                             <%= activity_field.label :tire_location, style: "margin-left: 10px;"   %>
@@ -323,10 +323,10 @@
       <%end%>
         <div class = "action_form-item" id="Submit">
             <h2 style = "text-align: center;">Please Attach your receipt</h2>
-            <i class="fa fa-camera button" id="camera_button"></i>
+            <i class="fa fa-camera button" id="camera_button" style="margin-left: 15px;"></i>
             <%= ml_form.file_field :image,multiple: false,
                   direct_upload: true, accept:"image/*", capture:"camera", style:"margin:10px; font-size: 1.2rem;"%><br>
-            <%= ml_form.submit class:"action button", style:"margin:10px;" %>
+            <%= ml_form.submit class:"action button", style:"margin:15px;" %>
         </div>
 <% end %>
     <div class = "control_buttons"> 
