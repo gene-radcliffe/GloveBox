@@ -32,7 +32,7 @@ class MaintenanceLogsController < ApplicationController
   end
 
   def create 
-    byebug
+    
     @vehicle = Vehicle.find(params['vehicle_id'])
     @mlog = @vehicle.maintenance_logs.create(:image => params[:maintenance_log][:image])
     
@@ -41,14 +41,17 @@ class MaintenanceLogsController < ApplicationController
       whitelisted_params = self.send("#{t.downcase}_params") 
       @mlog.maintenance_actions.build(whitelisted_params.merge(type: t)).save
     end  
-
+    
     if actions.include?("OilChange")
-      maintenance_actions_reminder_path
+      
+      redirect_to notifications_reminder_path
+    else
+      
+      redirect_to vehicles_path
     end
-    redirect_to vehicles_path
-
+   
   end  
-
+ 
 
   private 
   def create_oilchange_reminder

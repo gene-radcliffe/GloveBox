@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'notifications/reminder'
   #devise_for :users
   
   get 'welcome/home', to: 'welcome#home'
