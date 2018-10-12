@@ -8,7 +8,7 @@
         <%="#{@vehicle.name.capitalize}" %>
     </div>
     <div class="toolbar__right" style="width: 33%;">
-      <ons-toolbar-button style="font-size: 8px;"><%= link_to 'My Account', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
+      <ons-toolbar-button><%= link_to 'My Account', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
     </div>
    
   </ons-toolbar>
@@ -25,7 +25,7 @@
       <li>Service Date - <%= maintenance_action.service_date %></li>
       <li>Mileage At Time Of Service - <%= maintenance_action.mileage %></li>
       <li>Cost - <%= number_to_currency(maintenance_action.cost) %></li>
-      <%= link_to 'View Details', maintenance_action, class:"button", style:"margin-top:10px; margin-bottom:10px;" %>
+      <%= link_to 'View Details', maintenance_action, class:"button", style:"margin-top:20px; margin-bottom:10px;" %>
     </ul>
   
     
