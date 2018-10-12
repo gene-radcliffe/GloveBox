@@ -1,44 +1,61 @@
+<ons-page>
+  <ons-toolbar>
+    <div class="toolbar__left">
+      <ons-toolbar-button style="font-size: 8px;"><%= link_to 'Home', vehicles_path %></ons-toolbar-button>
+    </div>
+    <div class="toolbar__center">
+        <%= "#{current_user.first_name}'s GloveBox" %>
+    </div>
+    <div class="toolbar__right" >
+      <ons-toolbar-button style="font-size: 8px;"><%= link_to 'My Account', vehicles_path %></ons-toolbar-button>
+      <ons-toolbar-button style="font-size: 8px;"><%= link_to('Sign Out', destroy_user_session_path, method: :delete) %></ons-toolbar-button>
+
+    </div>
+  </ons-toolbar>
+ 
+<h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif;">Add a Vehicle</h2>
+
 <% if notice %>
 <p class="alert alert-primary"><%= notice %></p>
 <% end %>
-<h1>My Vehicles</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Vehicles Nickname</th>
-      <th>Make</th>
-      <th>Model</th>
-      <th>Year</th>
-      <th>Color</th>
-      <th>VIN</th>
-      <th>License Plate</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @vehicles.each do |vehicle| %>
-      <tr>
-        <%# <td><%= image_tag vehicle.image_url, class: "thumbnail img-thumbnail" %></td>
-        <td><%= vehicle.name %></td>
-        <td><%= vehicle.make %></td>
-        <td><%= vehicle.model %></td>
-        <td><%= vehicle.year %></td>
-        <td><%= vehicle.color %></td>
-        <td><%= vehicle.vin %></td>
-        <td><%= vehicle.license_plate %></td>
-        <td><%= link_to 'Edit', edit_vehicle_path(vehicle), class: "btn btn-secondary btn-sm" %></td>
-        <td><%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%@vehicles.each do |vehicle| %>
+    <ons-card style="max-width: 100%" >
+    <img src="https://monaca.io/img/logos/download_image_onsenui_01.png" alt="Onsen UI" style="width: 100%">
+    <div class="title">
+      <%= vehicle.name %>
+    </div>
+    <div class="content">
+      <ons-list>
+        <ons-list-header></ons-list-header>
+        <ons-row>
+          <ons-col width="25%"><%= vehicle.year %></ons-col>
+          <ons-col width="25%"><%= vehicle.make %></ons-col>
+          <ons-col width="25%"><%= vehicle.model %></ons-col>
+          <ons-col width="25%"><%= vehicle.color %></ons-col>
+        </ons-row>
+      </ons-list>
+      <ons-list>
+      <br>
+        <ons-row>
+          <ons-col width="30%"><%= vehicle.license_plate %></ons-col>
+          <ons-col width="45%"><%= vehicle.vin %></ons-col>
+          <ons-col width="25%"><i class="far fa-question-circle" width="25%" 
+            onclick="ons.notification.toast('The VIN (vehicle identification number) can often be found on the lower-left corner of the dashboard, in front of the steering wheel. You can read the number by looking through the windshield.', { timeout: 3000})"></i></ons-col>
+        </ons-row>
+      </ons-list>
+    </div>
+  </ons-card>
 
-<br>
+<%end%>
 
-<%= link_to 'New vehicle', new_vehicle_path, class: "btn btn-primary btn-small" %>
+<div class="actions" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+      <%= link_to 'Add a Vehicle', new_vehicle_path, class: "button" %><br><br><br>
+      <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "button") %>
+</div>
 
 <div id="form--new"></div>
 
 <div id="vehicle-created"></div>
 
-<%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+</ons-page>
