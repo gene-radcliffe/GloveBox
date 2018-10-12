@@ -5,7 +5,7 @@
       <ons-toolbar-button><%= link_to 'Home', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
     </div>
     <div class="toolbar__center" style="width: 33%;">
-        <%="#{@vehicle.name}" %>
+        <%="#{@vehicle.name.capitalize}" %>
     </div>
     <div class="toolbar__right" style="width: 33%;">
       <ons-toolbar-button style="font-size: 8px;"><%= link_to 'My Account', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
