@@ -1,5 +1,5 @@
 import { DirectUpload } from "activestorage"
- 
+
 const input = document.querySelector('input[type=file]')
  
 // Bind to file drop - use the ondrop on a parent element or use a
