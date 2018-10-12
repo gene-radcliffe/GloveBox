@@ -51,7 +51,7 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :oil_type, style: "margin-left: 10px;"   %>
@@ -59,7 +59,7 @@
                         </div><br>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px; margin-top: 10px;"   %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :oilchange_notes, style: "margin-left: 10px;"  %><br>
@@ -80,7 +80,7 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :brake_location, style: "margin-left: 10px;"  %>
@@ -88,7 +88,7 @@
                         </div><br>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"   %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :brake_notes, style: "margin-left: 10px;"  %><br>
@@ -108,7 +108,7 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "text-input text-input--material",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :rotor_location, style: "margin-left: 10px;"  %>
@@ -116,7 +116,7 @@
                         </div><br>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "text-input text-input--material",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :rotor_notes, style: "margin-left: 10px;"  %><br>
@@ -136,7 +136,7 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;"  %>
+                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;"  %>
                         </div>
                         <div>
                             <%= activity_field.label :tire_location, style: "margin-left: 10px;"   %>
@@ -144,7 +144,7 @@
                         </div>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :tire_notes, style: "margin-left: 10px;"  %><br>
@@ -164,11 +164,11 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "text-input text-input--material",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "text-input text-input--material",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :tire_rotation_notes, style: "margin-left: 10px;"  %><br>
@@ -188,11 +188,11 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :alignment_notes, style: "margin-left: 10px;"  %><br>
@@ -212,11 +212,11 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :antifreeze_notes, style: "margin-left: 10px;"  %><br>
@@ -236,11 +236,11 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "text-input text-input--material",  onblur:"validate(this)",style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :brake_fluid_notes, style: "margin-left: 10px;"  %><br>
@@ -260,11 +260,11 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :powersteering_fluid_notes, style: "margin-left: 10px;"  %><br>
@@ -284,11 +284,11 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :transmission_fluid_notes, style: "margin-left: 10px;"  %><br>
@@ -308,11 +308,11 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "text-input text-input--material",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :miscellaneous_notes, style: "margin-left: 10px;"  %><br>
@@ -325,8 +325,9 @@
       <%end%>
         <div class = "action_form-item" id="Submit">
             <h2 style = "text-align: center;">Please Attach your receipt</h2>
+            <i class="fa fa-camera button" id="camera_button"></i>
             <%= ml_form.file_field :image,multiple: false,
-                  direct_upload: true, style:"margin:10px; font-size: 1.2rem;"%><br>
+                  direct_upload: true, accept:"image/*", capture:"camera", style:"margin:10px; font-size: 1.2rem;"%><br>
             <%= ml_form.submit class:"action button", style:"margin:10px;" %>
         </div>
 <% end %>
@@ -334,26 +335,48 @@
 
         <input type="button" id="prev_button" value="Previous" class="button"style = "margin-left: 15px; margin-top: 15px;">
         <input type="button" id="next_button" value="Next" class="button" style = "margin-left: 15px; margin-top: 15px;">
+        <input type="button" id="start_button" value="Start Over" class="button" style = "margin-left: 15px; margin-top: 15px;" onclick="start_over()">
     </div>
+</div>
+<div id="validation_alert">
+<div  class="alert-dialog-mask"></div>
+<div class="alert-dialog">
+  <div class="alert-dialog-container">
+    <div class="alert-dialog-title">Alert</div>
+
+    <div class="alert-dialog-content">
+        Your last entry is incorrect.
+    </div>
+
+    <div class="alert-dialog-footer">
+      <button id="validate_alert_button" class="alert-dialog-button alert-dialog-button--primal">OK</button>
+    </div>
+  </div>
+</div>
 </div>
 </ons-page>
 
 <style>
-/* .action-form{
-    display: none;
- } */
- 
+.control_buttons{
+    overflow: auto;
+}
+#prev_button, #next_button, #start_button{
+    float:left;
+}
+ #validation_alert{
+     clear: left;
+     display: none;
+ }
  .ml_form{
      display: none;
  }
  .action_form-item{
      display: none;
 
-     
-      
-
  }
- 
+#camera_button{
+   
+}
  #Submit{
      display: none; 
  }
@@ -367,7 +390,9 @@
      margin-left: 15px;
  }
 
-
+#maintenance_log_image{
+    display: none;
+}
 </style>
 <script>
 
@@ -379,6 +404,11 @@ function program(){
     var current_tab = 0;
     var s_actions = [];
     
+    var camera_button = document.getElementById("camera_button")
+    camera_button.addEventListener('click',function(e){
+        var maintenance_log_image_upload = document.getElementById("maintenance_log_image")
+        maintenance_log_image_upload.click();
+    })
     var gobutton = document.getElementById('go-button')
         gobutton.addEventListener('click',function(e){
             var input_selection = document.getElementsByClassName('action')
@@ -476,7 +506,10 @@ function show_forms(input_array){
     
    
 }
-
+function start_over(){
+    var href = window.location.href
+    window.location.href = href
+}
 function hideprev(){
    var prev_button = document.getElementById("prev_button").style.display = "none"
 }
@@ -525,5 +558,17 @@ function addSelection(field){
     var hidden_tag = document.getElementById("select")
     hidden_tag.value = field
 }
-
+var alert_button = document.querySelector("#validate_alert_button").addEventListener('click', function(e){
+    var toast_alert= document.getElementById("validation_alert")
+    toast_alert.style.display="none"
+})
+function validate(obj){
+    var toast_alert= document.getElementById("validation_alert")
+    if(isNaN(obj.value)){
+       toast_alert.style.display="block"
+    }else{
+        
+    }
+    return
+}
 </script>
