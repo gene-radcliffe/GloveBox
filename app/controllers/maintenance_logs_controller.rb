@@ -1,11 +1,21 @@
 class MaintenanceLogsController < ApplicationController
 
+  def index  
+    @vehicle = current_user.vehicles.find(params['vehicle_id'])
+    @maintenance_logs = @vehicle.maintenance_logs.all
+    
+  end  
+
   def new
     @vehicle = Vehicle.find(params['vehicle_id'])
     @mlog = @vehicle.maintenance_logs.new
     MaintenanceAction::TYPES.map { |t| @mlog.maintenance_actions.build(type: t)}
     
   end  
+
+  def history
+    @vehicles = current_user.vehicles
+  end
 
   def create 
     @vehicle = Vehicle.find(params['vehicle_id'])
@@ -15,7 +25,7 @@ class MaintenanceLogsController < ApplicationController
       whitelisted_params = self.send("#{t.downcase}_params") 
       @mlog.maintenance_actions.build(whitelisted_params.merge(type: t)).save
     end  
-    redirect_to maintenance_actions_path
+    redirect_to vehicles_path
 
   end  
 

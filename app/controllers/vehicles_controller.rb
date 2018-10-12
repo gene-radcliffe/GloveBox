@@ -1,12 +1,12 @@
 class VehiclesController < ApplicationController
-  before_action :authenticate_user!
+  
   
   require "prawn"
     
   
   def index
     @vehicles = current_user.vehicles 
-    redirect_to new_vehicle_path
+    # redirect_to new_vehicle_path
   end
 
   def show
@@ -39,7 +39,9 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = Vehicle.new(vehicle_params)
     @vehicle.user_id = current_user.id
-   
+  
+  
+    
     if @vehicle.save
       
       redirect_to new_vehicle_path
@@ -75,8 +77,8 @@ class VehiclesController < ApplicationController
                                        :authenticity_token)
     end
 
-    def set_vehicle
-      @vehicles = current_user.vehicles
-    end
+    # def set_vehicle
+    #   @vehicles = current_user.vehicles
+    # end
 
 end

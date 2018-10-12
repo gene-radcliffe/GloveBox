@@ -1,0 +1,24 @@
+<%= form_for(@vehicle, local: true) do |f| %>
+    <ons-list modifier="inset">
+      <ons-list-header>Vehcile Information</ons-list-header>
+      <ons-list-item modifier="longdivider"><%= f.text_field :name, autocomplete: "name", class: 'text-input', placeholder: 'Vehicle Nickname' %></ons-list-item>
+      <ons-list-item modifier="longdivider"><%= f.text_field :color, autocomplete: "color", class: 'text-input', placeholder: 'Color' %></ons-list-item>
+    </ons-list>
+    <br>
+    <ons-list modifier="inset">
+      <ons-list-item modifier="longdivider"><%= f.text_field :make, autocomplete: "make", class: 'text-input', placeholder: 'Make' %></ons-list-item>
+      <ons-list-item modifier="longdivider"><%= f.text_field :model, autocomplete: "model", class: 'text-input', placeholder: 'Model' %></ons-list-item>
+      <ons-list-item modifier="longdivider"><%= f.text_field :year, autocomplete: "year", class: 'text-input', placeholder: 'Year' %></ons-list-item>
+    </ons-list>
+    <br>
+    <ons-list modifier="inset">
+      <ons-list-item modifier="longdivider"><%= f.text_field :vin, autocomplete: "vin", class: 'text-input', placeholder: 'VIN' %></ons-list-item>
+      <ons-list-item modifier="longdivider"><%= f.text_field :license_plate, autocomplete: "license_plate", class: 'text-input', placeholder: 'License Plate #' %></ons-list-item>
+      <ons-list-item modifier="longdivider"><%= f.text_field :inspection, autocomplete: "inspection", class: 'text-input', placeholder: 'Date of last Inspection' %></ons-list-item>
+    </ons-list>
+    
+    <div class="actions" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+      <%= f.submit "Submit", class: "button" %>
+    </div>
+<% end %>
+
