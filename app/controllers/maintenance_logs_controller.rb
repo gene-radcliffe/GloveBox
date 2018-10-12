@@ -6,6 +6,20 @@ class MaintenanceLogsController < ApplicationController
     
   end  
 
+  def show
+    @maintenance_logs.maintenance_actions = MaintenanceActions.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = GeneratePdf.new(@maintenance_action)
+        send_data pdf.render, 
+                  filename: "vehicle_#{@vehicle.name}",
+                  type: 'application/pdf',
+                  disposition: 'inline'
+       end
+     end
+  end
+
   def new
     @vehicle = Vehicle.find(params['vehicle_id'])
     @mlog = @vehicle.maintenance_logs.new

@@ -6,6 +6,20 @@ class MaintenanceActionsController < ApplicationController
     
   end  
 
+  def index
+    @maintenance_actions = MaintenanceAction.all
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = GeneratePdf.new(@maintenance_action)
+        send_data pdf.render, 
+                  filename: "Export",
+                  type: 'application/pdf',
+                  disposition: 'inline'
+       end
+     end
+  end
+
   def new 
     @maintenance_action = Maintenance_action.new 
   end

@@ -9,7 +9,7 @@
       <li> Maintenance Type - <%= @maintenance_action.type %></li>
       <li> Service Date - <%= @maintenance_action.service_date %></td></li>
       <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
-      <li> Cost - <%= @maintenance_action.cost %></li>
+      <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
       <li> Oil Type - <%= @maintenance_action.oil_type %></li>
       <li> Notes - <%= @maintenance_action.notes %></li>
   </ul>
