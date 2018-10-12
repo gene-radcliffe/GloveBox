@@ -41,6 +41,10 @@ class MaintenanceLogsController < ApplicationController
       whitelisted_params = self.send("#{t.downcase}_params") 
       @mlog.maintenance_actions.build(whitelisted_params.merge(type: t)).save
     end  
+
+    if actions.include?("OilChange")
+      maintenance_actions_reminder_path
+    end
     redirect_to vehicles_path
 
   end  

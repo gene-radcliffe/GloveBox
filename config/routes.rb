@@ -17,6 +17,7 @@ Rails.application.routes.draw do
    
   end
 
+  get "maintenance_actions/reminder", to: "maintenance_actions#reminder"
   resources :vehicles do
     resources :maintenance_logs do
      resources :maintenance_actions 

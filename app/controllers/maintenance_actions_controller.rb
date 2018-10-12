@@ -19,7 +19,9 @@ class MaintenanceActionsController < ApplicationController
        end
      end
   end
-
+  def reminder
+    
+  end
   def new 
     @maintenance_action = Maintenance_action.new 
   end
