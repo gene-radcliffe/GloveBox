@@ -1,3 +1,17 @@
+<ons-page>
+  <ons-toolbar style="width: 100%;">
+  
+    <div class="toolbar__left" style="width: 33%;">
+      <ons-toolbar-button><%= link_to 'Home', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
+    </div>
+    <div class="toolbar__center" style="width: 33%;">
+        <%="#{@maintenance_log.vehicle.name}" %>
+    </div>
+    <div class="toolbar__right" style="width: 33%;">
+      <ons-toolbar-button style="font-size: 8px;"><%= link_to 'My Account', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
+    </div>
+   
+  </ons-toolbar>
 <h2>Maintenance History</h2>
 
 
@@ -121,3 +135,4 @@
 
     
   <%end%>
+</ons-page>

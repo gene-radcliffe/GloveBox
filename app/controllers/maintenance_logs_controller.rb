@@ -1,6 +1,6 @@
 class MaintenanceLogsController < ApplicationController
 
-  def index  
+  def index
     @vehicle = current_user.vehicles.find(params['vehicle_id'])
     @maintenance_logs = @vehicle.maintenance_logs.all
     
@@ -32,8 +32,10 @@ class MaintenanceLogsController < ApplicationController
   end
 
   def create 
+    byebug
     @vehicle = Vehicle.find(params['vehicle_id'])
-    @mlog = @vehicle.maintenance_logs.create 
+    @mlog = @vehicle.maintenance_logs.create(:image => params[:maintenance_log][:image])
+    
     actions = params[:selected_actions].split(",")
     actions.map do |t|
       whitelisted_params = self.send("#{t.downcase}_params") 
