@@ -1,6 +1,8 @@
 <h1>Maintenance Log History</h1>
 
-  
+<%= link_to "Export Maintenance Log History (PDF)", maintenance_actions_path(@maintenance_action, format: 'pdf') %>
+</p>  
+
   <% @sum = 0%>
   <% @maintenance_logs.each do |maintenance_log| %>
     <% maintenance_log.maintenance_actions.each do |maintenance_action| %>
