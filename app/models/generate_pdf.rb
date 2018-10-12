@@ -2,6 +2,7 @@ class GeneratePdf < Prawn::Document
 
   def initialize(vehicle)
     super(top_margin: 20)
+    
     @maintenance_actions = MaintenanceAction.order("id")
     line_items
     # text "Details for this Vehicle", size: 30, style: :bold
@@ -24,7 +25,7 @@ class GeneratePdf < Prawn::Document
   
     [["Maintnenace Type", "Service Date", "Mileage", "Cost" ]] +
     @maintenance_actions.map do |maintenance_action|
-      [vehicle.color, vehicle.make, vehicle.model, vehicle.year, vehicle.vin]
+      [maintenance_action.type, maintenance_action.service_date, maintenance_action.mileage, maintenance_action.cost]
     end
   end
   

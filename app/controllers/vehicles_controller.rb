@@ -11,16 +11,6 @@ class VehiclesController < ApplicationController
 
   def show
     @vehicle = Vehicle.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.pdf do
-        pdf = GenerateVehiclePdf.new(@vehicle)
-        send_data pdf.render, 
-                  filename: "vehicle_#{@vehicle.name}",
-                  type: 'application/pdf',
-                  disposition: 'inline'
-       end
-     end
   end
  
 
