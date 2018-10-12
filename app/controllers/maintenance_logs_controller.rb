@@ -45,6 +45,10 @@ class MaintenanceLogsController < ApplicationController
 
 
   private 
+  def create_oilchange_reminder
+
+  end
+  
   def maintenance_log_params
     params.require(:maintenance_log)
   end
