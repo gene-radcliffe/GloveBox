@@ -1,11 +1,9 @@
 class GeneratePdf < Prawn::Document
 
-  def initialize(vehicle)
+  def initialize(maintenance_action)
     super(top_margin: 20)
-    
     @maintenance_actions = MaintenanceAction.order("id")
     line_items
-    # text "Details for this Vehicle", size: 30, style: :bold
     
     end
   end
@@ -20,6 +18,7 @@ class GeneratePdf < Prawn::Document
       self.header = true
     end
   end
+
 
   def line_item_rows
   
