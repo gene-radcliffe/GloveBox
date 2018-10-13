@@ -5,33 +5,31 @@
       <ons-toolbar-button><%= link_to 'Home', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
     </div>
     <div class="toolbar__center" style="width: 33%;">
-        <%="#{@maintenance_log.vehicle.name}" %>
+        <%="#{@vehicle.name.capitalize}" %>
     </div>
     <div class="toolbar__right" style="width: 33%;">
-      <ons-toolbar-button style="font-size: 8px;"><%= link_to 'My Account', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
+      <ons-toolbar-button><%= link_to 'My Account', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
     </div>
    
   </ons-toolbar>
-<h2>Maintenance History</h2>
+<h2 style= "text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif; "> <%=@maintenance_action.type %></h2>
 
 
 
   <%case @maintenance_action.type%>
   <% when "OilChange"%>
   
-  <ul>
-      <li> Maintenance Type - <%= @maintenance_action.type %></li>
-      <li> Service Date - <%= @maintenance_action.service_date %></td></li>
-      <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
-      <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
-      <li> Oil Type - <%= @maintenance_action.oil_type %></li>
-      <li> Notes - <%= @maintenance_action.notes %></li>
+  <ul class="list"> 
+      <li class="list-item list-item__center" style="background-color: #EFEFF5;"> Service Date - <%= @maintenance_action.service_date %></td></li>
+      <li class="list-item list-item__center"  style="background-color: #EFEFF5;"> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
+      <li class="list-item list-item__center"  style="background-color: #EFEFF5;"> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
+      <li class="list-item list-item__center"  style="background-color: #EFEFF5;"> Oil Type - <%= @maintenance_action.oil_type %></li>
+      <li class="list-item list-item__center"  style="background-color: #EFEFF5;"> Notes - <%= @maintenance_action.notes %></li>
   </ul>
 
   <% when "Brake"%>
   
   <ul>
-      <li> Maintenance Type - <%= @maintenance_action.type %></li>
       <li> Service Date - <%= @maintenance_action.service_date %></td></li>
       <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
       <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
@@ -42,7 +40,6 @@
   <% when "Rotor"%>
   
   <ul>
-      <li> Maintenance Type - <%= @maintenance_action.type %></li>
       <li> Service Date - <%= @maintenance_action.service_date %></td></li>
       <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
       <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
@@ -53,7 +50,6 @@
   <% when "TireReplacement"%>
   
   <ul>
-      <li> Maintenance Type - <%= @maintenance_action.type %></li>
       <li> Service Date - <%= @maintenance_action.service_date %></td></li>
       <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
       <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
@@ -64,7 +60,6 @@
   <% when "TireRotation"%>
   
   <ul>
-      <li> Maintenance Type - <%= @maintenance_action.type %></li>
       <li> Service Date - <%= @maintenance_action.service_date %></td></li>
       <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
       <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
@@ -74,7 +69,6 @@
   <% when "Alignment"%>
   
   <ul>
-      <li> Maintenance Type - <%= @maintenance_action.type %></li>
       <li> Service Date - <%= @maintenance_action.service_date %></td></li>
       <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
       <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
@@ -84,7 +78,6 @@
   <% when "BrakeFluid"%>
   
   <ul>
-      <li> Maintenance Type - <%= @maintenance_action.type %></li>
       <li> Service Date - <%= @maintenance_action.service_date %></td></li>
       <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
       <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
@@ -94,7 +87,6 @@
   <% when "TransmissionFluid"%>
   
   <ul>
-      <li> Maintenance Type - <%= @maintenance_action.type %></li>
       <li> Service Date - <%= @maintenance_action.service_date %></td></li>
       <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
       <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
@@ -104,7 +96,6 @@
   <% when "PowerSteeringFluid"%>
   
   <ul>
-      <li> Maintenance Type - <%= @maintenance_action.type %></li>
       <li> Service Date - <%= @maintenance_action.service_date %></td></li>
       <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
       <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
@@ -114,7 +105,6 @@
   <% when "Antifreeze"%>
   
   <ul>
-      <li> Maintenance Type - <%= @maintenance_action.type %></li>
       <li> Service Date - <%= @maintenance_action.service_date %></td></li>
       <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
       <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
@@ -124,7 +114,6 @@
   <% when "Miscellaneous"%>
   
   <ul>
-      <li> Maintenance Type - <%= @maintenance_action.type %></li>
       <li> Service Date - <%= @maintenance_action.service_date %></td></li>
       <li> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
       <li> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
@@ -135,4 +124,13 @@
 
     
   <%end%>
+ 
+  
+
+    <div class="bottom-bar", style="position:fixed; width: 100%;">
+        <div class="bottom-bar__line-height" style="width:50%;" >
+            <%= link_to 'Edit', edit_maintenance_action_path, class:"button--quiet", style:"margin-left: 75px; font-size: 1.2rem;" %>
+            <%= link_to 'Back', :back, class:"button--quiet", style:"margin-left: 100px; font-size: 1.2rem;" %>
+        </div>
+    </div>
 </ons-page>
