@@ -27,12 +27,17 @@ class MaintenanceActionsController < ApplicationController
   def edit
     @maintenance_action = MaintenanceAction.find(params[:id])  
   
-  
   end
   
-  def oilchange
-    @oilchange = OilChange.new
-  end  
+  def update
+    @maintenance_action = MaintenanceAction.find(params[:id])
+
+    if @maintenance_action.update(maintenance_action_params)
+        redirect_to maintenance_action_path
+    else
+        render 'edit'
+    end
+  end
 
   def create 
     @maintenance_action

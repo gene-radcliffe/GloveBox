@@ -43,7 +43,7 @@
 
   <div class="actions" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
       <%= link_to 'Edit', edit_vehicle_path, class: "button" %>
-      <%= link_to 'Add Log', new_vehicle_path, class: "button" %>
+      <%= link_to 'Add Maintenance Entry', new_vehicle_maintenance_log_path(@vehicle.id), class: "button" %>
       <%= link_to "Delete", @vehicle, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>
 </div>
 
