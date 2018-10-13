@@ -32,7 +32,7 @@ class MaintenanceLogsController < ApplicationController
   end
 
   def create 
-    
+   
     @vehicle = Vehicle.find(params['vehicle_id'])
     @mlog = @vehicle.maintenance_logs.create(:image => params[:maintenance_log][:image])
     
@@ -42,21 +42,16 @@ class MaintenanceLogsController < ApplicationController
       @mlog.maintenance_actions.build(whitelisted_params.merge(type: t)).save
     end  
     
-    if actions.include?("OilChange")
-      
-      redirect_to notifications_reminder_path
+    if params[:reminder] == "true"
+      redirect_to reminders_oilchange_path
     else
-      
       redirect_to vehicles_path
     end
    
-  end  
- 
+  
+  end
 
   private 
-  def create_oilchange_reminder
-
-  end
   
   def maintenance_log_params
     params.require(:maintenance_log)
@@ -106,5 +101,43 @@ class MaintenanceLogsController < ApplicationController
   def miscellaneous_params 
     maintenance_log_params[:miscellaneous].permit(:mileage, :service_date, :cost, :notes)
   end 
+  #
+  # def checkIfRecentOilChange(oil_type, date)
 
+  #   case oil_type
+  #   when "Regular"
+  #     if regularOil(date)
+  #       return true
+  #     else 
+  #       return false
+  #     end
+  #   when "Synthetic"
+  #     if syntheticOil(date)
+  #       return true
+  #     else 
+  #       return false
+  #     end
+  #  end
+  # end
+  # def regularOil(sDate)
+
+  #   date = Date.today
+  #     if sDate > date.months_ago(3) && sDate < date  #if within 3 months ago
+  #       true
+  #     else
+  #       false
+  #     end
+  #   end
+    
+  #   def syntheticOil(sDate)
+    
+  #   date = Date.today
+  #     if sDate > date.months_ago(5) && sDate < date #if within 3 months ago
+  #       true
+  #     else
+  #       false
+  #     end
+  #   end
+  # end
+  #
 end

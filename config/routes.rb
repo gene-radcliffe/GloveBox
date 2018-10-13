@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+ 
+  get 'reminders/oilchange'
+  resources :reminders
   get 'notifications/reminder'
   #devise_for :users
   
