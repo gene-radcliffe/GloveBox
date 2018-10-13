@@ -1,9 +1,10 @@
 class MaintenanceActionsController < ApplicationController
   def show
-     @vehicle = @maintenance_logs.vehicle_id
-     @maintenance_logs = @vehicle.maintenance_logs.all
-     @maintenance_action = MaintenanceAction.find(params[:id])
-  end
+    @vehicle = Vehicle.find(params['id'])
+    
+    @maintenance_action = MaintenanceAction.find(params[:id])
+    
+  end  
 
   def index
     @maintenance_actions = MaintenanceAction.all
@@ -24,7 +25,7 @@ class MaintenanceActionsController < ApplicationController
   end
 
   def edit
-    @maintenance_action = Maintenance_action.find(params[:id])  
+    @maintenance_action = MaintenanceAction.find(params[:id])  
   
   
   end

@@ -15,7 +15,7 @@
   
 <h1 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Maintenance Log History</h1>
 
- 
+  <%= link_to 'Add Maintenance Log', new_vehicle_maintenance_log_path, class:"button--quiet" %>
   <% @sum = 0%>
   <% @maintenance_logs.each do |maintenance_log| %>
     <% maintenance_log.maintenance_actions.each do |maintenance_action| %>
