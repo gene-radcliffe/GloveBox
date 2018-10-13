@@ -12,18 +12,18 @@
 
     </div>
   </ons-toolbar>
- 
-<h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif;">Add a Vehicle</h2>
 
 <% if notice %>
 <p class="alert alert-primary"><%= notice %></p>
 <% end %>
+ 
+<h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif;">mY GloveBox</h2>
 
 <%@vehicles.each do |vehicle| %>
-    <ons-card style="max-width: 100%" >
+    <ons-card style="max-width: 100%">
     <img src="https://monaca.io/img/logos/download_image_onsenui_01.png" alt="Onsen UI" style="width: 100%">
     <div class="title">
-      <%= vehicle.name %>
+      <%= link_to vehicle.name, vehicle_path(vehicle) %>
     </div>
     <div class="content">
       <ons-list>
