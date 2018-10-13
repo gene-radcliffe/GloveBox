@@ -34,7 +34,7 @@ class VehiclesController < ApplicationController
     
     if @vehicle.save
       
-      redirect_to vehicle_path
+      redirect_to vehicles_path
     else
       render 'new'
     end
