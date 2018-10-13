@@ -25,7 +25,7 @@
       <li>Service Date - <%= maintenance_action.service_date %></li>
       <li>Mileage At Time Of Service - <%= maintenance_action.mileage %></li>
       <li>Cost - <%= number_to_currency(maintenance_action.cost) %></li>
-      <%= link_to 'View Details', maintenance_action, class:"button", style:"margin-top:20px; margin-bottom:10px;" %>
+      <%= link_to 'View Details', maintenance_action_path(maintenance_action.id), class:"button", style:"margin-top:20px; margin-bottom:10px;" %>
     </ul>
   
     
