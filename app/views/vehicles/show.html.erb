@@ -51,10 +51,17 @@
   </ons-card>
 
   <div class="actions" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
-      <%= link_to 'Edit', edit_vehicle_path, class: "button" %>
+      <%= link_to 'Edit Vehicle', edit_vehicle_path, class: "button" %>
       <%= link_to 'Add Log', new_vehicle_path, class: "button" %>
-      <%= link_to "Delete", @vehicle, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>
-</div>
+      <%= link_to 'View Log', vehicle_maintenance_logs_path(@vehicle.id), class: "button" %><br>
+      <%= link_to "Delete Vehicle", @vehicle, method: :delete, data: { confirm: 'Are you sure?' }, class: "button", style:"margin-top: 15px;" %>
+  </div>
+
+  <div style="text-align: center;">
+  
+  </div>
+
+</ons-page>
 
 
 
