@@ -1,80 +1,73 @@
 <ons-page>
 
-<!-- Prerequisite=This example use ionicons(http://ionicons.com) to display icons. -->
-<div class="toolbar">
-  <div class="toolbar__left">
-    <span class="toolbar-button toolbar-button--outline">
-      <i class="ion-navicon" style="font-size:32px; vertical-align:-6px;"></i>
-    </span>
-  </div>
+ <%= render "shared_header/header"%>
 
-  <div class="toolbar__center">
-    <%= "#{@vehicle.name} GloveBox" %>
-  </div>
 
-  <div class="toolbar__right">
-    <span class="toolbar-button toolbar-button--outline">Button</span>
-  </div>
-</div>                          
-<%= link_to  "new maintenance", new_vehicle_maintenance_log_path(@vehicle.id), class:"button" %>
-<%= form_for(@vehicle, local: true) do |f| %>
-
-    <div>
-        <img src="https://cdn.pixabay.com/photo/2012/05/29/00/43/car-49278_1280.jpg" style="width:186px;height:116px;">
-    </div>
-
-    <div class="field">
-        <%= f.text_field :name, autocomplete: "name", class: 'text-input text-input--underbar', placeholder: 'Name' %>
-    </div>
-    <br>
-    <div class="field">
-        <%= f.text_field :make, autocomplete: "make", class: 'text-input text-input--underbar', placeholder: 'Make' %>
-    </div>
-    <br>
-    <div class="field">
-        <%= f.text_field :make, autocomplete: "model", class: 'text-input text-input--underbar', placeholder: 'Model' %>
-    </div>
-    <br>
-    <div class="field">
-        <%= f.text_field :year, autocomplete: "year", class: 'text-input text-input--underbar', placeholder: 'Year' %>
-    </div>
-    <br>
-    <div class="field">
-        <%= f.text_field :color, autocomplete: "color", class: 'text-input text-input--underbar', placeholder: 'Color' %>
-    </div>
-    <br>
-    <div class="field">
-        <%= f.text_field :vin, autocomplete: "vin", class: 'text-input text-input--underbar', placeholder: 'VIN' %>
-    </div>
-    <br>
-    <div class="field">
-        <%= f.text_field :license_plate, autocomplete: "license_plate", class: 'text-input text-input--underbar', placeholder: 'License Plate' %>
-    </div>
-    <br>
-    <div class="field">
-        <%= f.date_field :inspection, autocomplete: "inspection", class: 'text-input text-input--underbar', placeholder: 'Date of Last Inspection' %>
-        <%# <p>Date of last inspection</p> %>
-    </div>
-    <br>
-    <div class="field">
-        <%= f.text_field :title, autocomplete: "title", class: 'text-input text-input--underbar', placeholder: 'Title' %>
-    </div>
-    <br>
-    <div class="field">
-        <%= f.text_field :registration, autocomplete: "registration", class: 'text-input text-input--underbar', placeholder: 'Registration' %>
-    </div>
-
-    <ons-fab position="bottom right">
-    <div class="actions">
-        <%= f.submit "Edit"%>
-    </div>
-    </ons-fab>
-
+<% if notice %>
+<p class="alert alert-primary"><%= notice %></p>
 <% end %>
 
-<%# <ons-fab position="bottom right">
-  ...
-</ons-fab> %>
+<h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif;"><%="#{@vehicle.name.capitalize}"%></h2>
 
-</ons-page> 
+
+<ons-card style="max-width: 100%">
+    <%= image_tag(asset_path("vehicle_default2.jpeg"),  width:"100%", id:"vehicle-img")%>
+    <div class="title">
+
+      <%= link_to @vehicle.name.capitalize, vehicle_path(@vehicle),  class:"button--quiet", style:"font-weight: bold; font-size: 1.5rem;" %>
+    </div>
+    <div class="content">
+      <ons-list>
+        <ons-row style=" margin-bottom: 20px;">
+          <ons-col width="100%" style="font-size:1.2rem;">Year - <%= @vehicle.year %></ons-col>
+        </ons-row>
+      </ons-list>
+      <ons-list>
+        <ons-row style=" margin-bottom: 15px;">
+          <ons-col width="100%" style="font-size:1.2rem;">Year - <%= @vehicle.make.capitalize %></ons-col>
+        </ons-row>
+      </ons-list>
+      <ons-list>
+        <ons-row style=" margin-bottom: 15px;">
+          <ons-col width="100%" style="font-size:1.2rem;"> Model - <%= @vehicle.model.capitalize %></ons-col>
+        </ons-row>
+      </ons-list>
+      <ons-list>
+        <ons-row style=" margin-bottom: 15px;">
+          <ons-col width="100%" style="font-size:1.2rem;"> Color - <%= @vehicle.color.capitalize %></ons-col>
+        </ons-row>
+      </ons-list>
+      <ons-list>
+        <ons-row style=" margin-bottom: 15px;">
+          <ons-col width="100%" style="font-size:1.2rem;"> License Plate - <%= @vehicle.license_plate %></ons-col>
+        </ons-row>
+      </ons-list>
+      <ons-list>
+        <ons-row style=" margin-bottom: 15px;">
+          <ons-col width="100%" style="font-size:1.2rem;"> VIN# <i class="far fa-question-circle" style= font-size:0.8rem;
+            onclick="ons.notification.toast('The VIN (vehicle identification number) can often be found on the lower-left corner of the dashboard, in front of the steering wheel. You can read the number by looking through the windshield.', { timeout: 3000})"></i> - <%= @vehicle.vin %></ons-col>
+
+        </ons-row>
+      </ons-list>
+      
+
+    </div>
+  </ons-card>
+
+  <div class="actions" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+      <%= link_to 'Edit Vehicle', edit_vehicle_path, class: "button" %>
+      <%= link_to 'Add Log', new_vehicle_path, class: "button" %>
+      <%= link_to 'View Log', vehicle_maintenance_logs_path(@vehicle.id), class: "button" %><br>
+      <%= link_to "Delete Vehicle", @vehicle, method: :delete, data: { confirm: 'Are you sure?' }, class: "button", style:"margin-top: 15px;" %>
+  </div>
+
+  <div style="text-align: center;">
+  
+  </div>
+
+</ons-page>
+
+
+
+
 

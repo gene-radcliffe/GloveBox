@@ -1,0 +1,3 @@
+class OilChangeReminder < Reminder
+
+end

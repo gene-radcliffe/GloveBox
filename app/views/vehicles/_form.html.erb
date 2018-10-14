@@ -1,51 +1,24 @@
 <%= form_for(@vehicle, local: true) do |f| %>
-  
+    <ons-list modifier="inset">
+      <ons-list-header>Vehcile Information</ons-list-header>
+      <ons-list-item modifier="longdivider"><%= f.text_field :name, autocomplete: "name", class: 'text-input', placeholder: 'Vehicle Nickname' %></ons-list-item>
+      <ons-list-item modifier="longdivider"><%= f.text_field :color, autocomplete: "color", class: 'text-input', placeholder: 'Color' %></ons-list-item>
+    </ons-list>
+    <br>
+    <ons-list modifier="inset">
+      <ons-list-item modifier="longdivider"><%= f.text_field :make, autocomplete: "make", class: 'text-input', placeholder: 'Make' %></ons-list-item>
+      <ons-list-item modifier="longdivider"><%= f.text_field :model, autocomplete: "model", class: 'text-input', placeholder: 'Model' %></ons-list-item>
+      <ons-list-item modifier="longdivider"><%= f.text_field :year, autocomplete: "year", class: 'text-input', placeholder: 'Year' %></ons-list-item>
+    </ons-list>
+    <br>
+    <ons-list modifier="inset">
+      <ons-list-item modifier="longdivider"><%= f.text_field :vin, autocomplete: "vin", class: 'text-input', placeholder: 'VIN' %></ons-list-item>
+      <ons-list-item modifier="longdivider"><%= f.text_field :license_plate, autocomplete: "license_plate", class: 'text-input', placeholder: 'License Plate #' %></ons-list-item>
+      <ons-list-item modifier="longdivider"><%= f.text_field :inspection, autocomplete: "inspection", class: 'text-input', placeholder: 'Date of last Inspection' %></ons-list-item>
+    </ons-list>
+    
+    <div class="actions" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+      <%= f.submit "Submit", class: "button" %>
+    </div>
+<% end %> 
 
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div>
-    <%= f.label :color %>
-    <%= f.text_field :color %>
-  </div>
-  <div>
-    <%= f.label :year %>
-    <%= f.text_field :year %>
-  </div>
-  <div>
-    <%= f.label :make %>
-    <%= f.text_area :make %>
-  </div>
-  <div>
-    <%= f.label :model %>
-    <%= f.text_field :model %>
-  </div>
-  <div>
-    <%= f.label :vin %>
-    <%= f.text_field :vin %>
-  </div>
-  <div>
-    <%= f.label :license_plate %>
-    <%= f.text_area :license_plate %>
-  </div>
-  <div>
-    <%= f.label :tire_psi %>
-    <%= f.text_field :model %>
-  </div>
-  <div>
-    <%= f.label :registration %>
-    <%= f.text_field :registration %>
-  </div>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.label :inspection %>
-    <%= f.text_field :inspection %>
-  </div>
-  <div>
-    <%= f.submit class: "btn btn-primary"%>
-  </div>
-<% end %>

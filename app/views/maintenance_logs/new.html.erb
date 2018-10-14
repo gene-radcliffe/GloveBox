@@ -1,22 +1,19 @@
-
 <ons-page>
-    <div class="toolbar">
-        <div class="toolbar__left">
-            <span class="toolbar-button toolbar-button--outline">
-                <i class="ion-navicon" style="font-size:32px; vertical-align:-6px;"></i>
-            </span>
-        </div>
-
-        <div class="toolbar__center">
-            <%= "#{@vehicle.name}" %>
-        </div>
-
-        <div class="toolbar__right">
-            <span class="toolbar-button toolbar-button--outline">Button</span>
-         </div>
-    </div>  
+     <ons-toolbar style="width: 100%;">
+  
+    <div class="toolbar__left" style="width: 33%;">
+      <ons-toolbar-button><%= link_to 'Home', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
+    </div>
+    <div class="toolbar__center" style="width: 33%;">
+        <%="#{@vehicle.name.capitalize}" %>
+    </div>
+    <div class="toolbar__right" style="width: 33%;">
+      <ons-toolbar-button ><%= link_to 'My Account', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
+    </div>
+   
+  </ons-toolbar>
 <div class="select-form" id="selection_form" >
-    <h1 style= "text-align: center; ">Select Maintenance Done</h1>
+    <h1 style= "text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif; ">Select Maintenance Done</h1>
 
     <div>
             <input class="action radio-button radio-button--material" type="checkbox" value="OilChange" >Oil Change<br>    
@@ -38,12 +35,13 @@
 <div class="action-form" id="maintenance_actions">
 <%=form_for  @mlog, url: vehicle_maintenance_logs_path, :html=>{:class=>"ml_form"} do |ml_form| %>
     <%=hidden_field_tag :selected_actions, "hidden"%>
+    <%=hidden_field_tag :reminder, "false"%>
     <% @mlog.maintenance_actions.each do |activity| %>
         <%case activity.type%>
             <% when "OilChange"%>
                 <div class="action_form-item" id="OilChange">
 
-                    <h2 style = "text-align: center;">Oil Change</h2>
+                    <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Oil Change</h2>
                     <%= ml_form.fields_for :oilchange, activity do |activity_field| %>
                        
                         <div>
@@ -52,7 +50,7 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "textarea",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :oil_type, style: "margin-left: 10px;"   %>
@@ -60,19 +58,27 @@
                         </div><br>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px; margin-top: 10px;"   %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "textarea", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :oilchange_notes, style: "margin-left: 10px;"  %><br>
                             <%= activity_field.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
 
                         </div>
+                        <div>
+                            <label class="checkbox">
+                            <%=check_box_tag :oc_reminder, class:"checkbox__input", style:"margin-left: 20%;"%>
+                            <div class="checkbox__checkmark"></div>
+                                Set a reminder?
+                        </label>
+                        </div>
                     <%end%>
+                      
                 </div>
             <% when "Brake"%>
                 <div class="action_form-item" id="Brake">
 
-                    <h2 style = "text-align: center;">Brakes</h2>
+                    <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Brakes</h2>
                     <%= ml_form.fields_for :brake, activity do |activity_field| %>
                     <%activity_field.hidden_field :selected, value: false %>
                         <div>
@@ -81,7 +87,7 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "textarea",  onblur:"validate(this)",style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :brake_location, style: "margin-left: 10px;"  %>
@@ -89,7 +95,7 @@
                         </div><br>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"   %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "textarea", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :brake_notes, style: "margin-left: 10px;"  %><br>
@@ -101,7 +107,7 @@
             <% when "Rotor"%>
                 <div class="action_form-item" id="Rotor">
 
-                    <h2 style = "text-align: center;">Rotors</h2>
+                    <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Rotors</h2>
                     <%= ml_form.fields_for :rotor, activity do |activity_field| %>
                         <div>
                             <%= activity_field.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
@@ -109,7 +115,7 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "textarea",onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :rotor_location, style: "margin-left: 10px;"  %>
@@ -117,7 +123,7 @@
                         </div><br>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "textarea",  onblur:"validate(this)",style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :rotor_notes, style: "margin-left: 10px;"  %><br>
@@ -129,7 +135,7 @@
             <% when "TireReplacement"%>
                 <div class="action_form-item" id="TireReplacement">
 
-                    <h2 style = "text-align: center;">Tire Replacement</h2>
+                    <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Tire Replacement</h2>
                     <%= ml_form.fields_for :tire_replacement, activity do |activity_field| %>
                         <div>
                             <%= activity_field.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"   %><br>
@@ -137,7 +143,7 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;"  %>
+                            <%= activity_field.text_field :mileage, class: "textarea", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;"  %>
                         </div>
                         <div>
                             <%= activity_field.label :tire_location, style: "margin-left: 10px;"   %>
@@ -145,7 +151,7 @@
                         </div>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "textarea", onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :tire_notes, style: "margin-left: 10px;"  %><br>
@@ -157,7 +163,7 @@
             <% when "TireRotation"%>
                 <div class="action_form-item" id="TireRotation">
 
-                    <h2 style = "text-align: center;">Tire Rotations</h2>
+                    <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Tire Rotations</h2>
                     <%= ml_form.fields_for :tire_rotation, activity do |activity_field| %>
                         <div>
                             <%= activity_field.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
@@ -165,11 +171,11 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "textarea", onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "textarea", onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :tire_rotation_notes, style: "margin-left: 10px;"  %><br>
@@ -181,7 +187,7 @@
             <% when "Alignment"%>
                <div class="action_form-item" id="Alignment">
 
-                    <h2 style = "text-align: center;">Alignments</h2>
+                    <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Alignments</h2>
                     <%= ml_form.fields_for :Alignment, activity do |activity_field| %>
                         <div>
                             <%= activity_field.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
@@ -189,11 +195,11 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "textarea", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "textarea", onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :alignment_notes, style: "margin-left: 10px;"  %><br>
@@ -205,7 +211,7 @@
             <% when "Antifreeze"%>
                 <div class="action_form-item" id="AntiFreeze">
 
-                    <h2 style = "text-align: center;">Anti Freeze</h2>
+                    <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Anti Freeze</h2>
                     <%= ml_form.fields_for :antifreeze, activity do |activity_field| %>
                         <div>
                             <%= activity_field.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
@@ -213,11 +219,11 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "textarea",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "textarea",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :antifreeze_notes, style: "margin-left: 10px;"  %><br>
@@ -229,7 +235,7 @@
             <% when "BrakeFluid"%>
                 <div class="action_form-item" id="BrakeFluid">
 
-                    <h2 style = "text-align: center;">Brake Fluids</h2>
+                    <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Brake Fluids</h2>
                     <%= ml_form.fields_for :brakefluid, activity do |activity_field| %>
                         <div>
                             <%= activity_field.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
@@ -237,11 +243,11 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "textarea", onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material",  onblur:"validate(this)",style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "textarea",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :brake_fluid_notes, style: "margin-left: 10px;"  %><br>
@@ -253,7 +259,7 @@
             <% when "PowerSteeringFluid"%>
                 <div class="action_form-item" id="PowerSteeringFluid">
 
-                    <h2 style = "text-align: center;">Power Steering Fluid</h2>
+                    <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Power Steering Fluid</h2>
                     <%= ml_form.fields_for :powersteeringfluid, activity do |activity_field| %>
                         <div>
                             <%= activity_field.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
@@ -261,11 +267,11 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "textarea", onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "textarea",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :powersteering_fluid_notes, style: "margin-left: 10px;"  %><br>
@@ -277,7 +283,7 @@
             <% when "TransmissionFluid"%>
                 <div class="action_form-item" id="TransmissionFluid">
 
-                    <h2 style = "text-align: center;">Transmission Fluid</h2>
+                    <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Transmission Fluid</h2>
                     <%= ml_form.fields_for :transmissionfluid, activity do |activity_field| %>
                         <div>
                             <%= activity_field.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
@@ -285,11 +291,11 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "textarea",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "textarea", onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :transmission_fluid_notes, style: "margin-left: 10px;"  %><br>
@@ -301,7 +307,7 @@
             <% when "Miscellaneous"%>
                 <div class="action_form-item" id="Miscellaneous">
 
-                    <h2 style = "text-align: center;">Miscellaneous</h2>
+                    <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Miscellaneous</h2>
                     <%= ml_form.fields_for :miscellaneous, activity do |activity_field| %>
                         <div>
                             <%= activity_field.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
@@ -309,11 +315,11 @@
                         </div>
                         <div>
                             <%= activity_field.label :mileage, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :mileage, class: "text-input text-input--material", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :mileage, class: "textarea",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
-                            <%= activity_field.text_field :cost, class: "text-input text-input--material",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+                            <%= activity_field.text_field :cost, class: "textarea", onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
                         </div>
                         <div>
                             <%= activity_field.label :miscellaneous_notes, style: "margin-left: 10px;"  %><br>
@@ -325,11 +331,18 @@
             <%end%> <!--end case -->
       <%end%>
         <div class = "action_form-item" id="Submit">
-            <h2 style = "text-align: center;">Please Attach your receipt</h2>
-            <i class="fa fa-camera button" id="camera_button"></i>
-            <%= ml_form.file_field :image,multiple: false,
+            <div style="display:block;">
+            <h2 style = "text-align: center;">Include an image of your Invoice</h2>
+            </div>
+            <div  style="display:block;text-align:center;">
+                <i id="img_uploaded" class="far fa-clipboard" style=" font-size: 5rem; text-align:center;"><p style="font-size:0.8rem;text-align:center;">Receipt Missing</p></i>
+            </div>
+            <div style="display:block;">
+                <i class="fa fa-camera button" id="camera_button" style="margin:15px;"></i>
+            </div>
+            <%= ml_form.file_field :image, multiple: false,
                   direct_upload: true, accept:"image/*", capture:"camera", style:"margin:10px; font-size: 1.2rem;"%><br>
-            <%= ml_form.submit class:"action button", style:"margin:10px;" %>
+            <%= ml_form.submit class:"action button" %>
         </div>
 <% end %>
     <div class = "control_buttons"> 
@@ -360,6 +373,9 @@
 <style>
 .control_buttons{
     overflow: auto;
+}
+#oc_reminder{
+    display:none;
 }
 #prev_button, #next_button, #start_button{
     float:left;
@@ -396,6 +412,7 @@
 }
 </style>
 <script>
+
 program();
 
 function program(){
@@ -403,11 +420,38 @@ function program(){
     var ret_selected_inputs =[]
     var current_tab = 0;
     var s_actions = [];
+   
     
+    var oc_reminder_checkbox = document.getElementById("oc_reminder")
+    oc_reminder_checkbox.addEventListener('click', function(e){
+        var reminder = document.getElementById("reminder")
+        console.log(e.target.checked)
+           if (e.target.checked){
+              reminder.value = "true"
+           }else{
+              reminder.value = "false"
+           }
+
+    })
     var camera_button = document.getElementById("camera_button")
     camera_button.addEventListener('click',function(e){
         var maintenance_log_image_upload = document.getElementById("maintenance_log_image")
         maintenance_log_image_upload.click();
+    })
+
+    var maintenance_log_image_input = document.getElementById("maintenance_log_image")
+
+    maintenance_log_image_input.addEventListener('change', function(e){
+    var img_uploaded = document.getElementById("img_uploaded")
+    if(e.target.files.length>0){
+        console.log("changing")
+            img_uploaded.classList.remove("fa")
+            img_uploaded.classList.remove("fa-clipboard")
+            img_uploaded.children[0].innerText="Receipt is now Included"
+            img_uploaded.classList.add("fas")
+            img_uploaded.classList.add("fa-clipboard-check")
+
+        }
     })
     var gobutton = document.getElementById('go-button')
         gobutton.addEventListener('click',function(e){
