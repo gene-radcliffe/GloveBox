@@ -1,18 +1,26 @@
-<h1>Reminder</h1>
-<p>Oil Change</p>
-<p>You may choose to receive an email to remind you of your oil change.</p>
-<p>Depending on your oil type you can choose to receive a reminder within a 3 month or a 5 month period</p>
-<%=form_for @reminder, url: reminders_path, remote: true do |f|%>
-        <%=f.hidden_field :type, value:"OilChangeReminder"%>
-    <div>
-        <%= f.label :period%>
-        <%= f.select :period, options_for_select([ "3 Months from now", "5 Months from now", "Weekly" ], "3 Months from now"), class:"select-input", style: "padding-left: 25px;" %>
-    </div>
-    <div>
-        <%= f.label :notes%>
-        <%=f.text_area :notes ,class:"textarea", placeholder:"Notes" %>
-    </div>
-    <div>
-        <%=f.submit class:"button"%>
-    </div>
-<%end%>
+<ons-page>
+<div style="margin-left: 2%;">
+    <h1>Reminder</h1>
+    <p><em>Oil Change</em></p>
+    <p>You may choose to receive an email to remind you of your oil change.</p>
+    <p>Depending on your oil type, you can choose to receive a reminder within a 3 month or a 5 month period</p>
+    <p>You may also take down notes to remind you of any special reminders.</p>
+</div>
+<div style="margin-left: 2%;">
+    <%=form_for @reminder, url: reminders_path, remote: true do |f|%>
+            <%=f.hidden_field :type, value:"OilChangeReminder"%>
+        <div style="margin-top: 2%;">
+            <%= f.label :period%>
+            <%= f.select :period, options_for_select([ "3 Months from now", "5 Months from now", "Weekly" ], "3 Months from now"), class:"select-input", style: "padding-left: 25px;" %>
+        </div>
+        <div style="margin-top: 2%;">
+            <%= f.label :notes%>
+            <%=f.text_area :notes ,class:"textarea", placeholder:"Notes" %>
+        </div>
+        <div style="margin-top: 2%;">
+            <%=f.submit class:"button"%>
+            <a href="<%=vehicles_path%>" class="button">Cancel</a> 
+        </div>
+    <%end%>
+</div>
+</ons-page>

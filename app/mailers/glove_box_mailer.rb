@@ -5,9 +5,9 @@ class GloveBoxMailer < ApplicationMailer
   #
   #   en.glove_box_mailer.reminder.subject
   #
-  def reminder(user)
+  def reminder(user, reminder)
     @greeting = "Greetings, From GloveBox!"
-
+    @reminder=reminder
     mail(to: user.email,
          from: 'app110448060@heroku.com',
          subject: "Maintenance Reminder")
