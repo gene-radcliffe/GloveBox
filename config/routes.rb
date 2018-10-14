@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+ 
+  get 'reminders/oilchange'
+  resources :reminders
+  get 'notifications/reminder'
   #devise_for :users
   
   get 'welcome/home', to: 'welcome#home'
@@ -17,6 +21,7 @@ Rails.application.routes.draw do
    
   end
 
+  get "maintenance_actions/reminder", to: "maintenance_actions#reminder"
   resources :vehicles do
     resources :maintenance_logs do
      resources :maintenance_actions 
