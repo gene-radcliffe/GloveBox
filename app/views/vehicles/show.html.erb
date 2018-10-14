@@ -1,5 +1,7 @@
 <ons-page>
+
  <%= render "shared_header/header"%>
+
 
 <% if notice %>
 <p class="alert alert-primary"><%= notice %></p>
@@ -9,8 +11,9 @@
 
 
 <ons-card style="max-width: 100%">
-    <img src="https://monaca.io/img/logos/download_image_onsenui_01.png" alt="Onsen UI" style="width: 100%">
+    <%= image_tag(asset_path("vehicle_default2.jpeg"),  width:"100%", id:"vehicle-img")%>
     <div class="title">
+
       <%= link_to @vehicle.name.capitalize, vehicle_path(@vehicle),  class:"button--quiet", style:"font-weight: bold; font-size: 1.5rem;" %>
     </div>
     <div class="content">
@@ -43,6 +46,7 @@
         <ons-row style=" margin-bottom: 15px;">
           <ons-col width="100%" style="font-size:1.2rem;"> VIN# <i class="far fa-question-circle" style= font-size:0.8rem;
             onclick="ons.notification.toast('The VIN (vehicle identification number) can often be found on the lower-left corner of the dashboard, in front of the steering wheel. You can read the number by looking through the windshield.', { timeout: 3000})"></i> - <%= @vehicle.vin %></ons-col>
+
         </ons-row>
       </ons-list>
       

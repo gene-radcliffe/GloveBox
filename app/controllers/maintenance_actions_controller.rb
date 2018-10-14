@@ -20,7 +20,7 @@ class MaintenanceActionsController < ApplicationController
        end
      end
   end
-
+ 
   def new 
     @maintenance_action = Maintenance_action.new 
   end
@@ -30,7 +30,7 @@ class MaintenanceActionsController < ApplicationController
   
   
   end
-  
+ 
   def oilchange
     @oilchange = OilChange.new
   end  
