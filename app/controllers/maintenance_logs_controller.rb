@@ -32,7 +32,7 @@ class MaintenanceLogsController < ApplicationController
   end
 
   def create 
-   
+
     @vehicle = Vehicle.find(params['vehicle_id'])
     @mlog = @vehicle.maintenance_logs.create(:image => params[:maintenance_log][:image])
     
