@@ -1,8 +1,9 @@
 class MaintenanceActionsController < ApplicationController
   def show
-     @vehicle = @maintenance_logs.vehicle_id
-     @maintenance_logs = @vehicle.maintenance_logs.all
     @maintenance_action = MaintenanceAction.find(params[:id])
+    @maintenance_log = MaintenanceLog.find_by_id(@maintenance_action.maintenance_log_id)
+    @vehicle = Vehicle.find_by_id(@maintenance_log.vehicle_id)
+    
     
   end  
 
@@ -25,7 +26,7 @@ class MaintenanceActionsController < ApplicationController
   end
 
   def edit
-    @maintenance_action = Maintenance_action.find(params[:id])  
+    @maintenance_action = MaintenanceAction.find(params[:id])  
   
   
   end

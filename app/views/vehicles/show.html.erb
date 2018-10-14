@@ -1,48 +1,53 @@
+<ons-page>
+  <ons-toolbar>
+    <div class="left">
+    <ons-toolbar-button><%= link_to 'Back', url_for(:back), class: "button--quiet" %></ons-toolbar-button>
+      
+    </div>
+    <div class="center">GloveBox</div>
+  </ons-toolbar>
+
 <% if notice %>
 <p class="alert alert-primary"><%= notice %></p>
 <% end %>
-<h1>My Vehicles</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Vehicles Nickname</th>
-      <th>Make</th>
-      <th>Model</th>
-      <th>Year</th>
-      <th>Color</th>
-      <th>VIN</th>
-      <th>License Plate</th>
-      <th>Date of last Inspection</th>
-      <th>Title</th>
-      <th>Registration</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @vehicles.each do |vehicle| %>
-      <tr>
-        <td><%= image_tag vehicle.image_url, class: "thumbnail img-thumbnail" %></td>
-        <td><%= vehicle.name %></td>
-        <td><%= vehicle.make %></td>
-        <td><%= vehicle.model %></td>
-        <td><%= vehicle.year %></td>
-        <td><%= vehicle.color %></td>
-        <td><%= vehicle.vin %></td>
-        <td><%= vehicle.license_plate %></td>
-        <td><%= vehicle.inspection %></td>
-        <td><%= vehicle.title %></td>
-        <td><%= vehicle.registration %></td>
-        <td><%= link_to 'Edit', edit_vehicle_path(vehicle), class: "btn btn-secondary btn-sm" %></td>
-        <td><%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif;">mY GloveBox</h2>
 
-<br>
 
-<%= link_to 'New vehicle', new_vehicle_path, class: "btn btn-primary btn-small" %>
+<ons-card style="max-width: 100%">
+    <%= image_tag(asset_path("vehicle_default2.jpeg"),  width:"100%", id:"vehicle-img")%>
+    <div class="title">
+      <%= "#{@vehicle.name}" %>
+    </div>
+    <div class="content">
+      <ons-list>
+        <ons-row>
+          <ons-col width="25%" style="font-family: 'Raleway', sans-serif;" ><%= @vehicle.year %></ons-col>
+          <ons-col width="25%" style="font-family: 'Raleway', sans-serif;"><%= @vehicle.make %></ons-col>
+          <ons-col width="25%" style="font-family: 'Raleway', sans-serif;"><%= @vehicle.model %></ons-col>
+          <ons-col width="25%" style="font-family: 'Raleway', sans-serif;"><%= @vehicle.color %></ons-col>
+        </ons-row>
+      </ons-list>
+      <br>     
+      <ons-list>  
+        <ons-row>
+          <ons-col width="30%" style="font-family: 'Raleway', sans-serif;"><%= @vehicle.license_plate %></ons-col> 
+          <ons-col width="45%" style="font-family: 'Raleway', sans-serif;"><%= @vehicle.vin %></ons-col>
+          <ons-col width="25%"><i class="far fa-question-circle" width="25%" 
+            onclick="ons.notification.toast('The VIN (vehicle identification number) can often be found on the lower-left corner of the dashboard, in front of the steering wheel. You can read the number by looking through the windshield.', { timeout: 3000})"></i>
+          </ons-col>
+        </ons-row>
+      </ons-list>
+    </div>
+  </ons-card>
 
-<div id="form--new"></div>
+  <div class="actions" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+      <%= link_to 'Edit', edit_vehicle_path, class: "button" %>
+      <%= link_to 'Add Log', new_vehicle_path, class: "button" %>
+      <%= link_to "Delete", @vehicle, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>
+</div>
 
-<div id="vehicle-created"></div>
+
+
+
+
