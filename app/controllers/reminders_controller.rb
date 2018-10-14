@@ -26,9 +26,9 @@ class RemindersController < ApplicationController
   def createDelayedJob(user, reminder)
     case reminder.period
     when "3 Months from now"
-      MaintenanceActionJob.set(wait: 9.seconds).perform_later(user, reminder)
+      MaintenanceActionJob.set(wait: 83.days).perform_later(user, reminder)
     when "5 Months from now"
-      MaintenanceActionJob.set(wait: 15.seconds).perform_later(user, reminder)
+      MaintenanceActionJob.set(wait: 143.days).perform_later(user, reminder)
     end
   end
   def sendEmail(user, reminder)
