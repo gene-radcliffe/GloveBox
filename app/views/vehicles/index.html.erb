@@ -21,7 +21,7 @@
 
 <%@vehicles.each do |vehicle| %>
     <ons-card style="max-width: 100%">
-    <img src="https://monaca.io/img/logos/download_image_onsenui_01.png" alt="Onsen UI" style="width: 100%">
+    <%= image_tag(asset_path("vehicle_default.png"),  width:"25%", id:"vehicle-img")%>
     <div class="title">
       <%= link_to vehicle.name, vehicle_path(vehicle) %>
     </div>
