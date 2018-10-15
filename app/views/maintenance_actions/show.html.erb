@@ -1,17 +1,7 @@
 <ons-page>
-  <ons-toolbar style="width: 100%;">
+
+  <%= render "shared_header/header_for_ml"%>
   
-    <div class="toolbar__left" style="width: 33%;">
-      <ons-toolbar-button><%= link_to 'Home', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
-    </div>
-    <div class="toolbar__center" style="width: 33%;">
-        <%="#{@vehicle.name.capitalize}" %>
-    </div>
-    <div class="toolbar__right" style="width: 33%;">
-      <ons-toolbar-button><%= link_to 'My Account', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
-    </div>
-   
-  </ons-toolbar>
 <h2 style= "text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif; "> <%=@maintenance_action.type %></h2>
 
 
