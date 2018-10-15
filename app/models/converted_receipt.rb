@@ -1,0 +1,2 @@
+class ConvertedReceipt < ApplicationRecord
+end

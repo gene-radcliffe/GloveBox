@@ -11,10 +11,16 @@ class MakeReceiptSearchableJob < ApplicationJob
     end
     
     image = RTesseract.new(@file, :processor => "mini_magick")
-    pdf = image.to_pdf
+    #pdf = image.to_pdf
     string_data = image.to_s
 
     #save to database 
-    
+    converted_receipt= ConvertedReceipt.new
+    converted_receipt.name = "maintenance_log_#{maintenance_log.id}"
+    converted_receipt.content = string_data
+
+    if !converted_receipt.save
+      flash[:notice] = "Error Saving Converted Receipt"
+    end
   end
 end

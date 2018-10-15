@@ -42,7 +42,7 @@ class MaintenanceLogsController < ApplicationController
     end  
 
     if @mlog.image.attached?
-      MakeReceiptSearchable.set(wait: 2.minutes).perform_later(@mlog)
+      MakeReceiptSearchableJob.set(wait: 2.minutes).perform_later(@mlog)
     end
     
     if params[:reminder] == "true"
