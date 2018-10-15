@@ -6,7 +6,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color:  #3A405A;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -51,15 +51,15 @@ function closeNav() {
 </script>
 
 <ons-page>
-  <ons-toolbar style="width: 100%;">
+  <ons-toolbar style="width: 100%; background-color: #3A405A;"">
     <div class="toolbar__left" style="width: 33%;">
-      <ons-toolbar-button><%= link_to 'Home', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
+      <ons-toolbar-button><%= link_to 'Home', vehicles_path, class:"button--quiet", style:"color: white;"  %></ons-toolbar-button>
     </div>
-    <div class="toolbar__center" style="width: 33%;">
+    <div class="toolbar__center" style="width: 33%;  color: white;">
         <%="#{@vehicle.name.capitalize}" %>
     </div>
     <div class="toolbar__right" style="width: 33%;" >
-      <p onclick="openNav()" class="button--quiet">Menu</p>
+      <p onclick="openNav()" class="button--quiet"  style="color: white;">Menu</p>
       
     </div>
   </ons-toolbar>

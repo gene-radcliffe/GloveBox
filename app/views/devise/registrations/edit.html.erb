@@ -1,43 +1,63 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<ons-page>
+
+<%= render "shared_header/header"%>
+
+<h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif;">Update My Account</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <ons-list modifier="inset">
+    <ons-list-header>Email and Password</ons-list-header>
+      <ons-list-item>
+      <div>
+        <span class="list-item__title">Email: </span><br>
+        <span class="list-item__subtitle"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></span>
+      </div>
+      </ons-list-item>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
-  </div>
+      
+      <ons-list-item>
+      <div>
+        <span class="list-item__title">New Password: </span> <br>
+        <span class="list-item__subtitle"><%= f.password_field :password, autocomplete: "new-password", placeholder: "********" %></span><br>
+         
+      <span ><i style="font-size: 8pt"> (leave blank if you don't want to change) </i></span>
+      </div>
+      </ons-list-item>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <ons-list-item>
+      <div>
+        <span class="list-item__title">Password Confirmation: </span><br>
+        <span class="list-item__subtitle"><%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "********" %></span><br>
+        <span><em style="font-size: 8pt">(please confirm your password) </em></span>
+      </div>
+      </ons-list-item>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+      <ons-list-item>
+      <div>
+        <span class="list-item__title">Current Password: </span><br>
+        <span class="list-item__subtitle"><%= f.password_field :current_password, autocomplete: "current-password", placeholder: "********" %><br>
+        <span><i style="font-size: 8pt">(enter <strong>current</strong> password to confirm your changes)</i></span>
+      </div>  
+      </ons-list-item>
+  </ons-list>
+</ons-list><br>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+      <div class="actions" style="text-align: center; margin-bottom: 5px;">
+        <%= f.submit "Update", class: "button" %>
+      </div>
+
 <% end %>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<ons-list modifier="inset">
+    <ons-list-header>Cancel my account</ons-list-header>
+      <ons-list-item>
+        <span class="list-item__title">Unhappy? </span><span><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "button--quiet" %></span><br>
+    </ons-list-item>
+</ons-list><br>
+      
+      

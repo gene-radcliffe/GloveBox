@@ -16,7 +16,8 @@
             <input class="action checkbox" type="checkbox" value="Miscellaneous" >Miscellaneous<br>     
     </div>
     <div>
-            <input type="button" id="go-button" value="Go" class="button" style="margin-left: 20px; margin-top: 10px; padding-right: 20px; padding-left: 20px;">
+            <input type="button" id="go-button" value="Go" class="button" style="margin-left: 20px; margin-top: 10px; padding-right: 20px; padding-left: 20px; background-color: white; color:#3A405A; font-weight: bold;">
+    
 
     </div>
 </div>  
@@ -326,18 +327,18 @@
                 <i id="img_uploaded" class="far fa-clipboard" style=" font-size: 5rem; text-align:center;"><p style="font-size:0.8rem;text-align:center;">Receipt Missing</p></i>
             </div>
             <div style="display:block;">
-                <i class="fa fa-camera button" id="camera_button" style="margin:15px;"></i>
+                <i class="fa fa-camera button" id="camera_button" style="margin:15px; background-color: white; color:#3A405A; "></i>
             </div>
             <%= ml_form.file_field :image, multiple: false,
                   direct_upload: true, accept:"image/*", capture:"camera", style:"margin:10px; font-size: 1.2rem;"%><br>
-            <%= ml_form.submit class:"action button" %>
+            <%= ml_form.submit class:"action button", style: "background-color: white; color:#3A405A; font-weight: bold;" %>
         </div>
 <% end %>
     <div class = "control_buttons"> 
 
-        <input type="button" id="prev_button" value="Previous" class="button"style = "margin-left: 15px; margin-top: 15px;">
-        <input type="button" id="next_button" value="Next" class="button" style = "margin-left: 15px; margin-top: 15px;">
-        <input type="button" id="start_button" value="Start Over" class="button" style = "margin-left: 15px; margin-top: 15px;" onclick="start_over()">
+        <input type="button" id="prev_button" value="Previous" class="button"style = "margin-left: 15px; margin-top: 15px; background-color: white; color:#3A405A; font-weight: bold;">
+        <input type="button" id="next_button" value="Next" class="button" style = "margin-left: 15px; margin-top: 15px; background-color: white; color:#3A405A; font-weight: bold;">
+        <input type="button" id="start_button" value="Start Over" class="button" style = "margin-left: 15px; margin-top: 15px; background-color: white; color:#3A405A; font-weight: bold;" onclick="start_over()">
     </div>
 </div>
 <div id="validation_alert">
