@@ -5,9 +5,8 @@ class VehiclesController < ApplicationController
     
   
   def index
-    @vehicles = current_user.vehicles
-    # redirect_to new_vehicle_path
-  end
+feature_vehicle_styling
+    @vehicles = current_user.vehicles 
 
   def show
     @vehicle = Vehicle.find(params[:id])
