@@ -27,7 +27,7 @@
 <div class="bottom-bar", style="position:fixed;">
   <div class="bottom-bar__line-height" style="text-align:right;">
    <%= "Total Expenditure #{number_to_currency(@sum)}"%>
-   <%= link_to "Export to (PDF)", maintenance_actions_path(@maintenance_action, format: 'pdf'),class:"button--quiet" %>
+   <%= link_to "Export to (PDF)", vehicle_maintenance_logs_path(format: 'pdf'),class:"button--quiet" %>
     
   </div>
 

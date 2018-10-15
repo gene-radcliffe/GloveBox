@@ -5,8 +5,10 @@ class VehiclesController < ApplicationController
     
   
   def index
-feature_vehicle_styling
-    @vehicles = current_user.vehicles 
+    @vehicles = current_user.vehicles
+    # redirect_to new_vehicle_path
+  end
+
 
   def show
     @vehicle = Vehicle.find(params[:id])
@@ -33,7 +35,7 @@ feature_vehicle_styling
     
     if @vehicle.save
       
-      redirect_to new_vehicle_path
+      redirect_to vehicles_path
     else
       render 'new'
     end
