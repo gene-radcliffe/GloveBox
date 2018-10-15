@@ -11,7 +11,7 @@
 
 
 <ons-card style="max-width: 100%">
-    <%= image_tag(asset_path("vehicle_default2.jpeg"),  width:"100%", id:"vehicle-img")%>
+    <%= image_tag("https://s3.amazonaws.com/gloveboxassets/vehicle_default2.jpeg", width:"100%",id:"vehicle-img")%>
     <div class="title">
 
       <%= link_to @vehicle.name.capitalize, vehicle_path(@vehicle),  class:"button--quiet", style:"font-weight: bold; font-size: 1.5rem;" %>
