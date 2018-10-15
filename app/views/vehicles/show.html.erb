@@ -7,7 +7,7 @@
 <p class="alert alert-primary"><%= notice %></p>
 <% end %>
 
-<h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif;"><%="#{@vehicle.name.capitalize}"%></h2>
+<h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif; font-weight: bold;"><%="#{@vehicle.name.capitalize}"%></h2>
 
 
 <ons-card style="max-width: 100%">
@@ -55,10 +55,10 @@
   </ons-card>
 
   <div class="actions" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
-      <%= link_to 'Edit Vehicle', edit_vehicle_path, class: "button" %>
-      <%= link_to 'Add Log', new_vehicle_path, class: "button" %>
-      <%= link_to 'View Log', vehicle_maintenance_logs_path(@vehicle.id), class: "button" %><br>
-      <%= link_to "Delete Vehicle", @vehicle, method: :delete, data: { confirm: 'Are you sure?' }, class: "button", style:"margin-top: 15px;" %>
+      <%= link_to 'Edit Vehicle', edit_vehicle_path, class: "button", style:"background-color: white; color:#3A405A; font-weight: bold;" %>
+      <%= link_to 'Add Log', new_vehicle_maintenance_log_path(@vehicle.id), class: "button", style:"background-color: white; color:#3A405A; font-weight: bold;" %>
+      <%= link_to 'View Log', vehicle_maintenance_logs_path(@vehicle.id), class: "button", style:"background-color: white; color:#3A405A; font-weight: bold;" %><br>
+      <%= link_to "Delete Vehicle", @vehicle, method: :delete, data: { confirm: 'Are you sure?' }, class: "button", style:"margin-top: 15px; background-color: white; color:#3A405A; font-weight: bold;" %>
   </div>
 
   <div style="text-align: center;">

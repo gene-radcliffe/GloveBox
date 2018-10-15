@@ -7,7 +7,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: #3A405A;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -17,7 +17,7 @@
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: white;
     display: block;
     transition: 0.3s;
 }
@@ -53,22 +53,22 @@ function closeNav() {
 
 <ons-page>
 
-  <ons-toolbar style="width: 100%;">
-    <div class="toolbar__left" style="width: 33%;">
-      <ons-toolbar-button><%= link_to 'Home', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
+  <ons-toolbar style="width: 100%; background-color: #3A405A;">
+    <div class="toolbar__left" style="width: 33%;" >
+      <ons-toolbar-button><%= link_to 'Home', vehicles_path, class:"button--quiet", style:"color: white;" %></ons-toolbar-button>
     </div>
-    <div class="toolbar__center" style="width: 33%;">
+    <div class="toolbar__center" style="width: 33%; color: white;">
         <%= "GloveBox" %>
     </div>
     <div class="toolbar__right" style="width: 33%;" >
-      <p onclick="openNav()" class="button--quiet">Menu</p>
+      <p onclick="openNav()" class="button--quiet" style="color: white;">Menu</p>
       
 
     </div>
   </ons-toolbar>
   <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <%= link_to('Account', user_path(current_user.id)) %>
+  <%= link_to('Account', user_path(current_user.id, style:"color: white;")) %>
   <%= link_to 'Add a Vehicle', new_vehicle_path%>
   <%= link_to('Sign Out', destroy_user_session_path, method: :delete) %>
   
@@ -78,7 +78,7 @@ function closeNav() {
 <p class="alert alert-primary"><%= notice %></p>
 <% end %>
  
-<h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif;"><%="#{current_user.first_name}'s GloveBox"%></h2>
+<h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif; font-weight: bold;"><%="#{current_user.first_name}'s GloveBox"%></h2>
 
 <%@vehicles.each do |vehicle| %>
 
@@ -110,7 +110,7 @@ function closeNav() {
 
 <div id="form--new" style="margin-top: 50px;"></div>
 <div class="actions" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
-  <%= link_to 'Add a Vehicle', new_vehicle_path, class: "button" %>
+  <%= link_to 'Add a Vehicle', new_vehicle_path, class: "button", style:"background-color: white; color:#3A405A; font-weight: bold;"%>
 </div>
 
 
