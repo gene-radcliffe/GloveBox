@@ -40,6 +40,10 @@ class MaintenanceLogsController < ApplicationController
       whitelisted_params = self.send("#{t.downcase}_params") 
       @mlog.maintenance_actions.build(whitelisted_params.merge(type: t)).save
     end  
+
+    if @mlog.image.attached?
+      MakeReceiptSearchable.set(wait: 2.minutes).perform_later(@mlog)
+    end
     
     if params[:reminder] == "true"
       redirect_to reminders_oilchange_path
