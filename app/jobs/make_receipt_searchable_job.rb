@@ -17,6 +17,7 @@ class MakeReceiptSearchableJob < ApplicationJob
     #save to database 
     converted_receipt= ConvertedReceipt.new
     converted_receipt.name = "maintenance_log_#{maintenance_log.id}"
+    converted_receipt.maintenance_log_id = maintenance_log.id
     converted_receipt.content = string_data
 
     if !converted_receipt.save

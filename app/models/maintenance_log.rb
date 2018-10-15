@@ -4,4 +4,5 @@ class MaintenanceLog < ApplicationRecord
   belongs_to :vehicle, dependent: :destroy
   accepts_nested_attributes_for :maintenance_actions
   has_one_attached :image
+  has_one :converted_receipt
 end
