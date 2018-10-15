@@ -1,22 +1,11 @@
 <ons-page>
-  <ons-toolbar style="width: 100%;">
-  
-    <div class="toolbar__left" style="width: 33%;">
-      <ons-toolbar-button><%= link_to 'Home', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
-    </div>
-    <div class="toolbar__center" style="width: 33%;">
-        <%="#{@vehicle.name.capitalize}" %>
-    </div>
-    <div class="toolbar__right" style="width: 33%;">
-      <ons-toolbar-button><%= link_to 'My Account', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
-    </div>
-   
-  </ons-toolbar>
-  
-<h1 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Maintenance Log History</h1>
+
+  <%= render "shared_header/header_for_ml"%>
+
+<h1 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif; font-weight: bold;">Maintenance Log History</h1>
 
   <%= link_to 'Add Maintenance Log', new_vehicle_maintenance_log_path, class:"button--quiet" %>
-  <% @sum = 0%>
+  <% @sum = 0 %>
   <% @maintenance_logs.each do |maintenance_log| %>
     <% maintenance_log.maintenance_actions.each do |maintenance_action| %>
       
@@ -25,7 +14,7 @@
       <li>Service Date - <%= maintenance_action.service_date %></li>
       <li>Mileage At Time Of Service - <%= maintenance_action.mileage %></li>
       <li>Cost - <%= number_to_currency(maintenance_action.cost) %></li>
-      <%= link_to 'View Details', maintenance_action_path(maintenance_action.id), class:"button", style:"margin-top:20px; margin-bottom:10px;" %>
+      <%= link_to 'View Details', maintenance_action_path(maintenance_action.id), class:"button", style:"margin-top:20px; margin-bottom:10px; background-color: white; color:#3A405A; font-weight: bold;" %>
     </ul>
   
     
@@ -34,11 +23,11 @@
   <%end%>
   <% @sum = @sum + maintenance_log.maintenance_actions.sum("cost")%>
 <%end%> 
-<%= "Total Cost #{number_to_currency(@sum)}"%>
+
 <div class="bottom-bar", style="position:fixed;">
   <div class="bottom-bar__line-height" style="text-align:right;">
    <%= "Total Expenditure #{number_to_currency(@sum)}"%>
-   <%= link_to "Export to (PDF)", maintenance_actions_path(@maintenance_action, format: 'pdf'),class:"button--quiet" %>
+   <%= link_to "Export to (PDF)", vehicle_maintenance_logs_path(format: 'pdf'),class:"button--quiet" %>
     
   </div>
 

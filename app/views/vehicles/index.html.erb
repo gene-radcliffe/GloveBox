@@ -1,45 +1,104 @@
+<style>
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #3A405A;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 30px;
+    right: 5px;
+    font-size: 36px;
+    margin-left: 50px;a
+    
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
 <ons-page>
- <ons-toolbar>
-    <div class="toolbar__left" style="width: 33%;">
-      <ons-toolbar-button><%= link_to 'Home', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
+
+  <ons-toolbar style="width: 100%; background-color: #3A405A;">
+    <div class="toolbar__left" style="width: 33%;" >
+      <ons-toolbar-button><%= link_to 'Home', vehicles_path, class:"button--quiet", style:"color: white;" %></ons-toolbar-button>
     </div>
-    <div class="toolbar__center" >
-        <%= "#{current_user.first_name}'s GloveBox" %>
+    <div class="toolbar__center" style="width: 33%; color: white;">
+        <%= "GloveBox" %>
     </div>
-    <div class="toolbar__right" style="width: 33%;">
-      <ons-toolbar-button><%= link_to 'My Account', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
+    <div class="toolbar__right" style="width: 33%;" >
+      <p onclick="openNav()" class="button--quiet" style="color: white;">Menu</p>
+      
+
     </div>
   </ons-toolbar>
+  <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <%= link_to('Account', user_path(current_user.id, style:"color: white;")) %>
+  <%= link_to 'Add a Vehicle', new_vehicle_path%>
+  <%= link_to('Sign Out', destroy_user_session_path, method: :delete) %>
+  
+</div>
 
 <% if notice %>
 <p class="alert alert-primary"><%= notice %></p>
 <% end %>
  
-<h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif;">mY GloveBox</h2>
+<h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif; font-weight: bold;"><%="#{current_user.first_name}'s GloveBox"%></h2>
 
 <%@vehicles.each do |vehicle| %>
-    <ons-card style="max-width: 100%">
+
+  
+    <ons-card class=" card card--material" style="max-width: 100% ">
+    <%= link_to vehicle_path(vehicle) do %>
     <%= image_tag(asset_path("vehicle_default2.jpeg"),  width:"100%", id:"vehicle-img")%>
+    <%end%>
     <div class="title">
-      <%= link_to vehicle.name, vehicle_path(vehicle), class:"button--quiet" %>
+      <%= link_to vehicle.name.capitalize, vehicle_path(vehicle),  class:"button--quiet" %>
     </div>
     <div class="content">
       <ons-list>
+        
         <ons-row>
-          <ons-col width="25%" style="font-family: 'Raleway', sans-serif;" ><%= vehicle.year %></ons-col>
+          <ons-col width="25%" style="font-family: 'Raleway', sans-serif;"><%= vehicle.year %></ons-col>
           <ons-col width="25%" style="font-family: 'Raleway', sans-serif;"><%= vehicle.make %></ons-col>
           <ons-col width="25%" style="font-family: 'Raleway', sans-serif;"><%= vehicle.model %></ons-col>
-          <ons-col width="25%" style="font-family: 'Raleway', sans-serif;"><%= vehicle.color %></ons-col>
-        </ons-row>
-      </ons-list>
-      <br>     
-      <ons-list>  
-        <ons-row>
-          <ons-col width="30%" style="font-family: 'Raleway', sans-serif;"><%= vehicle.license_plate %></ons-col> 
-          <ons-col width="45%" style="font-family: 'Raleway', sans-serif;"><%= vehicle.vin %></ons-col>
-          <ons-col width="25%"><i class="far fa-question-circle" width="25%" 
-            onclick="ons.notification.toast('The VIN (vehicle identification number) can often be found on the lower-left corner of the dashboard, in front of the steering wheel. You can read the number by looking through the windshield.', { timeout: 3000})"></i>
-          </ons-col>
+          <ons-col width="25%" style="font-family: 'Raleway', sans-serif;"><%= vehicle.license_plate %></ons-col>
+
         </ons-row>
       </ons-list>
     </div>
@@ -47,13 +106,12 @@
 
 <%end%>
 
+
+
+<div id="form--new" style="margin-top: 50px;"></div>
 <div class="actions" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
-      <%= link_to 'Add a Vehicle', new_vehicle_path, class: "button" %><br><br><br>
-      <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "button") %>
+  <%= link_to 'Add a Vehicle', new_vehicle_path, class: "button", style:"background-color: white; color:#3A405A; font-weight: bold;"%>
 </div>
 
-<div id="form--new"></div>
-
-<div id="vehicle-created"></div>
 
 </ons-page>

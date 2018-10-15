@@ -5,9 +5,10 @@ class VehiclesController < ApplicationController
     
   
   def index
-    @vehicles = Vehicle.all 
+    @vehicles = current_user.vehicles
     # redirect_to new_vehicle_path
   end
+
 
   def show
     @vehicle = Vehicle.find(params[:id])
@@ -15,7 +16,6 @@ class VehiclesController < ApplicationController
  
 
   def new
-    @vehicles = current_user.vehicles
     @vehicle = Vehicle.new
   end
 
@@ -34,7 +34,7 @@ class VehiclesController < ApplicationController
     
     if @vehicle.save
       
-      redirect_to new_vehicle_path
+      redirect_to vehicles_path
     else
       render 'new'
     end

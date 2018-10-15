@@ -13,13 +13,15 @@ Rails.application.routes.draw do
     root to: "devise/sessions#new"
   end
   
-  
+  resources :maintenance_actions
   
   resources :users, only: :show
-  resources :vehicles
-  resources :maintenance_actions do
+  resources :vehicles do
+  resources :maintenance_actions 
    
-  end
+  
+
+end
 
   get "maintenance_actions/reminder", to: "maintenance_actions#reminder"
   resources :vehicles do

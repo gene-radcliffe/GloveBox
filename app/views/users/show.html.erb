@@ -11,21 +11,9 @@
 
 </style>
 <ons-page>
-    <div class="toolbar">
-      <div class="toolbar__left">
-        <span class="toolbar-button toolbar-button--outline">
-          <i class="ion-navicon" style="font-size:32px; vertical-align:-6px;"></i>
-        </span>
-      </div>
+ 
+<%= render "shared_header/header"%>
 
-    <div class="toolbar__center">
-        User's GloveBox
-    </div>
-
-    <div class="toolbar__right">
-      <span class="toolbar-button toolbar-button--outline">Button</span>
-  </div>
-</div>
 <div class="card">
     <section>
         <%if !current_user.avatar.attached?%>
