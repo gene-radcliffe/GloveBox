@@ -4,8 +4,7 @@ class GeneratePdf < Prawn::Document
 
   def initialize (maintenance_action)
     super(top_margin: 20)
-    @maintenance_actions = maintenance_action
-    #@maintenance_actions = MaintenanceAction.order("service_date")
+    @maintenance_actions = MaintenanceAction.order("service_date")
     line_items
     
     end
