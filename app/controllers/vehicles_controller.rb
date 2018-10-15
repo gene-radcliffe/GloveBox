@@ -16,7 +16,6 @@ class VehiclesController < ApplicationController
  
 
   def new
-    @vehicles = current_user.vehicles
     @vehicle = Vehicle.new
   end
 
