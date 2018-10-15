@@ -1,0 +1,253 @@
+<%= form_for(@maintenance_action, local: true) do |f| %>
+
+  <% case @maintenance_action.type%>
+    <% when "OilChange"%>
+      <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Oil Change</h2>
+          <div>
+              <%= f.label :service_date , style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
+              <%= f.date_field :service_date , style: "margin-left: 10px; margin-bottom: 10px; margin-top: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :mileage, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :mileage, class: "textarea",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :oil_type, style: "margin-left: 10px;"   %>
+              <%= f.select :oil_type, options_for_select([ "Regular", "Synthetic" ], "Regular"), style: "padding-left: 25px;" %>
+          </div><br>
+            <div>
+              <%= f.label :cost, style: "margin-left: 10px; margin-top: 10px;"   %><br>
+              <%= f.text_field :cost, class: "textarea", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :oilchange_notes, style: "margin-left: 10px;"  %><br>
+              <%= f.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+
+          </div>
+    
+                  
+    <% when "Brake"%>
+       <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Brakes</h2>
+          <div>
+              <%= f.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
+              <%= f.date_field :service_date, style: "margin-left: 10px; margin-bottom: 10px; margin-top: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :mileage, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :mileage, class: "textarea",  onblur:"validate(this)",style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :brake_location, style: "margin-left: 10px;"  %>
+              <%= f.select :brake_location, options_for_select([ "Front", "Rear", "All" ], "All"), class:"select-input select-input--material" %>
+          </div><br>
+            <div>
+              <%= f.label :cost, style: "margin-left: 10px;"   %><br>
+              <%= f.text_field :cost, class: "textarea", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :brake_notes, style: "margin-left: 10px;"  %><br>
+              <%= f.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+
+          </div>
+      
+  </div>
+    <% when "Rotor"%>
+      <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Rotors</h2>
+          <div>
+              <%= f.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
+              <%= f.date_field :service_date, style: "margin-left: 10px; margin-bottom: 10px; margin-top: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :mileage, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :mileage, class: "textarea",onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :rotor_location, style: "margin-left: 10px;"  %>
+              <%= f.select :rotor_location, options_for_select([ "Front", "Rear", "All" ], "All") %>
+          </div><br>
+            <div>
+              <%= f.label :cost, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :cost, class: "textarea",  onblur:"validate(this)",style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :rotor_notes, style: "margin-left: 10px;"  %><br>
+              <%= f.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+
+          </div>
+      
+  </div>
+<% when "TireReplacement"%>
+      <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Tire Replacement</h2>
+          <div>
+              <%= f.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"   %><br>
+              <%= f.date_field :service_date, style: "margin-left: 10px; margin-bottom: 10px; margin-top: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :mileage, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :mileage, class: "textarea", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;"  %>
+          </div>
+          <div>
+              <%= f.label :tire_location, style: "margin-left: 10px;"   %>
+              <%= f.select :tire_location, options_for_select([ "Front-Left", "Front-Right", "Back-Left", "Back-Right","Front-2", "Back-2", "All" ], "All") %>
+          </div>
+            <div>
+              <%= f.label :cost, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :cost, class: "textarea", onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :tire_notes, style: "margin-left: 10px;"  %><br>
+              <%= f.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+
+          </div>
+      
+  </div>
+<% when "TireRotation"%>
+      <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Tire Rotations</h2>
+          <div>
+              <%= f.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
+              <%= f.date_field :service_date, style: "margin-left: 10px; margin-bottom: 10px; margin-top: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :mileage, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :mileage, class: "textarea", onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+            <div>
+              <%= f.label :cost, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :cost, class: "textarea", onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :tire_rotation_notes, style: "margin-left: 10px;"  %><br>
+              <%= f.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+
+          </div>
+      
+  </div>
+<% when "Alignment"%>
+      <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Alignments</h2>
+          <div>
+              <%= f.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
+              <%= f.date_field :service_date, style: "margin-left: 10px; margin-bottom: 10px; margin-top: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :mileage, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :mileage, class: "textarea", onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+            <div>
+              <%= f.label :cost, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :cost, class: "textarea", onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :alignment_notes, style: "margin-left: 10px;"  %><br>
+              <%= f.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+
+          </div>
+      
+  </div>
+<% when "Antifreeze"%>
+      <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Anti Freeze</h2>
+          <div>
+              <%= f.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
+              <%= f.date_field :service_date, style: "margin-left: 10px; margin-bottom: 10px; margin-top: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :mileage, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :mileage, class: "textarea",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+            <div>
+              <%= f.label :cost, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :cost, class: "textarea",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :antifreeze_notes, style: "margin-left: 10px;"  %><br>
+              <%= f.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+
+          </div>
+      
+  </div>
+<% when "BrakeFluid"%>
+      <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Brake Fluids</h2>
+          <div>
+              <%= f.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
+              <%= f.date_field :service_date, style: "margin-left: 10px; margin-bottom: 10px; margin-top: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :mileage, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :mileage, class: "textarea", onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+            <div>
+              <%= f.label :cost, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :cost, class: "textarea",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :brake_fluid_notes, style: "margin-left: 10px;"  %><br>
+              <%= f.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+          </div>
+      
+  </div>
+<% when "PowerSteeringFluid"%>
+      <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Power Steering Fluid</h2>
+          <div>
+              <%= f.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
+              <%= f.date_field :service_date, style: "margin-left: 10px; margin-bottom: 10px; margin-top: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :mileage, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :mileage, class: "textarea", onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+            <div>
+              <%= f.label :cost, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :cost, class: "textarea",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :powersteering_fluid_notes, style: "margin-left: 10px;"  %><br>
+              <%= f.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+          </div>
+      
+  </div>
+<% when "TransmissionFluid"%>
+      <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Transmission Fluid</h2>
+          <div>
+              <%= f.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
+              <%= f.date_field :service_date, style: "margin-left: 10px; margin-bottom: 10px; margin-top: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :mileage, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :mileage, class: "textarea",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+            <div>
+              <%= f.label :cost, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :cost, class: "textarea", onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :transmission_fluid_notes, style: "margin-left: 10px;"  %><br>
+              <%= f.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+          </div>
+      
+  </div>
+<% when "Miscellaneous"%>
+      <h2 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif;">Miscellaneous</h2>
+          <div>
+              <%= f.label :service_date, style: "margin-left: 10px; margin-bottom: 10px;"  %><br>
+              <%= f.date_field :service_date, style: "margin-left: 10px; margin-bottom: 10px; margin-top: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :mileage, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :mileage, class: "textarea",  onblur:"validate(this)", style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+            <div>
+              <%= f.label :cost, style: "margin-left: 10px;"  %><br>
+              <%= f.text_field :cost, class: "textarea", onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
+          </div>
+          <div>
+              <%= f.label :miscellaneous_notes, style: "margin-left: 10px;"  %><br>
+              <%= f.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
+          </div>
+    
+  </div>      
+      
+
+  <%end%>
+  <div class="actions" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+      <%= f.submit "Submit" => new_maintenance_action_path, class: "button" %>
+    </div>
+<%end%>

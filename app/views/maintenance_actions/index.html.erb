@@ -1,0 +1,308 @@
+<h2>Maintenance History</h2>
+
+<% @maintenance_logs.each do |maintenance_log| %>
+   <% maintenance_log.maintenance_actions.each do |maintenance_action| %>
+  
+
+  <%case maintenance_action.type%>
+  <% when "OilChange"%>
+  <div>
+  <ul>
+      <li> Maintenance Type - <%= maintenance_action.type %></li>
+      <li> Service Date - <%= maintenance_action.service_date %></td></li>
+      <li> Mileage At Time Of Service - <%= maintenance_action.mileage %></li>
+      <li> Cost - <%= maintenance_action.cost %></li>
+      <li> Oil Type - <%= maintenance_action.oil_type %></li>
+      <li> Notes - <%= maintenance_action.notes %></li>
+  </ul>
+  </thead>
+  </div>
+    <div>
+    <tbody>
+      <tr>
+      <td><%= maintenance_action.type %></td>
+        <td><%= maintenance_action.service_date %></td>
+        <td><%= maintenance_action.mileage %></td>
+        <td><%= maintenance_action.cost %></td>
+        <td><%= maintenance_action.oil_type %></td>
+        <td><%= maintenance_action.notes %></td>
+      </tr>
+    <tbody>
+    </div>
+    
+    <% when "Brake"%>
+    <div>
+    <thead>
+    <tr>
+      <th> Maintenance Type</th>
+      <th> Service Date</th>
+      <th> Mileage At Time Of Service</th>
+      <th> Cost</th>
+      <th> Brake Location</th>
+      <th> Notes</th>
+    </tr>
+  </thead>
+    </div>
+
+    <div>
+    <tbody>
+      <tr>
+      <td><%= maintenance_action.type %></td>
+        <td><%= maintenance_action.service_date %></td>
+        <td><%= maintenance_action.mileage %></td>
+        <td><%= maintenance_action.cost %></td>
+        <td><%= maintenance_action.brake_location %></td>
+        <td><%= maintenance_action.notes %></td>
+      </tr>
+    <tbody>
+    </div>
+
+    <div>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.type %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.service_date %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.mileage %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.cost %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.brake_location %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.notes %>
+      </p>
+    </div>
+    <% when "Rotor"%>
+    <div>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.type %>
+      </p>  
+      <p>
+        <strong></strong>
+        <%= maintenance_action.service_date %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.mileage %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.cost %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.rotor_location %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.notes %>
+      </p>
+    </div>
+    <% when "TireRotation"%>
+    <div>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.type %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.service_date %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.mileage %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.cost %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.tire_location %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.notes %>
+      </p>
+    </div>
+    <% when "TireReplacement"%>
+    <div>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.type %>
+      </p>  
+      <p>
+        <strong></strong>
+        <%= maintenance_action.service_date %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.mileage %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.cost %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.tire_location %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.notes %>
+      </p>
+    </div>
+    <% when "Alignment"%>
+    <div>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.type %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.service_date %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.mileage %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.cost %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.notes %>
+      </p>
+    </div>
+    <% when "PowerSteeringFluid"%>
+    <div>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.type %>
+      </p>  
+      <p>
+        <strong></strong>
+        <%= maintenance_action.service_date %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.mileage %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.cost %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.notes %>
+      </p>
+    </div>
+    <% when "Antifreeze"%>
+    <div>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.type %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.service_date %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.mileage %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.cost %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.notes %>
+      </p>
+    </div>
+    <% when "TransmissionFluid"%>
+    <div>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.type %>
+      </p>  
+      <p>
+        <strong></strong>
+        <%= maintenance_action.service_date %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.mileage %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.cost %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.notes %>
+      </p>
+    </div>
+    <% when "BrakeFluid"%>
+    <div>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.type %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.service_date %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.mileage %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.cost %>
+      </p>
+      <p>
+        <strong></strong>
+        <%= maintenance_action.notes %>
+      </p>
+    </div>
+    <% when "Miscellaneous"%>
+    <div>
+    <p>
+      <strong></strong>
+      <%= maintenance_action.type %>
+    </p>
+    <p>
+      <strong></strong>
+      <%= maintenance_action.service_date %>
+    </p>
+    <p>
+      <strong></strong>
+      <%= maintenance_action.mileage %>
+    </p>
+    <p>
+      <strong></strong>
+      <%= maintenance_action.cost %>
+    </p>
+    <p>
+      <strong></strong>
+      <%= maintenance_action.notes %>
+    </p>
+  </div>
+
+    <%end%>
+    <%end%>
+  <%end%>

@@ -1,15 +1,20 @@
 class VehiclesController < ApplicationController
   
   
+  require "prawn"
+    
+  
   def index
-    @vehicles = current_user.vehicles 
+    @vehicles = current_user.vehicles
     # redirect_to new_vehicle_path
   end
+
 
   def show
     @vehicle = Vehicle.find(params[:id])
   end
  
+
   def new
     @vehicles = current_user.vehicles
     @vehicle = Vehicle.new
@@ -30,7 +35,7 @@ class VehiclesController < ApplicationController
     
     if @vehicle.save
       
-      redirect_to new_vehicle_path
+      redirect_to vehicles_path
     else
       render 'new'
     end
@@ -59,7 +64,8 @@ class VehiclesController < ApplicationController
 
     def vehicle_params
        params.require(:vehicle).permit(:name, :year, :make, :model, :insurance, :vin, :license_plate,
-                                       :tire_psi, :registration, :title, :inspection, :color, :user_id)
+                                       :tire_psi, :registration, :title, :inspection, :color, :user_id, 
+                                       :authenticity_token)
     end
 
     # def set_vehicle
