@@ -1,4 +1,8 @@
 class MaintenanceActionsController < ApplicationController
+
+before_action :set maintenance_log, only [:index]
+
+
   def show
     @maintenance_action = MaintenanceAction.find(params[:id])
     @maintenance_log = MaintenanceLog.find_by_id(@maintenance_action.maintenance_log_id)
