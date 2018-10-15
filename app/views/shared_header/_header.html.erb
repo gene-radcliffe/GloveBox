@@ -51,7 +51,6 @@ function closeNav() {
 </script>
 
 <ons-page>
-
   <ons-toolbar style="width: 100%;">
     <div class="toolbar__left" style="width: 33%;">
       <ons-toolbar-button><%= link_to 'Home', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
@@ -62,7 +61,6 @@ function closeNav() {
     <div class="toolbar__right" style="width: 33%;" >
       <p onclick="openNav()" class="button--quiet">Menu</p>
       
-
     </div>
   </ons-toolbar>
   <div id="mySidenav" class="sidenav">
@@ -72,45 +70,3 @@ function closeNav() {
   <%= link_to('Sign Out', destroy_user_session_path, method: :delete) %>
   
 </div>
-
-<% if notice %>
-<p class="alert alert-primary"><%= notice %></p>
-<% end %>
- 
-<h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif;"><%="#{current_user.first_name}'s GloveBox"%></h2>
-
-<%@vehicles.each do |vehicle| %>
-
-  
-    <ons-card class=" card card--material" style="max-width: 100% ">
-    <%= link_to vehicle_path(vehicle) do %>
-    <%= image_tag(asset_path("vehicle_default2.jpeg"),  width:"100%", id:"vehicle-img")%>
-    <%end%>
-    <div class="title">
-      <%= link_to vehicle.name.capitalize, vehicle_path(vehicle),  class:"button--quiet" %>
-    </div>
-    <div class="content">
-      <ons-list>
-        
-        <ons-row>
-          <ons-col width="25%"><%= vehicle.year %></ons-col>
-          <ons-col width="25%"><%= vehicle.make %></ons-col>
-          <ons-col width="25%"><%= vehicle.model %></ons-col>
-          <ons-col width="25%"><%= vehicle.license_plate %></ons-col>
-
-        </ons-row>
-      </ons-list>
-    </div>
-  </ons-card>
-
-<%end%>
-
-
-
-<div id="form--new" style="margin-top: 50px;"></div>
-<div class="actions" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
-  <%= link_to 'Add a Vehicle', new_vehicle_path, class: "button" %>
-</div>
-
-
-</ons-page>

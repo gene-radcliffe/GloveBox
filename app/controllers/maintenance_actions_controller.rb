@@ -1,6 +1,6 @@
 class MaintenanceActionsController < ApplicationController
 
-before_action :set maintenance_log, only [:index]
+before_action :set Vehicle, only [:index]
 
 
   def show
@@ -24,7 +24,7 @@ before_action :set maintenance_log, only [:index]
        end
      end
   end
-
+ 
   def new 
     @maintenance_action = Maintenance_action.new 
   end

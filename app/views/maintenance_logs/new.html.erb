@@ -1,17 +1,5 @@
 <ons-page>
-     <ons-toolbar style="width: 100%;">
-  
-    <div class="toolbar__left" style="width: 33%;">
-      <ons-toolbar-button><%= link_to 'Home', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
-    </div>
-    <div class="toolbar__center" style="width: 33%;">
-        <%="#{@vehicle.name.capitalize}" %>
-    </div>
-    <div class="toolbar__right" style="width: 33%;">
-      <ons-toolbar-button ><%= link_to 'My Account', vehicles_path, class:"button--quiet" %></ons-toolbar-button>
-    </div>
-   
-  </ons-toolbar>
+   <%= render "shared_header/header_for_ml"%>
 <div class="select-form" id="selection_form" >
     <h1 style= "text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif; ">Select Maintenance Done</h1>
 
@@ -35,6 +23,7 @@
 <div class="action-form" id="maintenance_actions">
 <%=form_for  @mlog, url: vehicle_maintenance_logs_path, :html=>{:class=>"ml_form"} do |ml_form| %>
     <%=hidden_field_tag :selected_actions, "hidden"%>
+    <%=hidden_field_tag :reminder, "false"%>
     <% @mlog.maintenance_actions.each do |activity| %>
         <%case activity.type%>
             <% when "OilChange"%>
@@ -64,7 +53,15 @@
                             <%= activity_field.text_area :notes, class:"textarea", style: "margin-bottom: 5px; margin-left: 10px; margin-top: 10px;"%>
 
                         </div>
+                        <div>
+                            <label class="checkbox">
+                            <%=check_box_tag :oc_reminder, class:"checkbox__input", style:"margin-left: 20%;"%>
+                            <div class="checkbox__checkmark"></div>
+                                Set a reminder?
+                        </label>
+                        </div>
                     <%end%>
+                      
                 </div>
             <% when "Brake"%>
                 <div class="action_form-item" id="Brake">
@@ -322,11 +319,18 @@
             <%end%> <!--end case -->
       <%end%>
         <div class = "action_form-item" id="Submit">
-            <h2 style = "text-align: center;">Please Attach your receipt</h2>
-            <i class="fa fa-camera button" id="camera_button" style="margin-left: 15px;"></i>
-            <%= ml_form.file_field :image,multiple: false,
+            <div style="display:block;">
+            <h2 style = "text-align: center;">Include an image of your Invoice</h2>
+            </div>
+            <div  style="display:block;text-align:center;">
+                <i id="img_uploaded" class="far fa-clipboard" style=" font-size: 5rem; text-align:center;"><p style="font-size:0.8rem;text-align:center;">Receipt Missing</p></i>
+            </div>
+            <div style="display:block;">
+                <i class="fa fa-camera button" id="camera_button" style="margin:15px;"></i>
+            </div>
+            <%= ml_form.file_field :image, multiple: false,
                   direct_upload: true, accept:"image/*", capture:"camera", style:"margin:10px; font-size: 1.2rem;"%><br>
-            <%= ml_form.submit class:"action button", style:"margin:15px;" %>
+            <%= ml_form.submit class:"action button" %>
         </div>
 <% end %>
     <div class = "control_buttons"> 
@@ -357,6 +361,9 @@
 <style>
 .control_buttons{
     overflow: auto;
+}
+#oc_reminder{
+    display:none;
 }
 #prev_button, #next_button, #start_button{
     float:left;
@@ -401,11 +408,38 @@ function program(){
     var ret_selected_inputs =[]
     var current_tab = 0;
     var s_actions = [];
+   
     
+    var oc_reminder_checkbox = document.getElementById("oc_reminder")
+    oc_reminder_checkbox.addEventListener('click', function(e){
+        var reminder = document.getElementById("reminder")
+        console.log(e.target.checked)
+           if (e.target.checked){
+              reminder.value = "true"
+           }else{
+              reminder.value = "false"
+           }
+
+    })
     var camera_button = document.getElementById("camera_button")
     camera_button.addEventListener('click',function(e){
         var maintenance_log_image_upload = document.getElementById("maintenance_log_image")
         maintenance_log_image_upload.click();
+    })
+
+    var maintenance_log_image_input = document.getElementById("maintenance_log_image")
+
+    maintenance_log_image_input.addEventListener('change', function(e){
+    var img_uploaded = document.getElementById("img_uploaded")
+    if(e.target.files.length>0){
+        console.log("changing")
+            img_uploaded.classList.remove("fa")
+            img_uploaded.classList.remove("fa-clipboard")
+            img_uploaded.children[0].innerText="Receipt is now Included"
+            img_uploaded.classList.add("fas")
+            img_uploaded.classList.add("fa-clipboard-check")
+
+        }
     })
     var gobutton = document.getElementById('go-button')
         gobutton.addEventListener('click',function(e){
