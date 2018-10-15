@@ -26,11 +26,6 @@ class MaintenanceLogsController < ApplicationController
     MaintenanceAction::TYPES.map { |t| @mlog.maintenance_actions.build(type: t)}
     
   end  
-
-  def history
-    @vehicles = current_user.vehicles
-  end
-
   def create 
    
     @vehicle = Vehicle.find(params['vehicle_id'])
@@ -50,6 +45,11 @@ class MaintenanceLogsController < ApplicationController
    
   
   end
+  def history
+    @vehicles = current_user.vehicles
+  end
+
+  
 
   private 
   
