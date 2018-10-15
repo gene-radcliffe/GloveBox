@@ -18,34 +18,34 @@
     </div>
     <div class="content">
       <ons-list>
-        <ons-row style=" margin-bottom: 20px;">
-          <ons-col width="100%" style="font-size:1.2rem;">Year - <%= @vehicle.year %></ons-col>
+        <ons-row style=" margin-bottom: 15px;">
+          <ons-col width="100%" style="font-size:1.2rem; font-family: 'Raleway', sans-serif;">Year:<%= @vehicle.year %></ons-col>
         </ons-row>
       </ons-list>
       <ons-list>
         <ons-row style=" margin-bottom: 15px;">
-          <ons-col width="100%" style="font-size:1.2rem;">Year - <%= @vehicle.make.capitalize %></ons-col>
+          <ons-col width="100%" style="font-size:1.2rem; font-family: 'Raleway', sans-serif;">Make: <%= @vehicle.make.capitalize %></ons-col>
         </ons-row>
       </ons-list>
       <ons-list>
         <ons-row style=" margin-bottom: 15px;">
-          <ons-col width="100%" style="font-size:1.2rem;"> Model - <%= @vehicle.model.capitalize %></ons-col>
+          <ons-col width="100%" style="font-size:1.2rem; font-family: 'Raleway', sans-serif;"> Model: <%= @vehicle.model.capitalize %></ons-col>
         </ons-row>
       </ons-list>
       <ons-list>
         <ons-row style=" margin-bottom: 15px;">
-          <ons-col width="100%" style="font-size:1.2rem;"> Color - <%= @vehicle.color.capitalize %></ons-col>
+          <ons-col width="100%" style="font-size:1.2rem; font-family: 'Raleway', sans-serif;"> Color: <%= @vehicle.color.capitalize %></ons-col>
         </ons-row>
       </ons-list>
       <ons-list>
         <ons-row style=" margin-bottom: 15px;">
-          <ons-col width="100%" style="font-size:1.2rem;"> License Plate - <%= @vehicle.license_plate %></ons-col>
+          <ons-col width="100%" style="font-size:1.2rem; font-family: 'Raleway', sans-serif;"> License Plate: <%= @vehicle.license_plate %></ons-col>
         </ons-row>
       </ons-list>
       <ons-list>
         <ons-row style=" margin-bottom: 15px;">
-          <ons-col width="100%" style="font-size:1.2rem;"> VIN# <i class="far fa-question-circle" style= font-size:0.8rem;
-            onclick="ons.notification.toast('The VIN (vehicle identification number) can often be found on the lower-left corner of the dashboard, in front of the steering wheel. You can read the number by looking through the windshield.', { timeout: 3000})"></i> - <%= @vehicle.vin %></ons-col>
+          <ons-col width="100%" style="font-size:1.2rem; font-family: 'Raleway', sans-serif;"> VIN#: <i class="far fa-question-circle" style= font-size:0.8rem;
+            onclick="ons.notification.toast('The VIN (vehicle identification number) can often be found on the lower-left corner of the dashboard, in front of the steering wheel. You can read the number by looking through the windshield.', { timeout: 3000})"></i><%= @vehicle.vin %></ons-col>
 
         </ons-row>
       </ons-list>
