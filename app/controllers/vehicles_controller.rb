@@ -5,8 +5,8 @@ class VehiclesController < ApplicationController
     
   
   def index
-feature_vehicle_styling
     @vehicles = current_user.vehicles 
+  end
 
   def show
     @vehicle = Vehicle.find(params[:id])

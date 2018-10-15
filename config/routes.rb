@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
   
   
-  
+  resources :maps, only: :index
   resources :users, only: :show
   resources :vehicles
   resources :maintenance_actions do
