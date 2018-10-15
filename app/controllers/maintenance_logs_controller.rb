@@ -3,21 +3,22 @@ class MaintenanceLogsController < ApplicationController
   def index
     @vehicle = current_user.vehicles.find(params['vehicle_id'])
     @maintenance_logs = @vehicle.maintenance_logs.all
-    
-  end  
-
-  def show
-    @maintenance_logs.maintenance_actions = MaintenanceActions.find(params[:id])
+    @maintenance_action=MaintenanceAction.joins(:maintenance_log).where("vehicle_id = #{params[:vehicle_id]}")
     respond_to do |format|
       format.html
       format.pdf do
         pdf = GeneratePdf.new(@maintenance_action)
         send_data pdf.render, 
-                  filename: "vehicle_#{@vehicle.name}",
+                  filename: "Export",
                   type: 'application/pdf',
                   disposition: 'inline'
-       end
-     end
+       
+      end
+    end
+    
+  end  
+
+  def show
   end
 
   def new
@@ -32,7 +33,6 @@ class MaintenanceLogsController < ApplicationController
   end
 
   def create 
-
     @vehicle = Vehicle.find(params['vehicle_id'])
     @mlog = @vehicle.maintenance_logs.create(:image => params[:maintenance_log][:image])
     
@@ -41,18 +41,12 @@ class MaintenanceLogsController < ApplicationController
       whitelisted_params = self.send("#{t.downcase}_params") 
       @mlog.maintenance_actions.build(whitelisted_params.merge(type: t)).save
     end  
-    
-    if params[:reminder] == "true"
-      redirect_to reminders_oilchange_path
-    else
-      redirect_to vehicles_path
-    end
-   
-  
-  end
+    redirect_to vehicles_path
+
+  end  
+
 
   private 
-  
   def maintenance_log_params
     params.require(:maintenance_log)
   end
@@ -101,43 +95,5 @@ class MaintenanceLogsController < ApplicationController
   def miscellaneous_params 
     maintenance_log_params[:miscellaneous].permit(:mileage, :service_date, :cost, :notes)
   end 
-  #
-  # def checkIfRecentOilChange(oil_type, date)
 
-  #   case oil_type
-  #   when "Regular"
-  #     if regularOil(date)
-  #       return true
-  #     else 
-  #       return false
-  #     end
-  #   when "Synthetic"
-  #     if syntheticOil(date)
-  #       return true
-  #     else 
-  #       return false
-  #     end
-  #  end
-  # end
-  # def regularOil(sDate)
-
-  #   date = Date.today
-  #     if sDate > date.months_ago(3) && sDate < date  #if within 3 months ago
-  #       true
-  #     else
-  #       false
-  #     end
-  #   end
-    
-  #   def syntheticOil(sDate)
-    
-  #   date = Date.today
-  #     if sDate > date.months_ago(5) && sDate < date #if within 3 months ago
-  #       true
-  #     else
-  #       false
-  #     end
-  #   end
-  # end
-  #
 end
