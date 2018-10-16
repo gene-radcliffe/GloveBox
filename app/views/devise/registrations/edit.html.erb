@@ -8,7 +8,15 @@
   <%= devise_error_messages! %>
 
   <ons-list modifier="inset">
-    <ons-list-header>Email and Password</ons-list-header>
+    
+    <ons-list-header> Name, Email, and Password</ons-list-header>
+      <ons-list-item>
+      <div>
+        <span class="list-item__title">Name: </span><br>
+        <span class="list-item__subtitle"><%= f.text_field :first_name, autofocus: true, autocomplete: "name" %></span>
+      </div>
+      </ons-list-item>
+
       <ons-list-item>
       <div>
         <span class="list-item__title">Email: </span><br>
