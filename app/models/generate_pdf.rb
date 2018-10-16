@@ -4,7 +4,7 @@ class GeneratePdf < Prawn::Document
 
   def initialize (maintenance_action)
     super(top_margin: 20)
-    @maintenance_actions = MaintenanceAction.order("service_date")
+    @maintenance_actions = maintenance_action.order("service_date")
     line_items
     
     end
@@ -27,7 +27,7 @@ class GeneratePdf < Prawn::Document
     [["Maintnenace Type", "Service Date", "Mileage", "Cost" ]] +
       @maintenance_actions.map do |maintenance_action|
       [maintenance_action.type, maintenance_action.service_date, maintenance_action.mileage, maintenance_action.cost]
-     
+      
     end
   end
   
