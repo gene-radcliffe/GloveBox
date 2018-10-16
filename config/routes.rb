@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   
   resources :maintenance_actions
   
-  resources :users, only: :show
+  resources :users
   resources :vehicles do
   resources :maintenance_actions 
   end
