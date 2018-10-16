@@ -1,5 +1,5 @@
 class MaintenanceActionsController < ApplicationController
-
+  before_action :authenticate_user!
 
   def show
     @maintenance_action = MaintenanceAction.find(params[:id])

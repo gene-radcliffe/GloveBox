@@ -1,4 +1,5 @@
 class MaintenanceLogsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @vehicle = current_user.vehicles.find(params['vehicle_id'])

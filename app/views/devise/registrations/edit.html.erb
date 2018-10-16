@@ -2,7 +2,7 @@
 
 <%= render "shared_header/header"%>
 
-<h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif;">Update My Account</h2>
+<h2 style="text-align: center; margin-top: 12px; font-family: 'Raleway', sans-serif;">Update My Account</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -25,7 +25,7 @@
         <span class="list-item__title">New Password: </span> <br>
         <span class="list-item__subtitle"><%= f.password_field :password, autocomplete: "new-password", placeholder: "********" %></span><br>
          
-      <span ><i style="font-size: 8pt"> (leave blank if you don't want to change) </i></span>
+      <span ><i style="font-size: 10pt"> (leave blank if you don't want to change) </i></span>
       </div>
       </ons-list-item>
 
@@ -33,7 +33,7 @@
       <div>
         <span class="list-item__title">Password Confirmation: </span><br>
         <span class="list-item__subtitle"><%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "********" %></span><br>
-        <span><em style="font-size: 8pt">(please confirm your password) </em></span>
+        <span><em style="font-size: 10pt">(please confirm your password) </em></span>
       </div>
       </ons-list-item>
 
@@ -41,7 +41,7 @@
       <div>
         <span class="list-item__title">Current Password: </span><br>
         <span class="list-item__subtitle"><%= f.password_field :current_password, autocomplete: "current-password", placeholder: "********" %><br>
-        <span><i style="font-size: 8pt">(enter <strong>current</strong> password to confirm your changes)</i></span>
+        <span><i style="font-size: 10pt">(enter <strong>current</strong> password to confirm your changes)</i></span>
       </div>  
       </ons-list-item>
   </ons-list>
@@ -56,8 +56,9 @@
 <ons-list modifier="inset">
     <ons-list-header>Cancel my account</ons-list-header>
       <ons-list-item>
-        <span class="list-item__title">Unhappy? </span><span><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "button--quiet" %></span><br>
+        <span class="list-item__title">Missing all the clutter? Sorry to see you go. </span><span><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "button--quiet" %></span><br>
     </ons-list-item>
 </ons-list><br>
+
       
       

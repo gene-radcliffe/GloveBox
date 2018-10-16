@@ -137,7 +137,7 @@
                         <div>
                             <%= activity_field.label :tire_location, style: "margin-left: 10px;"   %>
                             <%= activity_field.select :tire_location, options_for_select([ "Front-Left", "Front-Right", "Back-Left", "Back-Right","Front-2", "Back-2", "All" ], "All") %>
-                        </div>
+                        </div><br>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
                             <%= activity_field.text_field :cost, class: "textarea", onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
@@ -349,7 +349,7 @@
     <div class="alert-dialog-title">Alert</div>
 
     <div class="alert-dialog-content">
-        Mileage & Cost must be entered as numbers.
+        Mileage & Cost must be entered as numbers and without comma's.
     </div>
 
     <div class="alert-dialog-footer">
