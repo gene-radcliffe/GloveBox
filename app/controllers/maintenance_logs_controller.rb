@@ -3,11 +3,11 @@ class MaintenanceLogsController < ApplicationController
   def index
     @vehicle = current_user.vehicles.find(params['vehicle_id'])
     @maintenance_logs = @vehicle.maintenance_logs.all
-    @maintenance_action=MaintenanceAction.joins(:maintenance_log).where("vehicle_id = #{params[:vehicle_id]}")
+    @maintenance_actions = MaintenanceAction.joins(:maintenance_log).where("vehicle_id = #{params[:vehicle_id]}")
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = GeneratePdf.new(@maintenance_action)
+        pdf = GeneratePdf.new(@maintenance_actions)
         send_data pdf.render, 
                   filename: "Export",
                   type: 'application/pdf',
