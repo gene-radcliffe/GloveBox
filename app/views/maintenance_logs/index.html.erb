@@ -7,6 +7,7 @@
   <%= link_to 'Add Maintenance Log', new_vehicle_maintenance_log_path, class:"button--quiet" %>
   <% @sum = 0 %>
   <% @maintenance_logs.each do |maintenance_log| %>
+  
     <% maintenance_log.maintenance_actions.each do |maintenance_action| %>
       
     <h3 style= "font-size: 1rem; margin-left: 25px; font-weight:bold;"> <%= maintenance_action.type %></h3>
@@ -18,9 +19,9 @@
     </ul>
   
     
-    
 
   <%end%>
+  
   <% @sum = @sum + maintenance_log.maintenance_actions.sum("cost")%>
 <%end%> 
 

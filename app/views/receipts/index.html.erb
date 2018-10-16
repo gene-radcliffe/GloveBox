@@ -1,0 +1,64 @@
+<ons-page>
+ <%= render "shared_header/header_for_ml"%>
+
+<h1 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif; font-weight: bold;">Maintenance Receipts</h1>
+  <% @maintenance_logs.each do |maintenance_log| %>
+    <%if maintenance_log.image.attached?%> 
+   
+    <div  class="card" style="margin: 20px;">
+      
+    <h3 style= "font-size: 1rem; margin-left: 25px; font-weight:bold;">Receipt added on: <%=maintenance_log.created_at%></h3><br>
+        <div>
+            <%= link_to vehicle_path(vehicle) do %>
+            <i class="fa fa-file-image-o custom" style="text-align:center; font-size: 64px; display: block;"></i><br>
+            <%end%>
+            <ul>
+            <%maintenance_log.maintenance_actions.each do |action|%>
+                <%case action.type%>
+                <%when "OilChange"%>
+                <li>Oil Change: <em><%=action.service_date%></em></li>
+                <%when "Brake"%>
+                <li>Brake: <em><%=action.service_date%></em></li>
+                <%when "Rotor"%>
+                <li>Rotor: <em><%=action.service_date%></em></li>
+                <%when "TireRotation"%>
+                <li>Tire Rotation: <em><%=action.service_date%></em></li>
+                <%when "TireReplacement"%>
+                <li>Tire Replacement: <em><%=action.service_date%></em></li>
+                <%when "Alignment"%>
+                <li>Alignment: <em><%=action.service_date%></em></li>
+                <%when "PowerSteeringFluid"%>
+                <li>Power Steering Fluid: <em><%=action.service_date%></em></li>
+                <%when "Antifreeze"%>
+                <li>Anti-freeze: <em><%=action.service_date%></em></li>
+                <%when "TransmissionFluid"%>
+                <li>Transmission Fluid: <em><%=action.service_date%></em></li>
+                <%when "BrakeFluid"%>
+                <li>Brake Fluid: <em><%=action.service_date%></em></li>
+                <%when "Miscellaneous"%>
+                <li>Miscellaneous: <em><%=action.service_date%></em></li>
+                <%end%>
+            <%end%>
+            </ul>
+            <%=link_to("Download", rails_blob_path(maintenance_log.image, disposition: "attachment"), style:"text-align: right;display:block;")%>
+        </div>
+    </div>
+    <%end%>
+ 
+    <%end%> 
+
+<div class="bottom-bar", style="position:fixed;">
+    <div class="bottom-bar__line-height" style="text-align:right;">
+    </div>
+</div>
+</ons-page>
+
+
+
+<script>
+function unCamelCase(string){
+    ret=""
+    ret=string.replace(/([a-z\xE0-\xFF])([A-Z\xC0\xDF])/g, '$1 $2')
+    return ret
+}
+</script>
