@@ -2,7 +2,7 @@
 
   <%= render "shared_header/header_for_ml"%>
   
-<h2 style= "text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif; "> <%=@maintenance_action.type %></h2>
+<h2 style= "text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif; "> <%=@maintenance_action.type.underscore.humanize.split.map(&:capitalize).join(' ') %></h2>
 
 
 

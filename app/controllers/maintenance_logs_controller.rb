@@ -12,7 +12,7 @@ class MaintenanceLogsController < ApplicationController
                   filename: "Export",
                   type: 'application/pdf',
                   disposition: 'inline'
-       
+                  
       end
     end
     

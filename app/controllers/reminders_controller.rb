@@ -1,5 +1,5 @@
 class RemindersController < ApplicationController
-  
+  before_action :authenticate_user!
   def oilchange
      @reminder = Reminder.new
   end

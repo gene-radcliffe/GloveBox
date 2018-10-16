@@ -90,7 +90,7 @@ function closeNav() {
         <%end%>
     <%end%>
     <div class="title">
-      <%= link_to vehicle.name.capitalize, vehicle_path(vehicle),  class:"button--quiet" %>
+      <%= link_to vehicle.name.split.map(&:capitalize).join(' '), vehicle_path(vehicle),  class:"button--quiet" %>
     </div>
     <div class="content">
       <ons-list>
