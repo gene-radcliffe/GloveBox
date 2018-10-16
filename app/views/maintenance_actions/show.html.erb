@@ -10,104 +10,104 @@
   <% when "OilChange"%>
   
   <ul class="list"> 
-      <li class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Service Date - <%= @maintenance_action.service_date %></td></li>
-      <li class="list-item list-item__center"  style="background-color: #EFEFF5; padding-left: 10px;"> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
-      <li class="list-item list-item__center"  style="background-color: #EFEFF5; padding-left: 10px;"> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
-      <li class="list-item list-item__center"  style="background-color: #EFEFF5; padding-left: 10px;"> Oil Type - <%= @maintenance_action.oil_type %></li>
-      <li class="list-item list-item__center"  style="background-color: #EFEFF5; padding-left: 10px;"> Notes - <%= @maintenance_action.notes %></li>
+      <li class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Service Date: &nbsp; </strong><%= @maintenance_action.service_date %></td></li>
+      <li class="list-item list-item__center"  style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Mileage At Time Of Service: &nbsp;</strong><%= @maintenance_action.mileage %></li>
+      <li class="list-item list-item__center"  style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Cost: &nbsp; </strong><%= number_to_currency(@maintenance_action.cost) %></li>
+      <li class="list-item list-item__center"  style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Oil Type: &nbsp; </strong><%= @maintenance_action.oil_type %></li>
+      <li class="list-item list-item__center"  style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Notes: &nbsp; </strong><%= @maintenance_action.notes %></li>
   </ul>
 
   <% when "Brake"%>
   
   <ul class="list">
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Service Date - <%= @maintenance_action.service_date %></td></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Brake Location - <%= @maintenance_action.brake_location %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Notes - <%= @maintenance_action.notes %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Service Date: &nbsp; </strong><%= @maintenance_action.service_date %></td></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Mileage At Time Of Service: &nbsp; </strong><%= @maintenance_action.mileage %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Cost: &nbsp; </strong><%= number_to_currency(@maintenance_action.cost) %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Brake Location: &nbsp; </strong><%= @maintenance_action.brake_location %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Notes: &nbsp; </strong><%= @maintenance_action.notes %></li>
   </ul>
 
   <% when "Rotor"%>
   
   <ul class="list">
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Service Date - <%= @maintenance_action.service_date %></td></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Rotor Location - <%= @maintenance_action.rotor_location %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Notes - <%= @maintenance_action.notes %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Service Date: &nbsp; </strong><%= @maintenance_action.service_date %></td></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Mileage At Time Of Service: &nbsp; </strong><%= @maintenance_action.mileage %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Cost: &nbsp; </strong><%= number_to_currency(@maintenance_action.cost) %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Rotor Location: &nbsp; </strong><%= @maintenance_action.rotor_location %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Notes: &nbsp; </strong><%= @maintenance_action.notes %></li>
   </ul>
 
   <% when "TireReplacement"%>
   
   <ul class="list">
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Service Date - <%= @maintenance_action.service_date %></td></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Tire Location - <%= @maintenance_action.tire_location %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Notes - <%= @maintenance_action.notes %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Service Date: &nbsp; </strong><%= @maintenance_action.service_date %></td></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Mileage At Time Of Service: &nbsp; </strong><%= @maintenance_action.mileage %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Cost: &nbsp; </strong><%= number_to_currency(@maintenance_action.cost) %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Tire Location: &nbsp; </strong><%= @maintenance_action.tire_location %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Notes: &nbsp; </strong><%= @maintenance_action.notes %></li>
   </ul>
 
   <% when "TireRotation"%>
   
   <ul class="list">
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Service Date - <%= @maintenance_action.service_date %></td></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Notes - <%= @maintenance_action.notes %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Service Date: &nbsp; </strong><%= @maintenance_action.service_date %></td></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Mileage At Time Of Service: &nbsp; </strong><%= @maintenance_action.mileage %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Cost: &nbsp; </strong><%= number_to_currency(@maintenance_action.cost) %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Notes: &nbsp; </strong><%= @maintenance_action.notes %></li>
   </ul>
 
   <% when "Alignment"%>
   
   <ul class="list">
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Service Date - <%= @maintenance_action.service_date %></td></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Notes - <%= @maintenance_action.notes %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Service Date: &nbsp; </strong><%= @maintenance_action.service_date %></td></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Mileage At Time Of Service: &nbsp; </strong><%= @maintenance_action.mileage %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Cost: &nbsp; </strong><%= number_to_currency(@maintenance_action.cost) %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Notes: &nbsp; </strong><%= @maintenance_action.notes %></li>
   </ul>
 
   <% when "BrakeFluid"%>
   
   <ul class="list">
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Service Date - <%= @maintenance_action.service_date %></td></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Notes - <%= @maintenance_action.notes %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Service Date: &nbsp; </strong><%= @maintenance_action.service_date %></td></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Mileage At Time Of Service: &nbsp; </strong><%= @maintenance_action.mileage %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Cost: &nbsp; </strong><%= number_to_currency(@maintenance_action.cost) %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Notes: &nbsp; </strong><%= @maintenance_action.notes %></li>
   </ul>
 
   <% when "TransmissionFluid"%>
   
   <ul class="list">
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Service Date - <%= @maintenance_action.service_date %></td></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Notes - <%= @maintenance_action.notes %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Service Date: &nbsp; </strong><%= @maintenance_action.service_date %></td></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Mileage At Time Of Service: &nbsp; </strong><%= @maintenance_action.mileage %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Cost: &nbsp; </strong><%= number_to_currency(@maintenance_action.cost) %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Notes: &nbsp; </strong><%= @maintenance_action.notes %></li>
   </ul>
 
   <% when "PowerSteeringFluid"%>
   
   <ul class="list">
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Service Date - <%= @maintenance_action.service_date %></td></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Notes - <%= @maintenance_action.notes %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Service Date: &nbsp; </strong><%= @maintenance_action.service_date %></td></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Mileage At Time Of Service: &nbsp; </strong><%= @maintenance_action.mileage %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Cost: &nbsp; </strong><%= number_to_currency(@maintenance_action.cost) %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Notes: &nbsp; </strong><%= @maintenance_action.notes %></li>
   </ul>
   
-  <% when "Antifreeze"%>
+  <% when "AntiFreeze"%>
   
   <ul class="list">
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Service Date - <%= @maintenance_action.service_date %></td></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Notes - <%= @maintenance_action.notes %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Service Date: &nbsp; </strong><%= @maintenance_action.service_date %></td></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Mileage At Time Of Service: &nbsp; </strong><%= @maintenance_action.mileage %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Cost: &nbsp; </strong><%= number_to_currency(@maintenance_action.cost) %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Notes: &nbsp; </strong><%= @maintenance_action.notes %></li>
   </ul>
   
   <% when "Miscellaneous"%>
   
   <ul class="list">
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Service Date - <%= @maintenance_action.service_date %></td></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Mileage At Time Of Service - <%= @maintenance_action.mileage %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Cost - <%= number_to_currency(@maintenance_action.cost) %></li>
-      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> Notes - <%= @maintenance_action.notes %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Service Date: &nbsp; </strong><%= @maintenance_action.service_date %></td></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Mileage At Time Of Service: &nbsp; </strong><%= @maintenance_action.mileage %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Cost: &nbsp; </strong><%= number_to_currency(@maintenance_action.cost) %></li>
+      <li  class="list-item list-item__center" style="background-color: #EFEFF5; padding-left: 10px;"> <strong>Notes: &nbsp; </strong><%= @maintenance_action.notes %></li>
   </ul>
   
 
@@ -120,10 +120,10 @@
     <div class="bottom-bar", style="position:fixed;">
         <div class="bottom-bar__line-height" style=" width: 100%; display: flex;" >
             <div style="flex-grow:1; text-align: center;">
-                <%= link_to 'Edit', edit_maintenance_action_path, class:"button--quiet", style:" font-size: 1.2rem;" %>
+                <%= link_to 'Edit', edit_maintenance_action_path, class:"button--quiet", style:" font-size: 1.2rem; color: #3A405A;" %>
             </div>
             <div style="flex-grow:1; text-align: center;">
-                <%= link_to 'Back', :back, class:"button--quiet", style:" font-size: 1.2rem;" %>
+                <%= link_to 'Back', :back, class:"button--quiet", style:" font-size: 1.2rem; color: #3A405A;" %>
             </div>
         </div>
     </div>

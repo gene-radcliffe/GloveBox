@@ -64,9 +64,9 @@
   <div class="actions" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
       <%= link_to 'Edit Vehicle', edit_vehicle_path, class: "button", style:"background-color: white; color:#3A405A; font-weight: bold;" %>
       <%= link_to 'Add Log', new_vehicle_maintenance_log_path(@vehicle.id), class: "button", style:"background-color: white; color:#3A405A; font-weight: bold;" %>
-      <%= link_to 'View Log', vehicle_maintenance_logs_path(@vehicle.id), class: "button", style:"background-color: white; color:#3A405A; font-weight: bold;" %>
-      <%= link_to 'View Receipts', vehicle_receipts_path(@vehicle.id), class: "button", style:"background-color: white; color:#3A405A; font-weight: bold;" %><br>
-      <%= link_to "Delete Vehicle", @vehicle, method: :delete, data: { confirm: 'Are you sure?' }, class: "button", style:"margin-top: 15px; background-color: white; color:#3A405A; font-weight: bold;" %>
+      <%= link_to 'View Log', vehicle_maintenance_logs_path(@vehicle.id), class: "button", style:"background-color: white; color:#3A405A; font-weight: bold;" %><br>
+      <%= link_to 'View Receipts', vehicle_receipts_path(@vehicle.id), class: "button", style:"background-color: white; color:#3A405A; font-weight: bold; margin-top: 15px;" %>
+      <%= link_to "", @vehicle, method: :delete, data: { confirm: 'Are you sure?' }, class: "button far fa-trash-alt", style:"margin-top: 15px; background-color: #D1D7E2; color:#3A405A; font-weight: bold; padding: 10px 20px 10px; font-size: 2rem;" %>
   </div>
 
   <div style="text-align: center;">
@@ -75,7 +75,7 @@
 
 </ons-page>
 
-
+<i class="far fa-trash-alt"></i>
 
 
 
