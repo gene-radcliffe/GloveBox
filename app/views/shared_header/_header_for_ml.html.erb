@@ -51,9 +51,9 @@ function closeNav() {
 </script>
 
 <ons-page>
-  <ons-toolbar style="width: 100%; background-color: #3A405A;"">
+  <ons-toolbar style="width: 100%; background-color: #3A405A;">
     <div class="toolbar__left" style="width: 33%;">
-      <ons-toolbar-button><%= link_to 'Home', vehicles_path, class:"button--quiet", style:"color: white;"  %></ons-toolbar-button>
+      <ons-toolbar-button><%= link_to 'GloveBox', vehicles_path, class:"button--quiet", style:"color: white; font-weight:bold;"  %></ons-toolbar-button>
     </div>
     <div class="toolbar__center" style="width: 33%;  color: white;">
         <%="#{@vehicle.name.capitalize}" %>
@@ -65,8 +65,8 @@ function closeNav() {
   </ons-toolbar>
   <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <%= link_to('Account', user_path(current_user.id)) %>
-  <%= link_to 'Add a Vehicle', new_vehicle_path%>
-  <%= link_to('Sign Out', destroy_user_session_path, method: :delete) %>
+  <%= link_to('Account', user_path(current_user.id), style:" color: white;") %>
+  <%= link_to 'Add a Vehicle', new_vehicle_path, style:" color: white;"%>
+  <%= link_to('Sign Out', destroy_user_session_path, method: :delete, style:" color: white;") %>
   
 </div>
