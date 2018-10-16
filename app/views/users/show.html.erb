@@ -9,12 +9,12 @@
         display: none;
     }
     #save-avatar{
-        font-size: 0.5rem;
+        font-size: 0.9rem;
         color: blue;
         display: none;
     }
     #save-name{
-         font-size: 0.5rem;
+         font-size: 0.9rem;
         color: blue;
 
         display:none;
@@ -28,16 +28,16 @@
 <div class="card">
     <section>
         <%if current_user.avatar.attached?%>
-            <%= image_tag(current_user.avatar.service_url , height:"25%", width:"25%",id:"avatar-img")%>
+            <%= image_tag(current_user.avatar.service_url , height:"35%", width:"35%",id:"avatar-img")%>
         <%else%>
             <%= image_tag(asset_path("avatar_default.png"), height:"64", width:"64", id:"avatar-img")%>
         <%end%>
         <p id="save-avatar" >Change Avatar</p>
-        <p id="save-name" >Save Name</p>
-
+ 
     </section>
     <section>
         <h3 id="user_name"><%=current_user.first_name.titleize%></h3>
+        <p id="save-name" >Save Name</p>
     </section>
 </div>
 <div class="card">

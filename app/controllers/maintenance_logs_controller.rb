@@ -39,7 +39,7 @@ class MaintenanceLogsController < ApplicationController
 
        
     if params[:reminder] == "true"
-      redirect_to reminders_oilchange_path
+      redirect_to vehicle_reminders_oilchange_path #reminders_oilchange_path
     else
       redirect_to vehicles_path
     end
