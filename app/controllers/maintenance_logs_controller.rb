@@ -1,18 +1,18 @@
 class MaintenanceLogsController < ApplicationController
-
+  before_action :authenticate_user!
   def index
     @vehicle = current_user.vehicles.find(params['vehicle_id'])
     @maintenance_logs = @vehicle.maintenance_logs.all
-    @maintenance_action=MaintenanceAction.joins(:maintenance_log).where("vehicle_id = #{params[:vehicle_id]}")
+    @maintenance_actions = MaintenanceAction.joins(:maintenance_log).where("vehicle_id = #{params[:vehicle_id]}")
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = GeneratePdf.new(@maintenance_action)
+        pdf = GeneratePdf.new(@maintenance_actions)
         send_data pdf.render, 
                   filename: "Export",
                   type: 'application/pdf',
                   disposition: 'inline'
-       
+                  
       end
     end
     
@@ -27,11 +27,6 @@ class MaintenanceLogsController < ApplicationController
     MaintenanceAction::TYPES.map { |t| @mlog.maintenance_actions.build(type: t)}
     
   end  
-
-  def history
-    @vehicles = current_user.vehicles
-  end
-
   def create 
     @vehicle = Vehicle.find(params['vehicle_id'])
     @mlog = @vehicle.maintenance_logs.create(:image => params[:maintenance_log][:image])
@@ -41,9 +36,21 @@ class MaintenanceLogsController < ApplicationController
       whitelisted_params = self.send("#{t.downcase}_params") 
       @mlog.maintenance_actions.build(whitelisted_params.merge(type: t)).save
     end  
-    redirect_to vehicles_path
 
-  end  
+       
+    if params[:reminder] == "true"
+      redirect_to reminders_oilchange_path
+    else
+      redirect_to vehicles_path
+    end
+   
+  
+  end
+  def history
+    @vehicles = current_user.vehicles
+  end
+
+  
 
 
   private 

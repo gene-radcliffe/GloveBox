@@ -1,13 +1,23 @@
 <style>
     #upload-form{
-        display: block;
+        display: none;
+    }
+    #user_avatar{
+        display: none;
+    }
+    .edit_user{
+        display: none;
     }
     #save-avatar{
         font-size: 0.5rem;
         color: blue;
-        
+        display: none
     }
-   
+   #save-avatar:hover{
+        font-size: 0.5rem;
+        color: blue;
+        text-decoration: underline;
+    }
 
 </style>
 <ons-page>
@@ -16,12 +26,17 @@
 
 <div class="card">
     <section>
-        <%if !current_user.avatar.attached?%>
-            <%= image_tag(asset_path("avatar_default.png"), height:"64", width:"64", id:"avatar-img")%>
+        <%if current_user.avatar.attached?%>
+<<<<<<< HEAD
+            <%= image_tag(current_user.avatar.service_url , id:"avatar-img")%>
+=======
+            <%= image_tag(rails_blob_path(current_user.avatar, disposition:"attachment"),id:"avatar-img",)%>
+>>>>>>> 05fbecb16b20216931353343d03eb7f53fe57791
         <%else%>
-            <%= image_tag(rails_blob_path(current_user.avatar, disposition:"attachment"),id:"avatar-img")%>
+            <%= image_tag(asset_path("avatar_default.png"), height:"64", width:"64", id:"avatar-img")%>
+            
         <%end%>
-       <p id="save-avatar">Change Avatar</p>
+       <!--<p id="save-avatar">Change Avatar</p> -->
     </section>
     <section>
         <h3><%=current_user.first_name.titleize%></h3>
@@ -35,7 +50,7 @@
 
 <div class="card">
 <p> Change Registration and Password</p>
-<p><%= link_to  "Edit Information",edit_user_registration_path, class:"button" %></p>
+<p><%= link_to  "Edit Information",edit_user_registration_path, class:"button", style:"background-color: #3A405A; color:white; font-weight: bold;" %></p>
 
 </div>
 <section>
@@ -50,6 +65,14 @@
 
 <script>
     var avatar_input = document.getElementById("user_avatar")
+
+    avatar_input.addEventListener('change', function(e){
+        if(e.target.files.length >0){
+             var save_avatar = document.getElementById("save-avatar").style.display="block"
+        }else{
+            var save_avatar = document.getElementById("save-avatar").style.display="none"
+        }
+    })
     var avatar_img= document.getElementById("avatar-img")
     avatar_img.addEventListener("click", function(e){
         if(window.confirm("Do you want to change your avatar?")){

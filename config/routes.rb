@@ -8,25 +8,25 @@ Rails.application.routes.draw do
   get 'welcome/home', to: 'welcome#home'
   #root to: 'welcome#home'
   
-  devise_for :users, path: 'users', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
+  devise_for :users, path: 'users', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'sign me up' }
   devise_scope :user do
     root to: "devise/sessions#new"
   end
   
   resources :maintenance_actions
   
-  resources :users, only: :show
+  resources :users
   resources :vehicles do
   resources :maintenance_actions 
-   
-  
+  end
 
-end
 
   get "maintenance_actions/reminder", to: "maintenance_actions#reminder"
   resources :vehicles do
+    resources :receipts
     resources :maintenance_logs do
-     resources :maintenance_actions 
+      
+      resources :maintenance_actions 
     end
       
   end
