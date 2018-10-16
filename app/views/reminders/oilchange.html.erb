@@ -3,8 +3,8 @@
 <div style="margin-left: 2%;">
     <h1>Reminder</h1>
     <p><em>Oil Change</em></p>
-    <p>You may choose to receive an email to remind you of your oil change.</p>
-    <p>Depending on your oil type, you can choose to receive a reminder within a 3 month or a 5 month period</p>
+    <p>You may choose to receive an email to remind you of your next oil change.</p>
+    <p>Depending on your oil type, you can choose to receive a reminder within a 3 month (Regular Oil) or a 5 month period (Synthetic Oil)</p>
     <p>You may also take down notes to remind you of any special reminders.</p>
 </div>
 <div style="margin-left: 2%;">
@@ -19,8 +19,8 @@
             <%=f.text_area :notes ,class:"textarea", placeholder:"Notes" %>
         </div>
         <div style="margin-top: 2%;">
-            <%=f.submit class:"button"%>
-            <a href="<%=vehicles_path%>" class="button">Cancel</a> 
+            <%=f.submit class:"button",  style:"background-color: white; color:#3A405A; font-weight: bold;"%>
+            <a href="<%=vehicles_path%>" class="button" style="background-color: white; color:#3A405A; font-weight: bold;">Cancel</a> 
         </div>
     <%end%>
 </div>
