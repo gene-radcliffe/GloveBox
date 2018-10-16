@@ -1,6 +1,6 @@
 class GeneratePdf < Prawn::Document
 
- 
+  include ActionView::Helpers::NumberHelper
 
   def initialize (maintenance_action)
     super(top_margin: 20)
@@ -26,8 +26,8 @@ class GeneratePdf < Prawn::Document
   
     [["Maintnenace Type", "Service Date", "Mileage", "Cost" ]] +
       @maintenance_actions.map do |maintenance_action|
-      [maintenance_action.type, maintenance_action.service_date, maintenance_action.mileage, maintenance_action.cost]
-     
+      [maintenance_action.type, maintenance_action.service_date, maintenance_action.mileage, number_to_currency(maintenance_action.cost)]
+      
     end
   end
   
