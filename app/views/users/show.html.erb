@@ -1,6 +1,12 @@
 <style>
     #upload-form{
-        display: block;
+        display: none;
+    }
+    #user_avatar{
+        display: none;
+    }
+    .edit_user{
+        display: none;
     }
     #save-avatar{
         font-size: 0.5rem;
@@ -16,10 +22,11 @@
 
 <div class="card">
     <section>
-        <%if !current_user.avatar.attached?%>
-            <%= image_tag(asset_path("avatar_default.png"), height:"64", width:"64", id:"avatar-img")%>
-        <%else%>
+        <%if current_user.avatar.attached?%>
             <%= image_tag(rails_blob_path(current_user.avatar, disposition:"attachment"),id:"avatar-img")%>
+        <%else%>
+            <%= image_tag(asset_path("avatar_default.png"), height:"64", width:"64", id:"avatar-img")%>
+            
         <%end%>
        <p id="save-avatar">Change Avatar</p>
     </section>
