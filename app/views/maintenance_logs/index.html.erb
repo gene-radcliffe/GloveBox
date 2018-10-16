@@ -9,7 +9,7 @@
   <% @maintenance_logs.each do |maintenance_log| %>
     <% maintenance_log.maintenance_actions.each do |maintenance_action| %>
       
-    <h3 style= "font-size: 1rem; margin-left: 25px; font-weight:bold;"> <%= maintenance_action.type.underscore.humanize %></h3>
+    <h3 style= "font-size: 1rem; margin-left: 25px; font-weight:bold;"> <%= maintenance_action.type.underscore.humanize.split.map(&:capitalize).join(' ') %></h3>
     <ul>
       <li>Service Date - <%= maintenance_action.service_date %></li>
       <li>Mileage At Time Of Service - <%= maintenance_action.mileage %></li>

@@ -7,14 +7,14 @@
 <p class="alert alert-primary"><%= notice %></p>
 <% end %>
 
-<h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif; font-weight: bold;"><%="#{@vehicle.name.capitalize}"%></h2>
+<h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif; font-weight: bold;"><%="#{@vehicle.name.split.map(&:capitalize).join(' ')}"%></h2>
 
 
 <ons-card style="max-width: 100%">
     <%= image_tag(asset_path("vehicle_default2.jpeg"),  width:"100%", id:"vehicle-img")%>
     <div class="title">
 
-      <%= link_to @vehicle.name.capitalize, vehicle_path(@vehicle),  class:"button--quiet", style:"font-weight: bold; font-size: 1.5rem;" %>
+      <%= link_to @vehicle.name.split.map(&:capitalize).join(' '), vehicle_path(@vehicle),  class:"button--quiet", style:"font-weight: bold; font-size: 1.5rem;" %>
     </div>
     <div class="content">
       <ons-list>
