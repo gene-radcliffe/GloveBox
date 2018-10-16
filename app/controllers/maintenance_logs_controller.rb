@@ -27,11 +27,6 @@ class MaintenanceLogsController < ApplicationController
     MaintenanceAction::TYPES.map { |t| @mlog.maintenance_actions.build(type: t)}
     
   end  
-
-  def history
-    @vehicles = current_user.vehicles
-  end
-
   def create 
     @vehicle = Vehicle.find(params['vehicle_id'])
     @mlog = @vehicle.maintenance_logs.create(:image => params[:maintenance_log][:image])
@@ -41,9 +36,21 @@ class MaintenanceLogsController < ApplicationController
       whitelisted_params = self.send("#{t.downcase}_params") 
       @mlog.maintenance_actions.build(whitelisted_params.merge(type: t)).save
     end  
-    redirect_to vehicles_path
 
-  end  
+    
+    if params[:reminder] == "true"
+      redirect_to reminders_oilchange_path
+    else
+      redirect_to vehicles_path
+    end
+   
+  
+  end
+  def history
+    @vehicles = current_user.vehicles
+  end
+
+  
 
 
   private 
