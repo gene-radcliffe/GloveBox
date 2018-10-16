@@ -18,15 +18,15 @@ Rails.application.routes.draw do
   resources :users, only: :show
   resources :vehicles do
   resources :maintenance_actions 
-   
-  
+  end
 
-end
 
   get "maintenance_actions/reminder", to: "maintenance_actions#reminder"
   resources :vehicles do
+    resources :receipts
     resources :maintenance_logs do
-     resources :maintenance_actions 
+      
+      resources :maintenance_actions 
     end
       
   end

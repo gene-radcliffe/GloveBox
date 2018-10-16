@@ -11,7 +11,11 @@
 
 
 <ons-card style="max-width: 100%">
-    <%= image_tag(asset_path("vehicle_default2.jpeg"),  width:"100%", id:"vehicle-img")%>
+        <%if @vehicle.avatar.attached?%>
+          <%= image_tag(@vehicle.avatar.service_url, width:"100%",id:"vehicle-img")%>
+        <%else%>
+          <%= image_tag("https://s3.amazonaws.com/gloveboxassets/vehicle_default2.jpeg", width:"100%",id:"vehicle-img")%>
+        <%end%>
     <div class="title">
 
       <%= link_to @vehicle.name.split.map(&:capitalize).join(' '), vehicle_path(@vehicle),  class:"button--quiet", style:"font-weight: bold; font-size: 1.5rem;" %>
@@ -60,7 +64,8 @@
   <div class="actions" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
       <%= link_to 'Edit Vehicle', edit_vehicle_path, class: "button", style:"background-color: white; color:#3A405A; font-weight: bold;" %>
       <%= link_to 'Add Log', new_vehicle_maintenance_log_path(@vehicle.id), class: "button", style:"background-color: white; color:#3A405A; font-weight: bold;" %>
-      <%= link_to 'View Log', vehicle_maintenance_logs_path(@vehicle.id), class: "button", style:"background-color: white; color:#3A405A; font-weight: bold;" %><br>
+      <%= link_to 'View Log', vehicle_maintenance_logs_path(@vehicle.id), class: "button", style:"background-color: white; color:#3A405A; font-weight: bold;" %>
+      <%= link_to 'View Receipts', vehicle_receipts_path(@vehicle.id), class: "button", style:"background-color: white; color:#3A405A; font-weight: bold;" %><br>
       <%= link_to "Delete Vehicle", @vehicle, method: :delete, data: { confirm: 'Are you sure?' }, class: "button", style:"margin-top: 15px; background-color: white; color:#3A405A; font-weight: bold;" %>
   </div>
 

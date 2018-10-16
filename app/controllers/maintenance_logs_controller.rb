@@ -1,6 +1,5 @@
 class MaintenanceLogsController < ApplicationController
   before_action :authenticate_user!
-
   def index
     @vehicle = current_user.vehicles.find(params['vehicle_id'])
     @maintenance_logs = @vehicle.maintenance_logs.all
@@ -38,7 +37,7 @@ class MaintenanceLogsController < ApplicationController
       @mlog.maintenance_actions.build(whitelisted_params.merge(type: t)).save
     end  
 
-    
+       
     if params[:reminder] == "true"
       redirect_to reminders_oilchange_path
     else

@@ -1,0 +1,44 @@
+/* line 2, /Users/generadcliffe/momentum/GloveBox/app/assets/stylesheets/direct_uploads.scss */
+.direct-upload {
+  display: inline-block;
+  position: relative;
+  padding: 2px 4px;
+  margin: 0 3px 3px 0;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+/* line 13, /Users/generadcliffe/momentum/GloveBox/app/assets/stylesheets/direct_uploads.scss */
+.direct-upload--pending {
+  opacity: 0.6;
+}
+
+/* line 17, /Users/generadcliffe/momentum/GloveBox/app/assets/stylesheets/direct_uploads.scss */
+.direct-upload__progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  opacity: 0.2;
+  background: #0076ff;
+  transition: width 120ms ease-out, opacity 60ms 60ms ease-in;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+/* line 28, /Users/generadcliffe/momentum/GloveBox/app/assets/stylesheets/direct_uploads.scss */
+.direct-upload--complete .direct-upload__progress {
+  opacity: 0.4;
+}
+
+/* line 32, /Users/generadcliffe/momentum/GloveBox/app/assets/stylesheets/direct_uploads.scss */
+.direct-upload--error {
+  border-color: red;
+}
+
+/* line 36, /Users/generadcliffe/momentum/GloveBox/app/assets/stylesheets/direct_uploads.scss */
+input[type=file][data-direct-upload-url][disabled] {
+  display: none;
+}
