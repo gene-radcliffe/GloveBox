@@ -1,0 +1,32 @@
+<ons-page>
+ <%= render "shared_header/header_for_ml"%>
+
+<h1 style="text-align: center; margin-top: 30px; font-family: 'Raleway', sans-serif; font-weight: bold;">Maintenance Receipts</h1>
+  <% @maintenance_logs.each do |maintenance_log| %>
+    <%if maintenance_log.image.attached?%> 
+   
+    <div  class="card" style="margin: 20px;">
+      
+    <h3 style= "font-size: 1rem; margin-left: 25px; font-weight:bold;">Receipt added on: <%=maintenance_log.created_at%></h3><br>
+        <div>           
+            <%= image_tag(maintenance_log.image.service_url, style:"display: block; margin:0 auto;", width:"20%",id:"vehicle-img")%>
+            <ul>
+            <%maintenance_log.maintenance_actions.each do |action|%>
+                <li><%=action.type.underscore.humanize%>  <em><%=action.service_date%></em></li>
+            <%end%>
+            </ul>
+            <%=link_to("Download", rails_blob_path(maintenance_log.image, disposition: "attachment"), style:"text-align: right;display:block;")%>
+        </div>
+    </div>
+    <%end%>
+ 
+    <%end%> 
+
+<div class="bottom-bar", style="position:fixed;">
+    <div class="bottom-bar__line-height" style="text-align:right;">
+    </div>
+</div>
+</ons-page>
+
+
+

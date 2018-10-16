@@ -68,6 +68,7 @@ function closeNav() {
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <%= link_to('Account', user_path(current_user.id, style:"color: white;")) %>
   <%= link_to 'Add a Vehicle', new_vehicle_path%>
+  <a href="tel:+1-800-222-4357" style="color: white;">Call AAA</a>
   <%= link_to('Sign Out', destroy_user_session_path, method: :delete) %>
   
 </div>
@@ -83,10 +84,14 @@ function closeNav() {
   
     <ons-card class=" card card--material" style="max-width: 100% ">
     <%= link_to vehicle_path(vehicle) do %>
-    <%= image_tag("https://s3.amazonaws.com/gloveboxassets/vehicle_default2.jpeg", width:"100%",id:"vehicle-img")%>
+        <%if vehicle.avatar.attached?%>
+          <%= image_tag(vehicle.avatar.service_url, width:"100%",id:"vehicle-img")%>
+        <%else%>
+          <%= image_tag("https://s3.amazonaws.com/gloveboxassets/vehicle_default2.jpeg", width:"100%",id:"vehicle-img")%>
+        <%end%>
     <%end%>
     <div class="title">
-      <%= link_to vehicle.name.capitalize, vehicle_path(vehicle),  class:"button--quiet" %>
+      <%= link_to vehicle.name.split.map(&:capitalize).join(' '), vehicle_path(vehicle),  class:"button--quiet", style:"color: #3A405A;" %>
     </div>
     <div class="content">
       <ons-list>

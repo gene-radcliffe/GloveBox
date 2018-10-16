@@ -7,20 +7,21 @@
   <%= link_to 'Add Maintenance Log', new_vehicle_maintenance_log_path, class:"button--quiet" %>
   <% @sum = 0 %>
   <% @maintenance_logs.each do |maintenance_log| %>
+  
     <% maintenance_log.maintenance_actions.each do |maintenance_action| %>
       
-    <h3 style= "font-size: 1rem; margin-left: 25px; font-weight:bold;"> <%= maintenance_action.type %></h3>
+    <h3 style= "font-size: 1rem; margin-left: 25px; font-weight:bold;"> <%= maintenance_action.type.underscore.humanize.split.map(&:capitalize).join(' ') %></h3>
     <ul>
       <li>Service Date - <%= maintenance_action.service_date %></li>
       <li>Mileage At Time Of Service - <%= maintenance_action.mileage %></li>
       <li>Cost - <%= number_to_currency(maintenance_action.cost) %></li>
-      <%= link_to 'View Details', maintenance_action_path(maintenance_action.id), class:"button", style:"margin-top:20px; margin-bottom:10px; background-color: white; color:#3A405A; font-weight: bold;" %>
+      <%= link_to 'View Details', maintenance_action_path(maintenance_action.id), class:"button", style:"margin-top:20px; margin-bottom:30px; background-color: white; color:#3A405A; font-weight: bold;" %>
     </ul>
   
     
-    
 
   <%end%>
+  
   <% @sum = @sum + maintenance_log.maintenance_actions.sum("cost")%>
 <%end%> 
 

@@ -137,7 +137,7 @@
                         <div>
                             <%= activity_field.label :tire_location, style: "margin-left: 10px;"   %>
                             <%= activity_field.select :tire_location, options_for_select([ "Front-Left", "Front-Right", "Back-Left", "Back-Right","Front-2", "Back-2", "All" ], "All") %>
-                        </div>
+                        </div><br>
                          <div>
                             <%= activity_field.label :cost, style: "margin-left: 10px;"  %><br>
                             <%= activity_field.text_field :cost, class: "textarea", onblur:"validate(this)",  style: "margin-bottom: 5px; margin-left: 10px;" %>
@@ -338,7 +338,8 @@
 
         <input type="button" id="prev_button" value="Previous" class="button"style = "margin-left: 15px; margin-top: 15px; background-color: white; color:#3A405A; font-weight: bold;">
         <input type="button" id="next_button" value="Next" class="button" style = "margin-left: 15px; margin-top: 15px; background-color: white; color:#3A405A; font-weight: bold;">
-        <input type="button" id="start_button" value="Start Over" class="button" style = "margin-left: 15px; margin-top: 15px; background-color: white; color:#3A405A; font-weight: bold;" onclick="start_over()">
+        <input type="button" id="start_button" value="Start Over" class="button" style = "margin-left: 15px; margin-top: 15px; background-color: white; color:#3A405A; font-weight: bold; display:block; clear:left;" onclick="start_over()">
+        
     </div>
 </div>
 <div id="validation_alert">
@@ -348,7 +349,7 @@
     <div class="alert-dialog-title">Alert</div>
 
     <div class="alert-dialog-content">
-        Your last entry is incorrect.
+        Mileage & Cost must be entered as numbers and without comma's.
     </div>
 
     <div class="alert-dialog-footer">

@@ -16,6 +16,8 @@ class MaintenanceAction < ApplicationRecord
     "Miscellaneous"
   ]
 
+  def action_name
+     
+  end
 
 end
-

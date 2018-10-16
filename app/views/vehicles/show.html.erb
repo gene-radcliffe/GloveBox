@@ -7,50 +7,57 @@
 <p class="alert alert-primary"><%= notice %></p>
 <% end %>
 
-<h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif; font-weight: bold;"><%="#{@vehicle.name.capitalize}"%></h2>
+<h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif; font-weight: bold;"><%="#{@vehicle.name.split.map(&:capitalize).join(' ')}"%></h2>
 
 
 <ons-card style="max-width: 100%">
-    <%= image_tag(asset_path("vehicle_default2.jpeg"),  width:"100%", id:"vehicle-img")%>
+        <%if @vehicle.avatar.attached?%>
+          <%= image_tag(@vehicle.avatar.service_url, width:"100%",id:"vehicle-img")%>
+        <%else%>
+          <%= image_tag("https://s3.amazonaws.com/gloveboxassets/vehicle_default2.jpeg", width:"100%",id:"vehicle-img")%>
+        <%end%>
     <div class="title">
 
-      <%= link_to @vehicle.name.capitalize, vehicle_path(@vehicle),  class:"button--quiet", style:"font-weight: bold; font-size: 1.5rem;" %>
+      <%= link_to @vehicle.name.split.map(&:capitalize).join(' '), vehicle_path(@vehicle),  class:"button--quiet", style:"font-weight: bold; font-size: 1.5rem; color: #3A405A;" %>
     </div>
     <div class="content">
       <ons-list>
         <ons-row style=" margin-bottom: 15px;">
-          <ons-col width="100%" style="font-size:1.2rem; font-family: 'Raleway', sans-serif;">Year:<%= @vehicle.year %></ons-col>
+          <ons-col width="100%" style="font-size:1.2rem; font-family: 'Raleway', sans-serif;"><strong>Year:  </strong><%= @vehicle.year %></ons-col>
         </ons-row>
       </ons-list>
       <ons-list>
         <ons-row style=" margin-bottom: 15px;">
-          <ons-col width="100%" style="font-size:1.2rem; font-family: 'Raleway', sans-serif;">Make: <%= @vehicle.make.capitalize %></ons-col>
+          <ons-col width="100%" style="font-size:1.2rem; font-family: 'Raleway', sans-serif;"><strong>Make:  </strong><%= @vehicle.make.capitalize %></ons-col>
         </ons-row>
       </ons-list>
       <ons-list>
         <ons-row style=" margin-bottom: 15px;">
-          <ons-col width="100%" style="font-size:1.2rem; font-family: 'Raleway', sans-serif;"> Model: <%= @vehicle.model.capitalize %></ons-col>
+          <ons-col width="100%" style="font-size:1.2rem; font-family: 'Raleway', sans-serif;"><strong>Model:  </strong><%= @vehicle.model.capitalize %></ons-col>
         </ons-row>
       </ons-list>
       <ons-list>
         <ons-row style=" margin-bottom: 15px;">
-          <ons-col width="100%" style="font-size:1.2rem; font-family: 'Raleway', sans-serif;"> Color: <%= @vehicle.color.capitalize %></ons-col>
+          <ons-col width="100%" style="font-size:1.2rem; font-family: 'Raleway', sans-serif;"><strong>Color:  </strong><%= @vehicle.color.capitalize %></ons-col>
         </ons-row>
       </ons-list>
       <ons-list>
         <ons-row style=" margin-bottom: 15px;">
-          <ons-col width="100%" style="font-size:1.2rem; font-family: 'Raleway', sans-serif;"> License Plate: <%= @vehicle.license_plate %></ons-col>
+          <ons-col width="100%" style="font-size:1.2rem; font-family: 'Raleway', sans-serif;"><strong>License Plate:  </strong><%= @vehicle.license_plate %></ons-col>
         </ons-row>
       </ons-list>
       <ons-list>
         <ons-row style=" margin-bottom: 15px;">
-          <ons-col width="100%" style="font-size:1.2rem; font-family: 'Raleway', sans-serif;"> VIN#: <i class="far fa-question-circle" style= font-size:0.8rem;
-            onclick="ons.notification.toast('The VIN (vehicle identification number) can often be found on the lower-left corner of the dashboard, in front of the steering wheel. You can read the number by looking through the windshield.', { timeout: 3000})"></i><%= @vehicle.vin %></ons-col>
-
+          <ons-col width="100%" style="font-size:1.2rem; font-family: 'Raleway', sans-serif;"><strong>VIN#:  </strong><i class="far fa-question-circle" style= font-size:0.8rem;
+            onclick="ons.notification.toast('The VIN (vehicle identification number) can often be found on the lower-left corner of the dashboard, in front of the steering wheel. You can read the number by looking through the windshield.', { timeout: 3000})"></i> <%= @vehicle.vin %></ons-col>
         </ons-row>
       </ons-list>
-      
-
+      <ons-list>
+        <ons-row style=" margin-bottom: 15px;">
+          <ons-col width="100%" style="font-size:1.2rem; font-family: 'Raleway', sans-serif;"><strong>Date of Last Inspection:  </strong>  <%= @vehicle.inspection_date %></ons-col>
+        </ons-row>
+      </ons-list>
+    
     </div>
   </ons-card>
 
@@ -58,7 +65,8 @@
       <%= link_to 'Edit Vehicle', edit_vehicle_path, class: "button", style:"background-color: white; color:#3A405A; font-weight: bold;" %>
       <%= link_to 'Add Log', new_vehicle_maintenance_log_path(@vehicle.id), class: "button", style:"background-color: white; color:#3A405A; font-weight: bold;" %>
       <%= link_to 'View Log', vehicle_maintenance_logs_path(@vehicle.id), class: "button", style:"background-color: white; color:#3A405A; font-weight: bold;" %><br>
-      <%= link_to "Delete Vehicle", @vehicle, method: :delete, data: { confirm: 'Are you sure?' }, class: "button", style:"margin-top: 15px; background-color: white; color:#3A405A; font-weight: bold;" %>
+      <%= link_to 'View Receipts', vehicle_receipts_path(@vehicle.id), class: "button", style:"background-color: white; color:#3A405A; font-weight: bold; margin-top: 15px;" %>
+      <%= link_to "", @vehicle, method: :delete, data: { confirm: 'Are you sure?' }, class: "button far fa-trash-alt", style:"margin-top: 15px; background-color: #D1D7E2; color:#3A405A; font-weight: bold; padding: 10px 20px 10px; font-size: 2rem;" %>
   </div>
 
   <div style="text-align: center;">
@@ -67,7 +75,7 @@
 
 </ons-page>
 
-
+<i class="far fa-trash-alt"></i>
 
 
 
