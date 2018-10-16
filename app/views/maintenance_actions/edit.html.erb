@@ -1,9 +1,9 @@
 <ons-page>
-  <ons-toolbar>
+  <ons-toolbar style="background-color: #3A405A;">
     <div class="left">
-      <ons-toolbar-button><%= link_to 'Back', maintenance_actions_path %></ons-toolbar-button>
+      <ons-toolbar-button><%= link_to 'Back', :back , class:"button--quiet", style:"color: white;" %></ons-toolbar-button>
     </div>
-    <div class="center">GloveBox</div>
+    <div class="center"><%= link_to 'GloveBox', vehicles_path, class:"button--quiet", style:"color: white; font-weight:bold;"  %></div>
   </ons-toolbar>
  
 <h2 style="text-align: center; margin-top: 10px; font-family: 'Raleway', sans-serif;">Edit Maintenance Action</h2>
