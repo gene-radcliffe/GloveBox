@@ -1,6 +1,7 @@
 class RemindersController < ApplicationController
   before_action :authenticate_user!
   def oilchange
+      @vehicle = Vehicle.find(params[:vehicle_id])
      @reminder = Reminder.new
   end
 
