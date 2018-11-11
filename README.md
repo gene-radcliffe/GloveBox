@@ -3,21 +3,25 @@
 Glovebox provides users with a practical and efficient way of keeping track of vehicle maintenance. Declutter your glovebox and still keep the records that can increase your car's resale value!
 
 ## Live site
-<b> http://glovebox.tools
- or visit:
- https://damp-escarpment-35251.herokuapp.com/ </b>
+````
+http://glovebox.tools
+or visit:
+https://damp-escarpment-35251.herokuapp.com/ 
+````
 
 ## Local Development
 
 ### Clone Locally
-> $git clone https://github.com/gene-radcliffe/GloveBox.git
+````
+$git clone https://github.com/gene-radcliffe/GloveBox.git
+````
 
 ## Configuration: 
-> GloveBox is a Ruby on Rails applications. This application is configured to use postgresql databaseand AWS S3 for asset storage.
-> 
-### Ruby version: 2.5.1
-
-### Ruby on Rails version: 5.2.1
+````
+GloveBox is a Ruby on Rails applications. This application is configured to use postgresql databaseand AWS S3 for asset storage.
+````
+> Ruby version: 2.5.1
+> Ruby on Rails version: 5.2.1
 
 ### System dependencies:
 > Install the following gems onto your system. 
