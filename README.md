@@ -20,7 +20,8 @@ $git clone https://github.com/gene-radcliffe/GloveBox.git
 ````
 GloveBox is a Ruby on Rails applications. This application is configured to use postgresql databaseand AWS S3 for asset storage.
 ````
-> Ruby version: 2.5.1
+> Ruby version: 2.5.1 
+>
 > Ruby on Rails version: 5.2.1
 
 ### System dependencies:
