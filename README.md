@@ -39,14 +39,35 @@ GloveBox is a Ruby on Rails applications. This application is configured to use 
   10. font-awesome-rails gem >= 4.7.0.4
   11. font-awesome-sass' gem > 5.3
 
+### AWS S3
+````
+Sign-up for a free S3 account at Amazon Web Services. 
+Create an S3 bucket to store image uploads for the application.
+Grant the proper user policy to your S3 account.
+
+The following links will guide you in the process:
+
+https://docs.aws.amazon.com/AmazonS3/latest/gsg/SigningUpforS3.html
+https://medium.com/alturasoluciones/setting-up-rails-5-active-storage-with-amazon-s3-3d158cf021ff
+
+Once completed configure the
+````
+
+> run: $figaro install  //this wiill install an application.yml file where you can add your S3
+
 ### Database creation
-> Run the following command to reset and initialize the database 
+````
+Run the following command to reset and initialize the database 
+````
 > $bin/rails db:reset
 
 ### Deployment instructions
-> run the puma server
+````
+run the puma server
+````
 > bin/rails s
-> visit http://localhost:3000 
+>
+> open your browser to http://localhost:3000 
 
 ### Account signup
 > You will have to signup for a user account on the account signup page
