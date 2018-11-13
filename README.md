@@ -18,7 +18,8 @@ $git clone https://github.com/gene-radcliffe/GloveBox.git
 
 ## Configuration: 
 ````
-GloveBox is a Ruby on Rails applications. This application is configured to use postgresql databaseand AWS S3 for asset storage.
+GloveBox is a Ruby on Rails applications. This application is configured to use postgresql database
+and AWS S3 for asset storage.
 ````
 > Ruby version: 2.5.1 
 >
@@ -29,7 +30,7 @@ GloveBox is a Ruby on Rails applications. This application is configured to use 
 > Visit https://rubygems.org/ to get specific installation instructions for each gem
   1. Postgresql gem version: >= 0.18
   2. JBuilder gem version: 2.5
-  3. BCrypt gem version: 3.1.7
+  3. Bcrypt gem version: 3.1.7
   4. Amazon Web Service S3 ('aws-sdk-s3') gem
   5. fog-aws gem
   6. figaro gem
@@ -50,11 +51,49 @@ The following links will guide you in the process:
 https://docs.aws.amazon.com/AmazonS3/latest/gsg/SigningUpforS3.html
 https://medium.com/alturasoluciones/setting-up-rails-5-active-storage-with-amazon-s3-3d158cf021ff
 
-Once completed configure the
+#### Configure Active Storage
+
+Configure your active storage (S3) settings in the 'storage.yml' file.
+Set it to use Amazon S3 web services. You can use figaro to create an 'application.yml' file
+to store your sensitive S3 information such as your token and user id. Use ENV to call your
+S3 token and user id. 
+
+amazon:
+   service: S3
+   access_key_id:  <%= ENV['aws_access_key_id']%>
+   secret_access_key: <%= ENV['aws_secret_access_key']%> 
+   region: us-east-1
+   bucket: <%= ENV['aws_bucket']%>
+
+* set the following line in production.rb / development.rb to 'amazon' or your preferred web service.
+....config.active_storage.service: amazon
+
 ````
 
-> run: $figaro install  //this wiill install an application.yml file where you can add your S3
+> run: $figaro install  //this wiill install an application.yml file where you can 
+> store your S3 token and user id.
 
+### SMTP Server settings
+````
+Configure your SMTP server to send and receive email. You can signup for a free sendgrid account.
+Gmail will work fine. Just change the security settings on your google account to allow access
+
+Enter your SMPT settings in setup_mail.rb or development.rb
+ 
+````
+````Ruby
+##setup_mail.rb
+
+ActionMailer::Base.smtp_settings = {
+  :address              =>  'smtp.sendgrid.net',
+  :port                 =>  587,
+  :authentication       =>  :plain,
+  :user_name            => ENV['SENDGRID_USERNAME'],
+  :password             => ENV['SENDGRID_PASSWORD'],
+  :domain               => "heroku.com",
+  :enable_starttls_auto  =>  true
+}
+````
 ### Database creation
 ````
 Run the following command to reset and initialize the database 
