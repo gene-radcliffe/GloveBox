@@ -20,14 +20,16 @@ $git clone https://github.com/gene-radcliffe/GloveBox.git
 ````
 GloveBox is a Ruby on Rails applications. This application is configured to use postgresql database
 and AWS S3 for asset storage.
+
+* __Ruby version: 2.5.1__ 
+
+* __Ruby on Rails version: 5.2.1__
 ````
-> Ruby version: 2.5.1 
->
-> Ruby on Rails version: 5.2.1
 
 ### System dependencies:
-> Install the following gems onto your system. 
-> Visit https://rubygems.org/ to get specific installation instructions for each gem
+````
+Install the following gems onto your system. 
+ Visit https://rubygems.org/ to get specific installation instructions for each gem
   1. Postgresql gem version: >= 0.18
   2. JBuilder gem version: 2.5
   3. Bcrypt gem version: 3.1.7
@@ -40,6 +42,8 @@ and AWS S3 for asset storage.
   10. font-awesome-rails gem >= 4.7.0.4
   11. font-awesome-sass' gem > 5.3
 
+````
+
 ### AWS S3
 ````
 Sign-up for a free S3 account at Amazon Web Services. 
@@ -51,27 +55,31 @@ The following links will guide you in the process:
 https://docs.aws.amazon.com/AmazonS3/latest/gsg/SigningUpforS3.html
 https://medium.com/alturasoluciones/setting-up-rails-5-active-storage-with-amazon-s3-3d158cf021ff
 
-#### Configure Active Storage
+````
 
+#### Configure Active Storage
+````
 Configure your active storage (S3) settings in the 'storage.yml' file.
 Set it to use Amazon S3 web services. You can use figaro to create an 'application.yml' file
 to store your sensitive S3 information such as your token and user id. Use ENV to call your
 S3 token and user id. 
-
+````
+````Ruby
 amazon:
    service: S3
    access_key_id:  <%= ENV['aws_access_key_id']%>
    secret_access_key: <%= ENV['aws_secret_access_key']%> 
    region: us-east-1
    bucket: <%= ENV['aws_bucket']%>
+````
 
+````
 * set the following line in production.rb / development.rb to 'amazon' or your preferred web service.
 ....config.active_storage.service: amazon
 
+ run: $figaro install  //this wiill install an application.yml file where you can 
+ store your S3 token and user id.
 ````
-
-> run: $figaro install  //this wiill install an application.yml file where you can 
-> store your S3 token and user id.
 
 ### SMTP Server settings
 ````
@@ -81,6 +89,7 @@ Gmail will work fine. Just change the security settings on your google account t
 Enter your SMPT settings in setup_mail.rb or development.rb
  
 ````
+
 ````Ruby
 ##setup_mail.rb
 
@@ -97,19 +106,22 @@ ActionMailer::Base.smtp_settings = {
 ### Database creation
 ````
 Run the following command to reset and initialize the database 
-````
-> $bin/rails db:reset
 
+_$bin/rails db:reset_
+
+````
 ### Deployment instructions
+
 ````
 run the puma server
+_bin/rails s_
+
+_open your browser to http://localhost:3000_
 ````
-> bin/rails s
->
-> open your browser to http://localhost:3000 
 
 ### Account signup
-> You will have to signup for a user account on the account signup page
-> You will receive a confirmation email to confirm your token
-
+````
+You will have to signup for a user account on the account signup page
+You will receive a confirmation email to confirm your token
+````
 
